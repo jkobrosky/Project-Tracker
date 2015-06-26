@@ -1,0 +1,27 @@
+{
+  "name": "project-tracker",
+  "version": "1.0.0",
+  "description": "Small business project management tool",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkobrosky/Project-Tracker.git"
+  },
+  "keywords": [
+    "project",
+    "management",
+    "dashboard",
+    "tool",
+    "organization"
+  ],
+  "author": "Joseph Kobrosky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkobrosky/Project-Tracker/issues"
+  },
+  "homepage": "https://github.com/jkobrosky/Project-Tracker#readme"
+}
