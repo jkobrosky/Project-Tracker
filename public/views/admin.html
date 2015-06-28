@@ -1,0 +1,51 @@
+<div class="icons left">
+	<i class="fa fa-bars"></i>
+</div>
+
+<div class="icons right">
+	<a class="menu-right" href="#/admin"><i class="fa fa-cog"></i></a>
+</div>
+
+<div class="manage-container">
+	<h4 class="title">Current Projects</h4>
+	
+	<div class="manage-projects">
+		<a href="#admin"><i ng-click="modalView()" class="cur-icons fa fa-plus-circle" title="Add Project"></i></a>
+		<i class="cur-icons fa fa-minus-circle" title="Remove Project"></i>
+		<i class="cur-icons fa fa-user-plus" title="Create Team"></i>
+		<i class="cur-icons fa fa-user-times" title="Remove Team"></i>
+	</div> <!-- End of 'manage-projects' -->
+
+	<div class="current-projects-container" ng-repeat="project in Projects">
+		<div class="current-projects">
+			<h5 class="headline" ng-click="detailsToggle()">{{ project.title }}</h5>
+			<div class="project-details" ng-show="detailsVisible">
+				<h5>{{ project.description }}</h5>
+				<h5>Lead: {{ project.teamLead }}</h5>
+				<div class="member-list" ng-repeat="member in project.teamMembers">
+					<h5>{{ member }}</h5>
+				</div>
+				<h5>{{ project.dueDate | amCalendar }}</h5>
+			</div> <!-- End of 'project-details' -->
+		</div> <!-- End of 'current-projects' -->
+	</div> <!-- End of 'current-projects-container' -->
+
+</div> <!-- End of 'manage-container' -->
+
+<div class="modal" ng-show="modalVisible">
+	<h4 class="title">Add New Project</h4>
+
+	<div class="close">
+		<a href="#admin"><i ng-click="modalView()" class="fa fa-times"></i>
+	</div>
+
+	<form>
+		<input class="modal-input" type="text" placeholder="Project Title" />
+		<input class="modal-input" type="text" placeholder="Description" />
+		<input class="modal-input" type="text" placeholder="Team Lead" />
+		<input class="modal-input" type="text" placeholder="Team Members" />
+		<input class="modal-input" type="text" placeholder="Start Date" />
+		<input class="modal-input" type="text" placeholder="Due Date" />
+		<button type="submit">Save</button>
+	</form>
+</div>

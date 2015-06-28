@@ -1,0 +1,24 @@
+<div class="nav-bar">
+	<div class="icons left">
+		<i class="fa fa-bars"></i>
+	</div>
+
+	<div class="icons right">
+		<i class="fa fa-cog"></i>
+	</div>
+</div> <!-- End of 'nav-bar' -->
+
+<div class="project-listing-container" ng-repeat="project in Projects">
+	<div class="project-listing">
+		<h2>{{ project.title }}</h2>
+		<h4>Description: {{ project.description }}</h4>
+		<p>Team Lead: {{ project.teamLead }}</p>
+		<span>{{ project.teamLead }}'s Team: 
+			<div class="member-list" ng-repeat="member in project.teamMembers">
+				{{ member }}
+			</div>
+		</span>
+		<p>Start Date: {{ curTime | amCalendar }}</p>
+		<p>Due Date: {{ project.dueDate | amCalendar }}</p>
+	</div>
+</div> <!-- End of 'project-listing-container' -->

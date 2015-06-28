@@ -2,11 +2,13 @@
 
 // Modules
 var express = require('express');
+var mongoose = require('mongoose');
+var moment = require('moment');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var mongoose = require('mongoose');
 
 //Controllers
+var ProjectCtrl = require('./controllers/ProjectCtrl');
 
 // Constants 
 var port = 8887;
@@ -19,6 +21,8 @@ var app = express();
 	app.use(cors());
 
 	app.use(express.static(__dirname + '/public'));
+
+	app.post('/api/projects', ProjectCtrl.readProject);
 
 	mongoose.connect(mongoUri);
 	mongoose.connection.once('open', function() {
