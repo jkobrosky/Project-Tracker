@@ -84,10 +84,10 @@ a.menu-right {
 }
 
 .manage-container {
-	width: 25%;
+	width: 20%;
 	display: flex;
 	flex-direction: column;
-	background: #dfdfdf;
+	background: rgba(0, 0, 0, 0.15);
 	margin: 20px;
 	padding: 5px;
 }
@@ -103,7 +103,7 @@ a.menu-right {
 	margin: 10px;
 	padding: 10px;
 	position: absolute;
-	top: 25%;
+	top: 20%;
 	left: 25%;
 	width: 50%;
 	background: #fff;
@@ -119,6 +119,13 @@ a.menu-right {
 	height: 2em;
 }
 
+.modal-btn {
+	float: right;
+	height: 2.25em;
+	width: 5em;
+	margin: 20px;
+}
+
 .close {
 	display: flex;
 	justify-content: flex-end;
@@ -128,6 +135,7 @@ a {
 	text-decoration: none;
 	color: #000;
 }
+
 
 
 

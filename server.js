@@ -22,7 +22,7 @@ var app = express();
 
 	app.use(express.static(__dirname + '/public'));
 
-	app.post('/api/projects', ProjectCtrl.readProject);
+	app.post('/api/projects', ProjectCtrl.createProject);
 
 	mongoose.connect(mongoUri);
 	mongoose.connection.once('open', function() {

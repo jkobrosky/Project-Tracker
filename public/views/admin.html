@@ -10,7 +10,7 @@
 	<h4 class="title">Current Projects</h4>
 	
 	<div class="manage-projects">
-		<a href="#admin"><i ng-click="modalView()" class="cur-icons fa fa-plus-circle" title="Add Project"></i></a>
+		<i ng-click="addProjectView()" class="cur-icons fa fa-plus-circle" title="Add Project"></i>
 		<i class="cur-icons fa fa-minus-circle" title="Remove Project"></i>
 		<i class="cur-icons fa fa-user-plus" title="Create Team"></i>
 		<i class="cur-icons fa fa-user-times" title="Remove Team"></i>
@@ -32,20 +32,21 @@
 
 </div> <!-- End of 'manage-container' -->
 
-<div class="modal" ng-show="modalVisible">
+<div class="modal" ng-show="addProjectVisible">
 	<h4 class="title">Add New Project</h4>
 
 	<div class="close">
-		<a href="#admin"><i ng-click="modalView()" class="fa fa-times"></i>
+		<a href="#admin"><i ng-click="addProjectView(); clearText()" class="fa fa-times"></i>
 	</div>
 
 	<form>
-		<input class="modal-input" type="text" placeholder="Project Title" />
-		<input class="modal-input" type="text" placeholder="Description" />
-		<input class="modal-input" type="text" placeholder="Team Lead" />
-		<input class="modal-input" type="text" placeholder="Team Members" />
-		<input class="modal-input" type="text" placeholder="Start Date" />
-		<input class="modal-input" type="text" placeholder="Due Date" />
-		<button type="submit">Save</button>
+		<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
+		<input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" />
+		<input class="modal-input" type="text" ng-model="newProject.teamLead" placeholder="Team Lead" />
+		<input class="modal-input" type="text" ng-model="newProject.teamMembers" placeholder="Team Members" />
+		<input class="modal-input" type="text" ng-model="newProject.startDate" placeholder="Start Date" />
+		<input class="modal-input" type="text" ng-model="newProject.dueDate" placeholder="Due Date" />
+		<button class="modal-btn" ng-click="addProjectView(); clearText()" type="submit">Cancel</button>
+		<button class="modal-btn" ng-click="addProject(newProject)" type="submit">Save</button>
 	</form>
 </div>
