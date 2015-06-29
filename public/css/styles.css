@@ -83,6 +83,16 @@ a.menu-right {
 	font-weight: 700;
 }
 
+.backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}
+
 .manage-container {
 	width: 20%;
 	display: flex;

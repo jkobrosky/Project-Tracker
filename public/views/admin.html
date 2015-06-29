@@ -7,7 +7,7 @@
 </div>
 
 <div class="manage-container">
-	<h4 class="title">Current Projects</h4>
+	<h4 class="title">Projects Overview</h4>
 	
 	<div class="manage-projects">
 		<i ng-click="addProjectView()" class="cur-icons fa fa-plus-circle" title="Add Project"></i>
@@ -22,15 +22,16 @@
 			<div class="project-details" ng-show="detailsVisible">
 				<h5>{{ project.description }}</h5>
 				<h5>Lead: {{ project.teamLead }}</h5>
-				<div class="member-list" ng-repeat="member in project.teamMembers">
-					<h5>{{ member }}</h5>
-				</div>
+				<h5>Members: {{ project.teamMembers }}</h5>
 				<h5>{{ project.dueDate | amCalendar }}</h5>
 			</div> <!-- End of 'project-details' -->
 		</div> <!-- End of 'current-projects' -->
 	</div> <!-- End of 'current-projects-container' -->
 
 </div> <!-- End of 'manage-container' -->
+
+<div class="backdrop" ng-show="addProjectVisible">
+</div>
 
 <div class="modal" ng-show="addProjectVisible">
 	<h4 class="title">Add New Project</h4>
@@ -47,6 +48,6 @@
 		<input class="modal-input" type="text" ng-model="newProject.startDate" placeholder="Start Date" />
 		<input class="modal-input" type="text" ng-model="newProject.dueDate" placeholder="Due Date" />
 		<button class="modal-btn" ng-click="addProjectView(); clearText()" type="submit">Cancel</button>
-		<button class="modal-btn" ng-click="addProject(newProject)" type="submit">Save</button>
+		<button class="modal-btn" ng-click="addProject(newProject); getProjects()" type="submit">Save</button>
 	</form>
 </div>

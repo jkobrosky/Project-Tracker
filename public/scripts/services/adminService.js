@@ -8,6 +8,13 @@ app.service('adminService', function($http) {
 			url: 'http://localhost:8887/api/projects',
 			data: { project: newProject }
 		})
-	}
+	};
+
+	this.getProjects = function() {
+		return $http({
+			method: "GET",
+			url: 'http://localhost:8887/api/projects'
+		})
+	};
 
 });

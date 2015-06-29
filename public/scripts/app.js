@@ -18,7 +18,21 @@ app.config(function($routeProvider) {
 	})
 	.when('/admin', {
 		templateUrl: 'views/admin.html',
-		controller: 'adminCtrl'
+		controller: 'adminCtrl',
+		resolve: {
+			projectsList: function($q, $http, adminService) {
+				var deferred = $q.defer();
+				adminService.getProjects().then(function(response) {
+					console.log('from the config ', response);
+					var projects = response.data;
+					deferred.resolve(projects);
+				}, function(err) {
+					console.log('Houston... ', err);
+				})
+
+				return deferred.promise;
+			}
+		}
 	})
 	.otherwise({
 		redirectTo: '/auth'
