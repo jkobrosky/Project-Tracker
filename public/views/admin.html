@@ -12,7 +12,7 @@
 	<div class="manage-projects">
 		<i ng-click="addProjectView()" class="cur-icons fa fa-plus-circle" title="Add Project"></i>
 		<i class="cur-icons fa fa-minus-circle" title="Remove Project"></i>
-		<i class="cur-icons fa fa-user-plus" title="Create Team"></i>
+		<i ng-click="addUserView()" class="cur-icons fa fa-user-plus" title="Create Team"></i>
 		<i class="cur-icons fa fa-user-times" title="Remove Team"></i>
 	</div> <!-- End of 'manage-projects' -->
 
@@ -23,31 +23,82 @@
 				<h5>{{ project.description }}</h5>
 				<h5>Lead: {{ project.teamLead }}</h5>
 				<h5>Members: {{ project.teamMembers }}</h5>
-				<h5>{{ project.dueDate | amCalendar }}</h5>
+				<h5>Start: {{ prooject.startDate }}</h5>
+				<h5>Due: {{ project.dueDate | amCalendar }}</h5>
 			</div> <!-- End of 'project-details' -->
 		</div> <!-- End of 'current-projects' -->
 	</div> <!-- End of 'current-projects-container' -->
 
 </div> <!-- End of 'manage-container' -->
 
-<div class="backdrop" ng-show="addProjectVisible">
-</div>
 
-<div class="modal" ng-show="addProjectVisible">
-	<h4 class="title">Add New Project</h4>
+<div class="manage-container">
+<h4 class="title">Projects Tasks</h4>
+<!-- <textarea class="text-box" placeholder="Enter Project Description"></textarea> -->
 
+<div class="current-projects-container" ng-repeat="task in tasks">
+	<div class="current-projects">
+		<h5 class="headline" ng-click="detailsToggle()">{{ task.title }}</h5>
+		<div class="project-details">
+			<h5>{{ task.description }}</h5>
+		</div> <!-- End of 'project-details' -->
+	</div> <!-- End of 'current-projects' -->
+</div> <!-- End of 'current-projects-container' -->
+
+</div> <!-- End of 'task-container' -->
+
+<projects-modal ng-show="addProjectVisible" add-project="addProject(newProject)" get-projects="getProjects()" add-project-visible="addProjectVisible" add-project-view="addProjectView()"></project-modal>
+
+
+<!-- USER MODAL -->
+<!-- Toggles the ng-show of the modal -->
+<div class="modal" ng-show="addUserVisible">
+	<h4 class="title">Add New User</h4>
+
+	<!-- Modal with input fields for adding a project -->
 	<div class="close">
-		<a href="#admin"><i ng-click="addProjectView(); clearText()" class="fa fa-times"></i>
+		<a href="#admin"><i ng-click="addUserView(); clearText()" class="fa fa-times"></i>
 	</div>
 
 	<form>
-		<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
-		<input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" />
-		<input class="modal-input" type="text" ng-model="newProject.teamLead" placeholder="Team Lead" />
-		<input class="modal-input" type="text" ng-model="newProject.teamMembers" placeholder="Team Members" />
-		<input class="modal-input" type="text" ng-model="newProject.startDate" placeholder="Start Date" />
-		<input class="modal-input" type="text" ng-model="newProject.dueDate" placeholder="Due Date" />
-		<button class="modal-btn" ng-click="addProjectView(); clearText()" type="submit">Cancel</button>
-		<button class="modal-btn" ng-click="addProject(newProject); getProjects()" type="submit">Save</button>
+		<input class="modal-input" type="text" ng-model="newUser.name" placeholder="User Name" />
+		<input class="modal-input" type="email" ng-model="newUser.email" placeholder="Email" />
+		<input class="modal-input" type="text" ng-model="newUser.phone" placeholder="Phone number" />
+		<button class="modal-btn" ng-click="addUserView(); clearText()" type="submit">Cancel</button>
+		<button class="modal-btn" ng-click="addUser(newUser); clearText()" type="submit">Save</button>
 	</form>
 </div>
+<!-- End of USER MODAL -->
+
+<!-- PROJECTS MODAL -->
+<!-- Toggles the ng-show of the modal -->
+<div class="modal" ng-show="addTasksVisible">
+	<h4 class="title">Project</h4>
+
+	<!-- Modal with input fields for adding a project -->
+	<div class="close">
+		<a href="#admin"><i ng-click="addUserView(); clearText()" class="fa fa-times"></i>
+	</div>
+
+	<form >
+		<input class="modal-input" type="text" ng-model="newTask.name" placeholder="User Name" />
+		<button class="modal-btn" ng-click="addUserView(); clearText()" type="submit">Cancel</button>
+		<button class="modal-btn" ng-click="addUser(newUser); clearText()" type="submit">Save</button>
+	</form>
+</div>
+<!-- End of TASKS MODAL -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

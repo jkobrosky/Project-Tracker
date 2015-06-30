@@ -146,9 +146,36 @@ a {
 	color: #000;
 }
 
+.text-box {
+	margin: 10px 20px;
+	padding: 0 10px;
+	border-radius: 5px;
+	font-size: .75em;
+}
 
+.task-input {
+	margin: 10px 20px;
+	padding: 0 10px;
+	border-radius: 5px;
+	height: 2em;
+}
 
+.btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
 
+.dropdown {
+	margin: 10px 20px;
+	padding: 0 10px;
+	border-radius: 5px;
+	height: 2em;
+}
+
+.directions {
+	margin: 0 20px;
+}
 
 
 
