@@ -47,7 +47,11 @@
 
 </div> <!-- End of 'task-container' -->
 
-<projects-modal ng-show="addProjectVisible" add-project="addProject(newProject)" get-projects="getProjects()" add-project-visible="addProjectVisible" add-project-view="addProjectView()"></project-modal>
+<!-- Darkens the background when the modal pops up -->
+<div class="backdrop" ng-show="backdropVisible">
+</div>
+
+<projects-modal ng-show="addProjectVisible" add-project="addProject(newProject)" get-projects="getProjects()" add-project-visible="addProjectVisible" add-project-view="addProjectView()" clear-text="clearText()"></project-modal>
 
 
 <!-- USER MODAL -->

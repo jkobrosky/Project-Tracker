@@ -7,8 +7,10 @@ app.directive('projectsModal', function() {
 		scope: {
 			addProject: '&',
 			getProjects: '&',
+			addProjectView: '&',
 			addProjectVisible: '=',
-			clearText: '=',
+			newProject: '@',
+			newUser: '@'
 		},
 		controller: function($scope) {
 			$scope.theClick = function(){
@@ -17,8 +19,9 @@ app.directive('projectsModal', function() {
 					console.log('response from directive ', response);
 				})
 			};
-			$scope.addProjectView = function() {
-				$scope.addProjectVisible = !$scope.addProjectVisible;
+			$scope.clearText = function() {
+				$scope.newProject = '';
+				//$scope.newUser = '';
 			}
 		}
 	}

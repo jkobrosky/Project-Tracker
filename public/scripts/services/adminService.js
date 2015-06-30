@@ -17,6 +17,14 @@ app.service('adminService', function($http) {
 		})
 	};
 
+	this.removeProjects = function() {
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:8887/api/projects',
+			data: { project: project }
+		})
+	}
+
 	this.addUser = function(newUser) {
 		return $http({
 			method: 'POST',

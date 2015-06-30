@@ -27,19 +27,12 @@ app.controller('adminCtrl', function($scope, adminService, projectsList) {
 	$scope.addUserView = function() {
 		$scope.addUserVisible = !$scope.addUserVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	}
-
-	// Clears out the text in the forms
-	$scope.clearText = function() {
-		$scope.newProject = '';
-		$scope.newUser = '';
-	}
+	};
 
 	// Shows/Hides the details in Projects Overview on admin.html
 	$scope.detailsToggle = function() {
-		console.log('anything');
 		$scope.detailsVisible = !$scope.detailsVisible;
-	}
+	};
 
 	// Gets projects once user 'saves' from ADMIND MODAL
 	$scope.getProjects = function() {
@@ -61,6 +54,14 @@ app.controller('adminCtrl', function($scope, adminService, projectsList) {
 			console.log('error adding project ', err);
 		});
 	};
+
+	$scope.removeProject = function(project) {
+		adminService.removeProject(project).then(function(response) {
+			console.log('response after remove ', response);
+		}, function(err) {
+			console.log('error removing ', err);
+		})
+	}
 
 	// Adds a user from the USER MODAL
 	$scope.addUser = function(newUser) {
