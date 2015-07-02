@@ -10,6 +10,7 @@ var cors = require('cors');
 //Controllers
 var ProjectCtrl = require('./controllers/ProjectCtrl');
 var UserCtrl = require('./controllers/UserCtrl');
+var TaskCtrl = require('./controllers/TaskCtrl');
 
 // Constants 
 var port = 8887;
@@ -28,8 +29,12 @@ var app = express();
 	app.post('/api/projects', ProjectCtrl.createProject);
 
 	// Routes for User Controller
-	//app.get('/api/users', UserCtrl.readUser);
+	app.get('/api/users', UserCtrl.readUser);
 	app.post('/api/users', UserCtrl.createUser);
+
+	// Routes for Task Controller
+	app.get('/api/tasks', TaskCtrl.readTask);
+	app.post('/api/tasks', TaskCtrl.createTask);
 
 	mongoose.connect(mongoUri);
 	mongoose.connection.once('open', function() {

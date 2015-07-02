@@ -1,0 +1,37 @@
+<!-- OPTIONS MODAL -->
+<!-- Toggles the ng-show of the modal -->
+<div class="menu-popout">
+	<h4 class="title">Admin Options</h4>
+
+	<!-- Closes the options modal -->
+	<div class="close">
+		<a href="#admin"><i ng-click="addMenuView()" class="fa fa-times"></i></a>
+	</div>
+
+	<div class="nav-bar-btn">
+		<ul class="nav-icons">
+			<li class="nav-btn"><i class="fa fa-plus-circle"></i> Create Project</li>
+			<li class="nav-btn"><i class="fa fa-user-plus"></i> Create User</li>
+			<li class="nav-btn"><i class="fa fa-users"></i> Create Team</li>
+			<li class="nav-btn"><i class="fa fa-calendar"></i> Calendar</li>
+		</ul>
+	</div> <!-- End of 'nav-bar-btn' -->
+</div> <!-- End of 'menu-popout' -->
+
+<div class="btn-container">
+	<button class="options-btn" type="submit">Due Date</button>
+	<button class="options-btn" type="submit">Team Lead</button>
+	<button class="options-btn" type="submit">Team Members</button>
+</div>
+
+<div class="create-project">
+	<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
+	<input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" />
+</div> <!-- End of 'create-project' -->
+
+
+<div class="chat-container">
+	<div class="chat-box">
+		Comments
+	</div>
+</div> <!-- End of 'chat-container' -->

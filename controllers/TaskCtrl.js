@@ -1,11 +1,11 @@
-var UserModel = require('../models/UserModel');
+var TaskModel = require('../models/TaskModel');
 
 module.exports = {
 
-	createUser: function(req, res) {
-		console.log('createUser ', req.body.user);
-		newUser = new UserModel(req.body.user);
-		newUser.save(function(err, result) {
+	createTask: function(req, res) {
+		console.log('createTask ', req.body.task);
+		newTask = new TaskModel(req.body.task);
+		newTask.save(function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
 			} else {
@@ -14,9 +14,9 @@ module.exports = {
 		})
 	},
 
-	readUser: function(req, res) {
+	readTask: function(req, res) {
 		console.log('readUser: req.query ', req.query);
-		UserModel.find(req.query)
+		TaskModel.find(req.query)
 		.exec(function(err, result) {
 			if(err) {
 				res.status(500).json(err);

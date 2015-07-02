@@ -33,6 +33,21 @@ app.service('adminService', function($http) {
 		})
 	};
 
+	this.addTask = function(newTask) {
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:8887/api/tasks',
+			data: { task: newTask }
+		})
+	};
+
+	this.getUsers = function() {
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:8887/api/users'
+		})
+	}
+
 	this.getTasks = function() {
 		return $http({
 			method: 'GET',

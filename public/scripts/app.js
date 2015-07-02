@@ -31,6 +31,30 @@ app.config(function($routeProvider) {
 				})
 
 				return deferred.promise;
+			},
+
+			teamleadsList: function($q, $http, adminService) {
+				var deferred = $q.defer();
+				adminService.getUsers().then(function(response) {
+					console.log('from config ', response);
+					var users = response.data;
+					deferred.resolve(users);
+				}, function(err) {
+					console.log('Houston... ', err);
+				})
+				return deferred.promise;
+			},
+
+			taskList: function($q, $http, adminService) {
+				var deferred = $q.defer();
+				adminService.getTasks().then(function(response) {
+					console.log('from config ', response);
+					var tasks = response.data;
+					deferred.resolve(tasks);
+				}, function(err) {
+					console.log('Houston... ', err);
+				})
+				return deferred.promise;
 			}
 		}
 	})
