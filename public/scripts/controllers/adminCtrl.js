@@ -16,6 +16,10 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	$scope.backdropVisible = false;
 	$scope.menuVisible = false;
 
+	// Setting the views within directives to visible
+	$scope.createProjectVisible = false;
+	$scope.createUserVisible = false;
+
 	// This section triggers the visiblity of the modals
 	$scope.addProjectView = function() {
 		$scope.addProjectVisible = !$scope.addProjectVisible;
@@ -37,6 +41,14 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	$scope.addMenuView = function() {
 		console.log('clicked menuView ', $scope.menuVisible);
 		$scope.menuVisible = !$scope.menuVisible;
+	}
+
+	$scope.createProjectView = function() {
+		$scope.createProjectVisible = !$scope.createProjectVisible;
+	}
+
+	$scope.createUserView = function() {
+		$scope.createUserVisible = !$scope.createUserVisible;
 	}
 	// END OF MODAL TOGGLES
 

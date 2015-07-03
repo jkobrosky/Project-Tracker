@@ -6,6 +6,10 @@ app.directive('optionsModal', function() {
 		templateUrl: '../views/optionsModal.html',
 		scope: {
 			addMenuView: '&',
+			createProjectView: '&',
+			createUserView: '&',
+			createProjectVisible: '=',
+			createUserVisible: '=',
 			menuVisible: '='
 		}
 	}
