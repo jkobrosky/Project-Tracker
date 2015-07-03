@@ -3,7 +3,7 @@ var app = angular.module('tracker');
 app.directive('projectsModal', function() {
 	return {
 		restrict: 'EA',
-		templateUrl: '../views/projectModal.html',
+		templateUrl: '../views/modals/projectModal.html',
 		scope: {
 			addProject: '&',
 			getProjects: '&',

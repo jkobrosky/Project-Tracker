@@ -3,7 +3,7 @@ var app = angular.module('tracker');
 app.directive('tasksModal', function() {
 	return {
 		restrict: 'EA',
-		templateUrl: '../views/taskModal.html',
+		templateUrl: '../views/modals/taskModal.html',
 		scope: {
 			addTask: '&',
 			addTaskView: '&',

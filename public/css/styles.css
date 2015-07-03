@@ -305,7 +305,7 @@ a {
 
 .options-btn {
 	margin: 10px 0;
-	heigth: 2em;
+	height: 2em;
 }
 
 .chat-container {
@@ -342,6 +342,16 @@ a {
 	height: 45px;
 	width: 90px;
 	padding: 0 25px;
+}
+
+.due-date-btn {
+	width: 130px;
+	margin: 20px 10px;
+}
+
+.checkbox {
+	margin: 0 10px;
+	float: right;
 }
 
 

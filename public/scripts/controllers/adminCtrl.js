@@ -19,6 +19,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	// Setting the views within directives to visible
 	$scope.createProjectVisible = false;
 	$scope.createUserVisible = false;
+	$scope.createTeamVisible = false;
 
 	// This section triggers the visiblity of the modals
 	$scope.addProjectView = function() {
@@ -49,6 +50,11 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 
 	$scope.createUserView = function() {
 		$scope.createUserVisible = !$scope.createUserVisible;
+	}
+
+	$scope.createTeamView = function() {
+		console.log('teamView clicked ', $scope.createTeamVisible);
+		$scope.createTeamVisible = !$scope.createTeamVisible;
 	}
 	// END OF MODAL TOGGLES
 

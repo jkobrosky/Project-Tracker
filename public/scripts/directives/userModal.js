@@ -3,7 +3,7 @@ var app = angular.module('tracker');
 app.directive('usersModal', function() {
 	return {
 		restrict: 'EA',
-		templateUrl: '../views/userModal.html',
+		templateUrl: '../views/modals/userModal.html',
 		scope: {
 			addUser: '&',
 			addUserView: '&',
