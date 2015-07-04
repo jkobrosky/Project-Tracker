@@ -14,6 +14,7 @@
 		<div class="nav-bar-btn">
 			<ul class="nav-icons">
 				<li class="nav-btn"><i ng-click="createProjectView()" class="fa fa-plus-circle"></i> Create Project</li>
+				<li class="nav-btn"><i class="fa fa-user-plus"></i> Add Member</li>
 				<li class="nav-btn"><i class="fa fa-users" ng-click="createTeamView()"></i> Create Team</li>
 				<li class="nav-btn"><i class="fa fa-calendar"></i> Calendar</li>
 				<li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li>
@@ -21,54 +22,25 @@
 		</div> <!-- End of 'nav-bar-btn' -->
 	</div> <!-- End of 'menu-popout' -->
 
-	<!-- CREATE PROJECT PANEL -->
-	<div class="create-project-container" ng-show="createProjectVisible">
-		<div class="btn-container">
-			<button class="options-btn" type="submit">Due Date</button>
-			<button class="options-btn" type="submit">Team Lead</button>
-			<button class="options-btn" type="submit">Team Members</button>
-			<button class="options-btn" type="submit">Attachments</button>
-		</div>
+	<create-project-panel ng-show="createProjectVisible" create-project-visible="createProjectVisible" new-project="newProject" new-task="newTask" create-project-view="createProjectView()" add-project="addProject(newProject)" add-task="addTask(newTask)" ng-model="ngModel"></create-project-panel>
 
-		<div class="create-project">
-			<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
-			<input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" />
-			<div class="btns">
-				<button class="save modal-options-btn">Save</button>
-			</div>
-		</div> <!-- End of 'create-project' -->
-
-		<div class="tasks-inputs">
-			<input class="menu-input" type="text" ng-model="newTask.title" placeholder="Enter Task" />
-			<button class="save" type="submit">Save</button> <br />
-		</div>
-
-		<div class="chat-container">
-			<div class="chat-box">
-				Comments go here
-			</div>
-		</div> <!-- End of 'chat-container' -->
-	</div> <!-- End of 'create-project-container' -->
-	<!-- END OF CREATE PROJECT PANEL -->
-
-	<!-- CREATE TASK PANEL -->
+	<!-- CREATE TEAM PANEL -->
 	<div class="create-project-container" ng-show="createTeamVisible">
 		<div class="btn-container">
 			<button class="options-btn" type="submit">Team Lead</button>
-			<button class="options-btn" type="submit">Department</button>
+			<button class="options-btn" type="submit">Projects</button>
 			<button class="options-btn" type="submit">Members</button>
 			<button class="options-btn" type="submit">Attachments</button>
 		</div>
 
 		<div class="create-project">
-			<input class="modal-input" type="text" ng-model="newTeam.fullname" placeholder="Full name" />
-			<input class="modal-input" type="text" ng-model="newTeam.email" placeholder="Email" />
-			<input class="modal-input" type="text" ng-model="newTeam.phone" placeholder="Phone #" />
+			<input class="modal-input" type="text" ng-model="newTeam.teamname" placeholder="Team name" />
+			<input class="modal-input" type="text" ng-model="newTeam.teamlead" placeholder="Team lead" />
+			<input class="modal-input" type="text" ng-model="newTeam.teamleadEmail" placeholder="Team lead email" />
 			<div class="btns">
 				<button class="save modal-options-btn">Save</button>
 				<!-- <button class="modal-options-btn">Cancel</button> -->
 			</div>
-
 		</div> <!-- End of 'create-project' -->
 
 		<div class="chat-container">

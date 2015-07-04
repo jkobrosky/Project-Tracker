@@ -45,6 +45,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	}
 
 	$scope.createProjectView = function() {
+		console.log('createProjectView clicked', $scope.createProjectVisible);
 		$scope.createProjectVisible = !$scope.createProjectVisible;
 	}
 
@@ -78,6 +79,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 		console.log('newProject ', newProject);
 		return adminService.addProject(newProject).then(function(response) {
 			$scope.newProject = '';
+			$scope.getProjects();
 			console.log('response ', response);
 		}, function(err) {
 			console.log('error adding project ', err);
@@ -111,8 +113,11 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 		})
 	}
 
-	$scope.addTask = function(newTask) {
-		return adminService.addTask(newTask).then(function(response) {
+	$scope.addTask = function() {
+		console.log('addTask adminCtrl ', $scope.newTask);
+		return adminService.addTask($scope.newTask).then(function(response) {
+			$scope.newTask = '';
+			$scope.getTasks();
 			console.log('response ', response);
 		}, function(err) {
 			console.log('error ', err);

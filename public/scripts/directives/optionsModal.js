@@ -9,10 +9,15 @@ app.directive('optionsModal', function() {
 			createProjectView: '&',
 			createUserView: '&',
 			createTeamView: '&',
+			addProject: '&',
+			addTask: '&',
 			createProjectVisible: '=',
 			createUserVisible: '=',
 			createTeamVisible: '=',
-			menuVisible: '='
+			menuVisible: '=',
+			newProject: '=',
+			newTask: '=',
+			ngModel: '='
 		}
 	}
 });

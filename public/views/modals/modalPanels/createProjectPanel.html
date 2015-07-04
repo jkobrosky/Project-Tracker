@@ -1,0 +1,38 @@
+<!-- CREATE PROJECT PANEL -->
+<div class="create-project-container" ng-show="createProjectVisible">
+
+<h3 class="panel-headline">Create a new project</h3>
+
+	<div class="btn-container">
+		<button class="options-btn" type="submit">Due Date</button>
+		<button class="options-btn" type="submit">Team Lead</button>
+		<button class="options-btn" type="submit">Team Members</button>
+		<button class="options-btn" type="submit">Attachments</button>
+		<button class="options-btn" type="submit">Location</button>
+	</div>
+
+	<div class="create-project">
+		<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
+		<textarea rows="3" class="desc modal-input" ng-model="newProject.description" placeholder="Description"></textarea>
+		<!-- <input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" /> -->
+		<div class="btns">
+			<button class="create modal-options-btn" ng-click="addProject(newProject)">Create</button>
+		</div>
+	</div> <!-- End of 'create-project' -->
+
+	<div class="tasks-inputs">
+		<input class="menu-input" type="text" ng-model="newTask.name" placeholder="Enter Task" />
+		<!-- <i class="fa fa-plus-square"></i> -->
+		<button class="add" type="submit" ng-click="addTask()">Add</button> <br />
+	</div>
+
+
+	<!--- This should be it's own directive for chat function -->
+	<div class="chat-container" label="Discussion">
+		<div class="chat-box">
+			Comments go here
+		</div>
+	</div> <!-- End of 'chat-container' -->
+
+</div> <!-- End of 'create-project-container' -->
+<!-- End of CREATE PROJECT PANEL -->
