@@ -1,17 +1,18 @@
 var app = angular.module('tracker');
 
-app.controller('adminCtrl', function($scope, adminService, projectsList, teamleadsList, taskList) {
+app.controller('adminCtrl', function($scope, adminService, projectsList, membersList, taskList) {
 	// console.log('projectsList in ctrl ', projectsList);
-	// console.log('taskList in ctrl ', taskList)
+	// console.log('taskList in ctrl ', taskList);
 	$scope.Projects = projectsList;
-	$scope.teamLeads = teamleadsList;
+	$scope.teamMembers = membersList;
 	$scope.tasks = taskList;
+	console.log('teamMembers in ctrl ', $scope.teamMembers);
 
 	$scope.detailsVisible = false;
 	
 	// Sets the modal views to false
-	$scope.addProjectVisible = false;
-	$scope.addUserVisible = false;
+	//$scope.addProjectVisible = false;
+	//$scope.addUserVisible = false;
 	$scope.addTaskVisible = false;
 	$scope.backdropVisible = false;
 	$scope.menuVisible = false;
@@ -22,16 +23,16 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	$scope.createTeamVisible = false;
 
 	// This section triggers the visiblity of the modals
-	$scope.addProjectView = function() {
-		$scope.addProjectVisible = !$scope.addProjectVisible;
-		$scope.backdropVisible = !$scope.backdropVisible;
-	};
+	// $scope.addProjectView = function() {
+	// 	$scope.addProjectVisible = !$scope.addProjectVisible;
+	// 	$scope.backdropVisible = !$scope.backdropVisible;
+	// };
 
-	$scope.addUserView = function() {
-		console.log('userView clicked ', $scope.addUserVisible);
-		$scope.addUserVisible = !$scope.addUserVisible;
-		$scope.backdropVisible = !$scope.backdropVisible;
-	};
+	// $scope.addUserView = function() {
+	// 	console.log('userView clicked ', $scope.addUserVisible);
+	// 	$scope.addUserVisible = !$scope.addUserVisible;
+	// 	$scope.backdropVisible = !$scope.backdropVisible;
+	// };
 
 	$scope.addTaskView = function() {
 		console.log('clicked task view ', $scope.addTaskVisible);
@@ -54,8 +55,8 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	}
 
 	$scope.createTeamView = function() {
-		console.log('teamView clicked ', $scope.createTeamVisible);
 		$scope.createTeamVisible = !$scope.createTeamVisible;
+		console.log('teamView clicked ', $scope.createTeamVisible);
 	}
 	// END OF MODAL TOGGLES
 
@@ -95,9 +96,9 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	};
 
 	// Adds a user from the USER MODAL
-	$scope.addUser = function(newUser) {
-		console.log('newUser ', newUser);
-		return adminService.addUser(newUser).then(function(response) {
+	$scope.addUser = function() {
+		console.log('newUser ', $scope.newUser);
+		return adminService.addUser($scope.newUser).then(function(response) {
 			console.log('user response ', response);
 		}, function(err) {
 			console.log('Houston... ', err);
@@ -107,7 +108,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 	$scope.getUsers = function() {
 		adminService.getUsers().then(function(response) {
 			console.log('response ', response);
-			$scope.teamleadsList = response.data;
+			$scope.teamMembers = response.data;
 		}, function(err) {
 			console.log('we have a problem ', err);
 		})
@@ -132,11 +133,6 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, teamlea
 			console.log(err);
 		})
 	}
-
-
-
-
-
 
 
 });

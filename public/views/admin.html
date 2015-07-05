@@ -29,10 +29,39 @@
 <div class="backdrop" ng-show="backdropVisible">
 </div>
 
-<users-modal ng-show="addUserVisible" add-user="addUser(newUser)" add-user-view="addUserView()" add-user-visible="addUserVisible"></users-modal>
+<options-modal 
+	ng-show="menuVisible" 
+	create-project-visible="createProjectVisible" 
+	create-user-visible="createUserVisible" 
+	create-team-visible="createTeamVisible" 
+	add-menu-view="addMenuView()" 
+	create-project-view="createProjectView()" 
+	create-user-view="createUserView()" 
+	create-team-view="createTeamView()" 
+	click-create="clickCreate()" 
+	add-project="addProject(newProject)" 
+	add-task="addTask()" 
+	create-new-user="createNewUser()" 
+	new-project="newProject" 
+	new-task="newTask"
+	new-user="newUser"  
+	team-members="teamMembers">
+</options-modal>
 
-<tasks-modal ng-show="addTaskVisible" add-task="addTask(newTask)" get-tasks="getTasks()" add-task-visible="addTaskVisible" add-task-view="addTaskView()"></tasks-modal>
 
-<options-modal ng-show="menuVisible" create-project-visible="createProjectVisible" create-user-visible="createUserVisible" create-team-visible="createTeamVisible" add-menu-view="addMenuView()" create-project-view="createProjectView()" create-user-view="createUserView()" create-team-view="createTeamView()" click-create="clickCreate()" add-project="addProject(newProject)" add-task="addTask()" new-project="newProject" new-task="newTask" ng-model="ngModel"></options-modal>
 
-<projects-modal ng-show="addProjectVisible" add-project="addProject(newProject)" get-projects="getProjects()" add-project-visible="addProjectVisible" add-project-view="addProjectView()" clear-text="clearText()"></project-modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

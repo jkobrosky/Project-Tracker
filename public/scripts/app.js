@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
 			projectsList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getProjects().then(function(response) {
-					console.log('from the config ', response);
+					//console.log('from the config ', response);
 					var projects = response.data;
 					deferred.resolve(projects);
 				}, function(err) {
@@ -33,10 +33,10 @@ app.config(function($routeProvider) {
 				return deferred.promise;
 			},
 
-			teamleadsList: function($q, $http, adminService) {
+			membersList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getUsers().then(function(response) {
-					console.log('from config ', response);
+					console.log('memebrsList from config ', response);
 					var users = response.data;
 					deferred.resolve(users);
 				}, function(err) {
@@ -48,7 +48,7 @@ app.config(function($routeProvider) {
 			taskList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getTasks().then(function(response) {
-					console.log('from config ', response);
+					//console.log('from config ', response);
 					var tasks = response.data;
 					deferred.resolve(tasks);
 				}, function(err) {

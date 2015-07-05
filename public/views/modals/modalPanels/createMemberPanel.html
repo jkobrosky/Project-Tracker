@@ -1,0 +1,29 @@
+<!-- ADD MEMBER PANEL -->
+<div class="create-project-container" ng-show="createUserVisible">
+
+<h3 class="panel-headline">Add a new team member</h3>
+
+	<div class="btn-container">
+		<button class="options-btn" type="submit">Projects</button>
+		<button class="options-btn" type="submit">Location</button>
+		<button class="options-btn" type="submit">Make Lead</button>
+	</div>
+
+	<div class="create-project">
+		<input class="modal-input" type="text" ng-model="newUser.name" placeholder="Full name" />
+		<input class="modal-input" type="text" ng-model="newUser.email" placeholder="Email" />
+		<input class="modal-input" type="text" ng-model="newUser.phone" placeholder="Phone (optional)" />
+		<div class="btns">
+			<button class="create modal-options-btn" ng-click="addUser()">Add Member</button>
+		</div>
+	</div> <!-- End of 'create-project' -->
+
+	<!--- This should be it's own directive for chat function -->
+	<div class="chat-container" label="Discussion">
+		<div class="chat-box">
+			Project discussion
+		</div>
+	</div> <!-- End of 'chat-container' -->
+
+</div> <!-- End of 'create-project-container' -->
+<!-- End of ADD MEMBER PANEL -->

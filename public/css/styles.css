@@ -349,7 +349,6 @@ a {
 
 .create {
 	height: 45px;
-	width: 90px;
 	padding: 0 25px;
 	margin: 5px 10px;
 }
@@ -380,6 +379,17 @@ a {
 	height: 4.4em;
 }
 
+.mini-panel-headline {
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+}
+
+span.mini-panel-repeat {
+	margin: 5px 0;
+	display: flex;
+	justify-content: center;
+}
 
 
 

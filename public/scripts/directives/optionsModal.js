@@ -7,17 +7,24 @@ app.directive('optionsModal', function() {
 		scope: {
 			addMenuView: '&',
 			createProjectView: '&',
-			createUserView: '&',
 			createTeamView: '&',
+			createUserView: '&',
 			addProject: '&',
 			addTask: '&',
+			addTeam: '&',
+			addUser: '&',
 			createProjectVisible: '=',
-			createUserVisible: '=',
 			createTeamVisible: '=',
+			createUserVisible: '=',
+			teamMembers: '=',
 			menuVisible: '=',
 			newProject: '=',
 			newTask: '=',
-			ngModel: '='
+			newTeam: '=',
+			newUser: '='
+		},
+		link: function (scope, elem, attrs) {
+			console.log('teamMembers in parent directive:', scope.teamMembers);
 		}
 	}
 });
