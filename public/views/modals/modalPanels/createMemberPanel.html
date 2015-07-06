@@ -4,9 +4,9 @@
 <h3 class="panel-headline">Add a new team member</h3>
 
 	<div class="btn-container">
-		<button class="options-btn" type="submit">Projects</button>
-		<button class="options-btn" type="submit">Location</button>
 		<button class="options-btn" type="submit">Make Lead</button>
+		<button class="options-btn" type="submit">Projects</button>
+		<button class="options-btn" type="submit">Department</button>
 	</div>
 
 	<div class="create-project">
@@ -19,9 +19,9 @@
 	</div> <!-- End of 'create-project' -->
 
 	<!--- This should be it's own directive for chat function -->
-	<div class="chat-container" label="Discussion">
+	<div class="chat-container">
 		<div class="chat-box">
-			Project discussion
+			<textarea class="notes-box" ng-model="newUser.notes" placeholder="Notes (Optional)"></textarea>
 		</div>
 	</div> <!-- End of 'chat-container' -->
 

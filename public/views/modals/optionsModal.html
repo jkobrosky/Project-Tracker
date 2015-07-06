@@ -13,10 +13,10 @@
 
 		<div class="nav-bar-btn">
 			<ul class="nav-icons">
-				<li class="nav-btn"><i ng-click="createProjectView()" class="fa fa-plus-circle"></i> Create Project</li>
-				<li class="nav-btn"><i ng-click="createUserView()" class="fa fa-user-plus"></i> Add Member</li>
-				<li class="nav-btn"><i ng-click="createTeamView()" class="fa fa-users"></i> Create Team</li>
-				<li class="nav-btn"><i class="fa fa-calendar"></i> Calendar</li>
+				<li class="nav-btn"><i ng-click="createProjectView(); closePanels()" class="fa fa-plus-circle"></i> Create Project</li>
+				<li class="nav-btn"><i ng-click="createUserView(); closePanels()" class="fa fa-user-plus"></i> Add Member</li>
+				<li class="nav-btn"><i ng-click="createTeamView(); closePanels()" class="fa fa-users"></i> Create Team</li>
+				<li class="nav-btn"><i ng-click="createCalendarView()" class="fa fa-calendar"></i> Calendar</li>
 				<li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li>
 			</ul>
 		</div> <!-- End of 'nav-bar-btn' -->
@@ -36,7 +36,8 @@
 		create-team-visible="createTeamVisible" 
 		new-team="newTeam" 
 		team-members="teamMembers"
-		add-team="addTeam(newTeam)">
+		add-team="addTeam(newTeam)"
+		remove-user="removeUser()">
 	</create-team-panel>
 
 	<create-member-panel
@@ -45,5 +46,9 @@
 		new-user="newUser"
 		add-user="addUser()">
 	</create-member-panel>
+
+	<!-- <create-calendar-panel
+		ng-show="createCalendarVisible">
+	</create-calendar-panel> -->
 
 </div> <!-- End of 'options-menu-container' -->

@@ -27,6 +27,8 @@ var app = express();
 	// Routes for Project Controller
 	app.get('/api/projects', ProjectCtrl.readProject);
 	app.post('/api/projects', ProjectCtrl.createProject);
+	app.put('/api/projects/:_id', ProjectCtrl.updateProject);
+	app.delete('/api/projects/:_id', ProjectCtrl.removeProject);
 
 	// Routes for User Controller
 	app.get('/api/users', UserCtrl.readUser);

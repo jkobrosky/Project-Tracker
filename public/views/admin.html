@@ -10,24 +10,35 @@
 
 <!-- Create a new modal that displays each project -->
 
-<div class="manage-container" ng-repeat="project in Projects">
-	<i ng-click="addProjectView()" class="edit-icon fa fa-pencil"></i>
-	<h4 class="title">{{ project.title }}</h4>
+<div class="projects-container">	
+	<div class="manage-container" ng-repeat="project in Projects" project="project">
+		<i ng-click="removeProject(project)" class="edit-icon fa fa-times"></i>
+		<h4 ng-click="addProjectView(); setProject(project)" class="title">{{ project.title }}</h4>
 
-	<div class="current-projects-container">
-		<div class="current-projects">
-			<div class="project-details">
-				<h5>{{ task }}</h5>
-			</div> <!-- End of 'project-details' -->
-			<h5>Due: {{ project.dueDate | amCalendar }}</h5>
-		</div> <!-- End of 'current-projects' -->
-	</div> <!-- End of 'current-projects-container' -->
-
-</div> <!-- End of 'manage-container' -->
+		<div class="current-projects-container">
+			<div class="current-projects">
+				<div class="project-details">
+					<h5>{{ task }}</h5>
+				</div> <!-- End of 'project-details' -->
+				<h5>Due: {{ project.dueDate }}</h5>
+			</div> <!-- End of 'current-projects' -->
+		</div> <!-- End of 'current-projects-container' -->
+	</div> <!-- End of 'manage-container' -->
+</div> <!-- End of 'projects-container' -->
 
 <!-- Darkens the background when the modal pops up -->
 <div class="backdrop" ng-show="backdropVisible">
 </div>
+
+<projects-modal
+	ng-show="addProjectVisible"
+	add-project-visible="addProjectVisible"
+	add-project-view="addProjectView()"
+	update-project="updateProject(project, currentProject)"
+	new-project="newProject"
+	current-project="currentProject"
+	project="project">
+</projects-modal>
 
 <options-modal 
 	ng-show="menuVisible" 
@@ -40,12 +51,16 @@
 	create-team-view="createTeamView()" 
 	click-create="clickCreate()" 
 	add-project="addProject(newProject)" 
-	add-task="addTask()" 
+	add-task="addTask()"
+	add-user="addUser()"
+	remove-user="removeUser(member)"
+	close-panels="closePanels()"
 	create-new-user="createNewUser()" 
 	new-project="newProject" 
 	new-task="newTask"
 	new-user="newUser"  
-	team-members="teamMembers">
+	team-members="teamMembers"
+	member="member">
 </options-modal>
 
 

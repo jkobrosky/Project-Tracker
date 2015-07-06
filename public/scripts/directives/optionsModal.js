@@ -13,6 +13,8 @@ app.directive('optionsModal', function() {
 			addTask: '&',
 			addTeam: '&',
 			addUser: '&',
+			closePanels: '&',
+			removeUser: '&',
 			createProjectVisible: '=',
 			createTeamVisible: '=',
 			createUserVisible: '=',
@@ -21,10 +23,10 @@ app.directive('optionsModal', function() {
 			newProject: '=',
 			newTask: '=',
 			newTeam: '=',
-			newUser: '='
+			newUser: '=',
 		},
-		link: function (scope, elem, attrs) {
-			console.log('teamMembers in parent directive:', scope.teamMembers);
-		}
+		// link: function (scope, elem, attrs) {
+		// 	console.log('teamMembers in parent directive:', scope.teamMembers);
+		// }
 	}
 });

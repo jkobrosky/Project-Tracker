@@ -1,7 +1,7 @@
 <!-- ADMIN MODAL -->
 <!-- Toggles the ng-show of the modal -->
-<div class="modal" ng-show="addProjectVisible">
-	<h4 class="title">Add New Project</h4>
+<div class="modal" ng-show="addProjectVisible" current-project="currentProject">
+	<h4 class="title">{{ currentProject.title }}</h4>
 
 	<!-- Modal with input fields for adding a project -->
 	<div class="close">
@@ -9,15 +9,14 @@
 	</div>
 
 	<!-- Form for adding project -->
-	<form>
-		<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
-		<input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" />
-		<input class="modal-input" type="text" ng-model="newProject.teamLead" placeholder="Team Lead" />
-		<input class="modal-input" type="text" ng-model="newProject.teamMembers" placeholder="Team Members" />
-		<input class="modal-input" type="text" ng-model="newProject.startDate" placeholder="Start Date" />
-		<input class="modal-input" type="text" ng-model="newProject.dueDate" placeholder="Due Date" />
+		<input class="modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
+		<input class="modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
+		<input class="modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
+		<input class="modal-input" type="text" ng-model="project.teamMembers" placeholder="{{ currentProject.teamMembers }}" />
+		<input class="modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate }}" />
+		<input class="modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate }}" />
 		<button class="modal-btn" ng-click="addProjectView(); clearText()" type="submit">Cancel</button>
-		<button class="modal-btn" ng-click="theClick(); getProjects(); clearText()" type="submit">Save</button>
+		<button class="modal-btn" ng-click="updateProject(project, currentProject); theClick(); getProjects(); clearText()" type="submit">Update</button>
 	</form>
 </div>
 <!-- End of ADMIN MODAL -->

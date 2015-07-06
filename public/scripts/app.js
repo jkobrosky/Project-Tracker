@@ -1,4 +1,4 @@
-var app = angular.module('tracker', ['ngRoute', 'angularMoment']);
+var app = angular.module('tracker', ['ngRoute']);
 
 app.constant('lh', {
 	url: 'http://localhost:8887'
@@ -36,7 +36,7 @@ app.config(function($routeProvider) {
 			membersList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getUsers().then(function(response) {
-					console.log('memebrsList from config ', response);
+					//console.log('memebrsList from config ', response);
 					var users = response.data;
 					deferred.resolve(users);
 				}, function(err) {
