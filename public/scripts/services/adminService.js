@@ -49,12 +49,11 @@ app.service('adminService', function($http) {
 	};
 
 	this.removeUser = function(user) {
-		console.log('removing user ', user);
-		// return $http({
-		// 	method: 'DELETE',
-		// 	url: 'http://localhost:8887/api/users',
-		// 	data: { name: user }
-		// })
+		console.log('removing user ', user._id);
+		return $http({
+			method: 'DELETE',
+			url: 'http://localhost:8887/api/users/' + user._id,
+		})
 	};
 
 	this.addTask = function(newTask) {

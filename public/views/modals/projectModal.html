@@ -5,7 +5,7 @@
 
 	<!-- Modal with input fields for adding a project -->
 	<div class="close">
-		<a href="#admin"><i ng-click="addProjectView(); clearText()" class="fa fa-times"></i>
+		<a href="#admin"><i ng-click="addProjectView()" class="fa fa-times"></i>
 	</div>
 
 	<!-- Form for adding project -->
@@ -15,8 +15,8 @@
 		<input class="modal-input" type="text" ng-model="project.teamMembers" placeholder="{{ currentProject.teamMembers }}" />
 		<input class="modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate }}" />
 		<input class="modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate }}" />
-		<button class="modal-btn" ng-click="addProjectView(); clearText()" type="submit">Cancel</button>
-		<button class="modal-btn" ng-click="updateProject(project, currentProject); theClick(); getProjects(); clearText()" type="submit">Update</button>
+		<button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button>
+		<button class="modal-btn" ng-click="updateProject(project, currentProject); getProjects(); clearText()" type="submit">Update</button>
 	</form>
 </div>
 <!-- End of ADMIN MODAL -->

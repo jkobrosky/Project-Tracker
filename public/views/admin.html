@@ -1,10 +1,10 @@
 <div class="nav">	
 	<div class="icons left">
-		<i ng-click="addMenuView()" class="fa fa-bars"></i>
+		<a class="menu" href="#/admin"><i ng-click="addMenuView()" class="fa fa-bars"></i>
 	</div>
 
 	<div class="icons right">
-		<a class="menu-right" href="#/admin"><i ng-click="addTaskView()" class="fa fa-cog"></i></a>
+		<a class="menu" href="#/admin"><i ng-click="addProfileView()" class="fa fa-cog"></i></a>
 	</div>
 </div> <!-- End of 'nav' -->
 
@@ -18,9 +18,11 @@
 		<div class="current-projects-container">
 			<div class="current-projects">
 				<div class="project-details">
-					<h5>{{ task }}</h5>
 				</div> <!-- End of 'project-details' -->
-				<h5>Due: {{ project.dueDate }}</h5>
+				<div class="task-container" >
+					<p class="task-text">{{ project.tasks[0].name }}</p>
+				</div>
+				<h5>Due: {{ project.dueDate | date: "fullDate" }}</h5>
 			</div> <!-- End of 'current-projects' -->
 		</div> <!-- End of 'current-projects-container' -->
 	</div> <!-- End of 'manage-container' -->
@@ -42,19 +44,15 @@
 
 <options-modal 
 	ng-show="menuVisible" 
-	create-project-visible="createProjectVisible" 
+	show-menu="showMenu" 
 	create-user-visible="createUserVisible" 
 	create-team-visible="createTeamVisible" 
-	add-menu-view="addMenuView()" 
-	create-project-view="createProjectView()" 
-	create-user-view="createUserView()" 
-	create-team-view="createTeamView()" 
+	add-menu-view="addMenuView()"  
 	click-create="clickCreate()" 
 	add-project="addProject(newProject)" 
 	add-task="addTask()"
 	add-user="addUser()"
 	remove-user="removeUser(member)"
-	close-panels="closePanels()"
 	create-new-user="createNewUser()" 
 	new-project="newProject" 
 	new-task="newTask"

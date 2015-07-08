@@ -1,0 +1,16 @@
+.container {
+	display: flex;
+	justify-content: center;
+}
+.login-btn {
+	height: 2.25em;
+	width: 5em;
+	margin: 20px 10px;
+}
+
+.login-box {
+	width: 40%;
+	margin: 20px auto;
+	background: rgba(0, 0, 0, 0.15);
+
+}

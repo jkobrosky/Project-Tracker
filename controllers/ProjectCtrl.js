@@ -1,9 +1,10 @@
 var ProjectModel = require('../models/ProjectModel');
+var Task = require('../models/TaskModel')
 
 module.exports = {
 
 	createProject: function(req, res) {
-		//console.log('show me req.body ', req.body);
+		console.log('show me req.body ', req.body);
 		newProject = new ProjectModel(req.body.project);
 		newProject.save(function(err, result) {
 			if(err) {
@@ -15,20 +16,23 @@ module.exports = {
 	},
 
 	readProject: function(req, res) {
-		console.log('req.query ', req.query);
+		//console.log('req.query ', req.query);
 		ProjectModel.find(req.query)
 		.exec(function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
 			} else {
-				return res.json(result);
+				var promise = Task.populate(result, {path:'tasks'});
+				promise.then(function(theRes){
+					return res.json(theRes);
+				}, function(errror){
+					return res.status(500).json(errror);
+				});
 			}
 		})
 	},
 
 	updateProject: function(req, res) {
-		console.log('update info ', req.params._id);
-		console.log('req.body', req.body)
 		ProjectModel.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
 			if(err) {
 				return res.status(500).json(err);

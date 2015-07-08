@@ -1,0 +1,29 @@
+<!-- PROFILE MODAL -->
+<!-- Toggles the ng-show of the modal -->
+<div class="options-menu-container">
+	<div class="profile-popout">
+		<div class="header">
+			<h4 class="title options-title">Admin Options</h4>
+
+			<!-- Closes the options modal -->
+			<div class="close">
+				<a href="#admin"><i ng-click="addProfileView()" class="fa fa-times"></i></a>
+			</div>
+		</div><!-- End of 'header' -->
+
+		<div class="nav-bar-btn">
+			<ul class="nav-icons">
+				<li class="nav-btn"><i ng-click="closePanels()" class="project fa fa-plus-circle"></i> Create Project</li>
+				<li class="nav-btn"><i ng-click="createUserView(); closePanels()" class="fa fa-user-plus"></i> Add Member</li>
+				<li class="nav-btn"><i ng-click="createTeamView(); closePanels()" class="fa fa-users"></i> Create Team</li>
+				<li class="nav-btn"><i ng-click="createCalendarView()" class="fa fa-calendar"></i> Calendar</li>
+				<li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li>
+			</ul>
+		</div> <!-- End of 'nav-bar-btn' -->
+	</div> <!-- End of 'menu-popout' -->
+
+	<!-- <create-calendar-panel
+		ng-show="createCalendarVisible">
+	</create-calendar-panel> -->
+
+</div> <!-- End of 'options-menu-container' -->

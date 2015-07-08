@@ -33,6 +33,7 @@ var app = express();
 	// Routes for User Controller
 	app.get('/api/users', UserCtrl.readUser);
 	app.post('/api/users', UserCtrl.createUser);
+	app.delete('/api/users/:_id', UserCtrl.deleteUser);
 
 	// Routes for Task Controller
 	app.get('/api/tasks', TaskCtrl.readTask);

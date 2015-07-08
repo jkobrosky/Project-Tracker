@@ -24,5 +24,16 @@ module.exports = {
 				res.json(result);
 			}
 		})
+	},
+
+	deleteUser: function(req, res) {
+		console.log('deleteUser: req.query ', req.query);
+		UserModel.findByIdAndRemove(req.params._id, function(err, result) {
+			if(err) {
+				res.status(500).json(err);
+			} else {
+				res.json(result);
+			}
+		})
 	}
 };

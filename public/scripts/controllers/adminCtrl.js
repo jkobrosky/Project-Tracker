@@ -2,64 +2,76 @@ var app = angular.module('tracker');
 
 app.controller('adminCtrl', function($scope, adminService, projectsList, membersList, taskList) {
 
+	console.log('projects', projectsList)
+
+	///////////////////////////////////////////////////////
+	//																									 //
+	// This section imports the resolves from app.config //
+	// Also sets the menu options and backdrop to false  //
+	//																									 //
+	///////////////////////////////////////////////////////
+
+	// Resolves from app.config. Loads the projects, members and tasks before the page loads.
 	$scope.Projects = projectsList;
 	$scope.teamMembers = membersList;
 	$scope.tasks = taskList;
-	// console.log('teamMembers in ctrl ', $scope.teamMembers);
-	// console.log('Projects in ctrl ', $scope.Projects);
 
-	$scope.detailsVisible = false;
-	$scope.test = 'Test';
-
-	// Sets the modal views to false
-	$scope.addProjectVisible = false;
-	//$scope.addUserVisible = false;
-	$scope.addTaskVisible = false;
+	// Sets the modal views of the backdrop, menu and profile menu to false
 	$scope.backdropVisible = false;
 	$scope.menuVisible = false;
+	$scope.profileVisible = false;
 
-	// Setting the views within directives to visible
-	$scope.createProjectVisible = false;
-	$scope.createUserVisible = false;
-	$scope.createTeamVisible = false;
+	///////////////////////////////////////////////////////
+	//																									 //
+	// This section triggers the visiblity of the modals //
+	//																									 //
+	///////////////////////////////////////////////////////
 
-	// This section triggers the visiblity of the modals
+	// Toggles the edit project view from admin.html
 	$scope.addProjectView = function() {
 		$scope.addProjectVisible = !$scope.addProjectVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	};
 
-	// $scope.addUserView = function() {
-	// 	console.log('userView clicked ', $scope.addUserVisible);
-	// 	$scope.addUserVisible = !$scope.addUserVisible;
-	// 	$scope.backdropVisible = !$scope.backdropVisible;
-	// };
-
+	// NOT WORKING
 	$scope.addTaskView = function() {
 		//console.log('clicked task view ', $scope.addTaskVisible);
 		$scope.addTaskVisible = !$scope.addTaskVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
+	// Toggles the admin options menu from admin.html
 	$scope.addMenuView = function() {
-		//console.log('clicked menuView ', $scope.menuVisible);
 		$scope.menuVisible = !$scope.menuVisible;
 	}
 
-	$scope.createProjectView = function() {
-		//console.log('createProjectView clicked', $scope.createProjectVisible);
-		$scope.createProjectVisible = !$scope.createProjectVisible;
+	// Toggles the user profile menu from admin.html
+	$scope.addProfileView = function() {
+		$scope.profileVisible = !$scope.profileVisible;
 	}
 
-	$scope.createUserView = function() {
-		$scope.createUserVisible = !$scope.createUserVisible;
+	// NOT WORKING
+	$scope.closePanels = function() {
+		$scope.createTeamVisible = false;
+		$scope.createProjectVisible = false;
+		$scope.createUserVisible = false;
+		$scope.showMenu = false;
 	}
 
-	$scope.createTeamView = function() {
-		$scope.createTeamVisible = !$scope.createTeamVisible;
-		//console.log('teamView clicked ', $scope.createTeamVisible);
-	}
-	// END OF MODAL TOGGLES
+
+	///////////////////////////////////////////////////////
+	//																									 //
+	//     This section contains the CRUD functions      //
+	//																									 //
+	///////////////////////////////////////////////////////
+
+
+
+	///////////////////////////////////////////////////////
+	//																									 //
+	//								PROJECTS SECTION									 //
+	//																									 //
+	///////////////////////////////////////////////////////
 
 	// Gets projects once user 'saves' from ADMIND MODAL
 	$scope.getProjects = function() {
@@ -71,7 +83,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
-	// Adds a project from the ADMIN MODAL
+	// Adds a project from the ADMIN OPTIONS MODAL
 	$scope.addProject = function(newProject) {
 		//console.log('newProject ', newProject);
 		return adminService.addProject(newProject).then(function(response) {
@@ -83,6 +95,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		});
 	};
 
+	// Updates a project from admin.html
 	$scope.updateProject = function(project, currentProject) {
 		console.log('updating project ', project, currentProject);
 		return adminService.updateProject(project, currentProject).then(function(response) {
@@ -92,6 +105,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
+	// Removes a project from admin.html
 	$scope.removeProject = function(project) {
 		//console.log('removing project ', project);
 		adminService.removeProject(project).then(function(response) {
@@ -102,16 +116,22 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
+	// Sets the current project variable in the admin.html
 	$scope.setProject = function(project) {
 		console.log('setting current project from adminCtrl ', project);
 		$scope.currentProject = project;
 	}
 
-	// Adds a user from the USER MODAL
+	///////////////////////////////////////////////////////
+	//																									 //
+	//								    USER SECTION									 //
+	//																									 //
+	///////////////////////////////////////////////////////
+
+	// Adds a user from the ADMIN OPTIONS MODAL
 	$scope.addUser = function() {
 		//console.log('newUser ', $scope.newUser);
 		return adminService.addUser($scope.newUser).then(function(response) {
-			//console.log('user response ', response);
 			$scope.newUser = '';
 			$scope.getUsers();
 		}, function(err) {
@@ -119,6 +139,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
+	// Gets users list
 	$scope.getUsers = function() {
 		adminService.getUsers().then(function(response) {
 			//console.log('response ', response);
@@ -128,11 +149,24 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
-	$scope.removeUser = function() {
-		//console.log('member to be removed: ', $scope.member);
-		adminService.removeUser($scope.member);
+	// Removes users from ADMIN OPTIONS - CREATE TEAM section
+	$scope.removeUser = function(member) {
+		console.log('member to be removed: ', member);
+		adminService.removeUser(member).then(function(response) {
+			console.log(response);
+			$scope.getUsers();
+		}, function(error) {
+			console.log(error);
+		})
 	};
 
+	///////////////////////////////////////////////////////
+	//																									 //
+	//								   TASKS SECTION	    					   //
+	//																									 //
+	///////////////////////////////////////////////////////
+
+	// Adds a task from ADMIN OPTIONS - CREATE PROJECT section
 	$scope.addTask = function() {
 		console.log('addTask adminCtrl ', $scope.newTask);
 		return adminService.addTask($scope.newTask).then(function(response) {
@@ -144,6 +178,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
+	// Gets tasks list
 	$scope.getTasks = function() {
 		adminService.getTasks().then(function(response) {
 			//console.log(response);

@@ -1,27 +1,25 @@
 <div class="container">
-	<div class="login-box">
-		<p>Login</p>
+	<div class="login-box" ng-show="loginVisible">
+		<h4 class="title">Login</h4>
 		<form>
-			<input type="email" placeholder="Email ..." />
+			<input class="modal-input" type="email" placeholder="Email ..." />
 			<br />
-			<input type="password" placeholder="Password ..." />
+			<input class="modal-input" type="password" placeholder="Password ..." />
 			<br />
-			<button type="submit">Login</button>
+			<button class="login-btn" type="submit">Login</button>
 		</form>
 	</div>
 
-	<hr />
-
-	<div class="register-box">
-		<p>Register</p>
+	<div class="login-box" ng-hide="loginVisible">
+		<h4 class="title">Register</h4>
 		<form>
-			<input type="text" placeholder="Fullname ..." />
+			<input class="modal-input" type="text" placeholder="Fullname ..." />
 			<br />
-			<input type="email" placeholder="Email ..." />
+			<input class="modal-input" type="email" placeholder="Email ..." />
 			<br />
-			<input type="password" placeholder="Password ..." />
+			<input class="modal-input" type="password" placeholder="Password ..." />
 			<br />
-			<button type="submit">Register</button>
+			<button class="login-btn" type="submit">Register</button>
 		</form>
 	</div>
 </div><!-- End of 'container' -->

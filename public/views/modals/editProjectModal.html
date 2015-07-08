@@ -5,14 +5,14 @@
 
 	<!-- Modal with input fields for adding a project -->
 	<div class="close">
-		<a href="#admin"><i ng-click="addProjectView(); clearText()" class="fa fa-times"></i></a>
+		<a href="#admin"><i ng-click="addProjectView()" class="fa fa-times"></i></a>
 	</div>
 
 	<!-- Form for adding project -->
 	<form>
 		<input type="text" placeholder="Add a new task..." />
-		<button class="modal-btn" ng-click="addProjectView(); clearText()" type="submit">Cancel</button>
-		<button class="modal-btn" ng-click="addTask(); getTasks(); clearText()" type="submit">Add Task</button>
+		<button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button>
+		<button class="modal-btn" ng-click="addTask(); getTasks()" type="submit">Add Task</button>
 	</form>
 </div>
 <!-- End of EDIT PROJECT MODAL -->

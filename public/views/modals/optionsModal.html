@@ -13,20 +13,20 @@
 
 		<div class="nav-bar-btn">
 			<ul class="nav-icons">
-				<li class="nav-btn"><i ng-click="createProjectView(); closePanels()" class="fa fa-plus-circle"></i> Create Project</li>
-				<li class="nav-btn"><i ng-click="createUserView(); closePanels()" class="fa fa-user-plus"></i> Add Member</li>
-				<li class="nav-btn"><i ng-click="createTeamView(); closePanels()" class="fa fa-users"></i> Create Team</li>
-				<li class="nav-btn"><i ng-click="createCalendarView()" class="fa fa-calendar"></i> Calendar</li>
+				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-plus-circle"></i> Create Project</li>
+				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-user-plus"></i> Add Member</li>
+				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-users"></i> Create Team</li>
+				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-calendar"></i> Calendar</li>
 				<li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li>
 			</ul>
 		</div> <!-- End of 'nav-bar-btn' -->
 	</div> <!-- End of 'menu-popout' -->
 
 	<create-project-panel 
-		ng-show="createProjectVisible" 
-		create-project-visible="createProjectVisible" 
+		ng-show="showMenu" 
+		show-menu="showMenu"
 		new-project="newProject" 
-		new-task="newTask" 
+		new-task="newTask"
 		add-project="addProject(newProject)" 
 		add-task="addTask(newTask)">
 	</create-project-panel>
@@ -37,7 +37,8 @@
 		new-team="newTeam" 
 		team-members="teamMembers"
 		add-team="addTeam(newTeam)"
-		remove-user="removeUser()">
+		remove-user="removeUser(member)"
+		member="member">
 	</create-team-panel>
 
 	<create-member-panel

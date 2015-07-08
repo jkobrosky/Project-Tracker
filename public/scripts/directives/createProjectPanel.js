@@ -7,7 +7,7 @@ app.directive('createProjectPanel', function() {
 		scope: {
 			addProject: '&',
 			addTask: '&',
-			createProjectVisible: '=',
+			showMenu: '=',
 			newProject: '=',
 			newTask: '=',
 			ngModel: '='
