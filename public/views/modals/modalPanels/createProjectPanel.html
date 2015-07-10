@@ -3,29 +3,48 @@
 
 <h3 class="panel-headline">Create a new project</h3>
 
-	<div class="btn-container">
-		<button class="options-btn" type="submit">Due Date</button>
+	<div class="btn-container project-btns">
+		<i class="create-project-btns fa fa-clock-o"> Due Date</i>
+		<i class="fa fa-empire"> Team Lead</i>
+		<i class="fa fa-users"> Team Members</i>
+		<i class="create-project-btns fa fa-paperclip"> Attachments</i>
+		<i class="fa fa-map-marker"> Location</i>
+
+		<!-- <button class="options-btn" type="submit">Due Date</button>
 		<button class="options-btn" type="submit">Team Lead</button>
 		<button class="options-btn" type="submit">Team Members</button>
 		<button class="options-btn" type="submit">Attachments</button>
-		<button class="options-btn" type="submit">Location</button>
+		<button class="options-btn" type="submit">Location</button> -->
 	</div>
 
-	<div class="create-project">
-		<input class="modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
-		<textarea rows="3" class="desc modal-input" ng-model="newProject.description" placeholder="Description"></textarea>
-		<!-- <input class="modal-input" type="text" ng-model="newProject.description" placeholder="Description" /> -->
-		<div class="btns">
-			<button class="create modal-options-btn" ng-click="addProject(newProject)">Create</button>
-		</div>
-	</div> <!-- End of 'create-project' -->
+	<form>
+		<div class="create-project project-panel">
+			<input class="menu-input modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
+			<textarea rows="3" class="menu-input desc modal-input" ng-model="newProject.description" placeholder="Description"></textarea>
+			
+			<input class="menu-input task-input" type="text" ng-model="taskName" name="" placeholder="Enter Task"  />
+			<div class="input-icon">
+				<i ng-click="removeFirstTask()" class="remove-input-field fa fa-times" ng-hide="last"></i>
+				<span class="add-on"><i ng-click="addFirst()" class="append fa fa-plus"></i></span>
+			</div>
 
-	<div class="tasks-inputs">
+			<div ng-repeat="item in tasksArr">
+				<input class="menu-input task-input" type="text" ng-model="task" name="" placeholder="Enter Task"  />
+				<div class="input-icon">
+					<i ng-click="removeNewTask(tasksArr, $index)" class="remove-input-field fa fa-times" ng-hide="$last"></i>
+					<span class="add-on"><i ng-click="addNewTask(task, $index)" class="append fa fa-plus"></i></span>
+				</div>
+			</div>
+
+			<div class="btns">
+				<button class="create modal-options-btn" ng-click="addProject(newProject, tasksArr)">Create</button>
+			</div>
+		</div> <!-- End of 'create-project' -->
+	</form>
+<!-- 	<div class="tasks-inputs">
 		<input class="menu-input" type="text" ng-model="newTask.name" placeholder="Enter Task" />
-		<!-- <i class="fa fa-plus-square"></i> -->
 		<button class="add" type="submit" ng-click="addTask()">Add</button> <br />
-	</div>
-
+	</div> -->
 
 	<!--- This should be it's own directive for chat function -->
 	<div class="chat-container" label="Discussion">

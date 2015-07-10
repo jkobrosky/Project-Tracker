@@ -3,10 +3,18 @@
 
 <h3 class="panel-headline">Add a new team member</h3>
 
-	<div class="btn-container">
+	<!-- <div class="btn-container">
 		<button class="options-btn" type="submit">Make Lead</button>
 		<button class="options-btn" type="submit">Projects</button>
 		<button class="options-btn" type="submit">Department</button>
+	</div> -->
+
+	<div class="btn-container">
+		<h4 class="mini-panel-headline">Team Members</h4>
+		<div class="repeat-container" ng-repeat="member in teamMembers">
+			<span class="mini-panel-repeat">{{ member.name }}</span>
+			<i class="remove-member fa fa-times" member="member" ng-click="runRemove(member)"></i>
+		</div>
 	</div>
 
 	<div class="create-project">

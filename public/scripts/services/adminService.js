@@ -6,7 +6,8 @@ app.service('adminService', function($http) {
 		return $http({
 			method: 'POST',
 			url: 'http://localhost:8887/api/projects',
-			data: { project: newProject }
+			data: { project: newProject
+			 			}
 		})
 	};
 

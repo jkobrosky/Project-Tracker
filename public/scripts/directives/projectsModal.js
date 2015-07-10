@@ -14,6 +14,7 @@ app.directive('projectsModal', function() {
 			currentProject: '=',
 			project: '=',
 			test: '=',
+			tasksArr: '=',
 			newProject: '=',
 			project: '=',
 			newUser: '@'

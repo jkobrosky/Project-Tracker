@@ -7,6 +7,7 @@ app.directive('createTeamPanel', function() {
 		scope: {
 			addTeam: '&',
 			removeUser: '&',
+			getUsers: '&',
 			createTeamVisible: '=',
 			teamMembers: '=',
 			newTeam: '=',
@@ -16,6 +17,10 @@ app.directive('createTeamPanel', function() {
 			$scope.runRemove = function(member){
 				console.log("bottom", member)
 				$scope.removeUser({member: {member: member}})
+			};
+
+			$scope.getUsers = function(val) {
+				console.log(val);
 			}
 		}
 		// link: function (scope, elem, attrs) {

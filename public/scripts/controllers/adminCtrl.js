@@ -2,7 +2,7 @@ var app = angular.module('tracker');
 
 app.controller('adminCtrl', function($scope, adminService, projectsList, membersList, taskList) {
 
-	console.log('projects', projectsList)
+	//console.log('projects', projectsList)
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -50,7 +50,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		$scope.profileVisible = !$scope.profileVisible;
 	}
 
-	// NOT WORKING
+	/////////////// NOT WORKING ///////////////
 	$scope.closePanels = function() {
 		$scope.createTeamVisible = false;
 		$scope.createProjectVisible = false;
@@ -84,12 +84,25 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	};
 
 	// Adds a project from the ADMIN OPTIONS MODAL
-	$scope.addProject = function(newProject) {
-		//console.log('newProject ', newProject);
+	$scope.addProject = function(newProject, tasksArr) {
+		console.log('arr in ctrl ', tasksArr);
+
+		// for(var i = 0; i < arr.length; i++) {
+		// 	newProject.tasks = [{
+		// 		name: arr.tasks[i].name
+		// 	}]
+		// }
+
+		// newProject.tasks = [{ 
+		// 	name: $scope.task
+		// }]
+		//console.log('newProject.tasks[0].name ', newProject.tasks[0].name);
+		console.log('newProject ', newProject);
 		return adminService.addProject(newProject).then(function(response) {
 			$scope.newProject = '';
+			$scope.task = '';
 			$scope.getProjects();
-			//console.log('response ', response);
+			console.log('response ', response);
 		}, function(err) {
 			console.log('error adding project ', err);
 		});
@@ -97,7 +110,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Updates a project from admin.html
 	$scope.updateProject = function(project, currentProject) {
-		console.log('updating project ', project, currentProject);
+		//console.log('updating project ', project, currentProject);
 		return adminService.updateProject(project, currentProject).then(function(response) {
 			$scope.getProjects();
 		}, function(error) {
@@ -118,7 +131,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Sets the current project variable in the admin.html
 	$scope.setProject = function(project) {
-		console.log('setting current project from adminCtrl ', project);
+		//console.log('setting current project from adminCtrl ', project);
 		$scope.currentProject = project;
 	}
 
@@ -140,8 +153,8 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	};
 
 	// Gets users list
-	$scope.getUsers = function() {
-		adminService.getUsers().then(function(response) {
+	$scope.getUsers = function(text) {
+		adminService.getUsers(text).then(function(response) {
 			//console.log('response ', response);
 			$scope.teamMembers = response.data;
 		}, function(err) {
@@ -151,7 +164,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Removes users from ADMIN OPTIONS - CREATE TEAM section
 	$scope.removeUser = function(member) {
-		console.log('member to be removed: ', member);
+		//console.log('member to be removed: ', member);
 		adminService.removeUser(member).then(function(response) {
 			console.log(response);
 			$scope.getUsers();
@@ -168,7 +181,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Adds a task from ADMIN OPTIONS - CREATE PROJECT section
 	$scope.addTask = function() {
-		console.log('addTask adminCtrl ', $scope.newTask);
+		//console.log('addTask adminCtrl ', $scope.newTask);
 		return adminService.addTask($scope.newTask).then(function(response) {
 			$scope.newTask = '';
 			$scope.getTasks();

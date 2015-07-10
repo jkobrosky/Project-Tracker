@@ -5,8 +5,11 @@
 
 		<div class="btn-container">
 			<h4 class="mini-panel-headline">Team Members</h4>
-			<div class="repeat-container" ng-repeat="member in teamMembers">
-				<span class="mini-panel-repeat">{{ member.name }}</span>
+			<div class="repeat-container">
+				<span class="mini-panel-repeat">{{ selectedMember }}</span>
+				<!-- <input type="text" class="form-control memberText mini-panel-repeat" ng-model="asyncSelected" placeholder="Add user" typeahead="member for member in getUsers($viewValue)" typeahead-loading="loading members" /> -->
+				<autocomplete class="autocomplete"></autocomplete>
+				<input type="text" class="form-control memberText mini-panel-repeat" ng-model="asyncSelected" placeholder="Add user" />
 				<i class="remove-member fa fa-times" member="member" ng-click="runRemove(member)"></i>
 			</div>
 		</div>

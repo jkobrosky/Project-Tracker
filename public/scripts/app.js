@@ -1,4 +1,4 @@
-var app = angular.module('tracker', ['ngRoute']);
+var app = angular.module('tracker', ['ngRoute', 'autocomplete']);
 
 app.constant('lh', {
 	url: 'http://localhost:8887'

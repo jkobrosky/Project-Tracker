@@ -9,12 +9,12 @@
 	</div>
 
 	<!-- Form for adding project -->
-		<input class="modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
-		<input class="modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
-		<input class="modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
-		<input class="modal-input" type="text" ng-model="project.teamMembers" placeholder="{{ currentProject.teamMembers }}" />
-		<input class="modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate }}" />
-		<input class="modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" placeholder="{{ currentProject.teamMembers }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate }}" />
 		<button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button>
 		<button class="modal-btn" ng-click="updateProject(project, currentProject); getProjects(); clearText()" type="submit">Update</button>
 	</form>

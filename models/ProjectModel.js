@@ -6,9 +6,13 @@ var Project = new mongoose.Schema({
 	title: { type: String, required: true },
 	description: { type: String, required: true },
 	teamLead: String,
-	tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }],
+	// tasks: [{
+	// 	name: { type: String, required: true },
+	// 	status: { type: String, default: 'incomplete' }
+	// }],
+	tasks: [{type: String}],
 	//teamMembers: [TeamMembers],
-	teamMembers: { type: String },
+	teamMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	startDate: { type: Date, default: Date.now },
 	dueDate: Date
 });
@@ -19,3 +23,14 @@ Project.pre('update', function(next) {
 });
 
 module.exports = mongoose.model('Project', Project);
+
+
+// {
+// 	title: "noogies for narcs",
+// 	description: "karma",
+// 	teamLead: "sir Dallin Crane",
+// 	tasks: [{
+// 		name: "punch Andrew",
+// 		status: "priority!!"
+// 	}],
+// }

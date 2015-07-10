@@ -6,6 +6,7 @@ module.exports = {
 	createProject: function(req, res) {
 		console.log('show me req.body ', req.body);
 		newProject = new ProjectModel(req.body.project);
+		console.log(newProject);
 		newProject.save(function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
@@ -16,21 +17,32 @@ module.exports = {
 	},
 
 	readProject: function(req, res) {
-		//console.log('req.query ', req.query);
 		ProjectModel.find(req.query)
 		.exec(function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
 			} else {
-				var promise = Task.populate(result, {path:'tasks'});
-				promise.then(function(theRes){
-					return res.json(theRes);
-				}, function(errror){
-					return res.status(500).json(errror);
-				});
+				return res.json(result);
 			}
 		})
 	},
+
+	// readProject: function(req, res) {
+	// 	//console.log('req.query ', req.query);
+	// 	ProjectModel.find(req.query)
+	// 	.exec(function(err, result) {
+	// 		if(err) {
+	// 			return res.status(500).json(err);
+	// 		} else {
+	// 			var promise = Task.populate(result, {path:'tasks'});
+	// 			promise.then(function(theRes){
+	// 				return res.json(theRes);
+	// 			}, function(errror){
+	// 				return res.status(500).json(errror);
+	// 			});
+	// 		}
+	// 	})
+	// },
 
 	updateProject: function(req, res) {
 		ProjectModel.findByIdAndUpdate(req.params._id, req.body, function(err, result) {

@@ -10,6 +10,7 @@ app.directive('optionsModal', function() {
 			addTask: '&',
 			addTeam: '&',
 			addUser: '&',
+			getUsers: '&',
 			closePanels: '&',
 			removeUser: '&',
 			showMenu: '=',
@@ -19,13 +20,14 @@ app.directive('optionsModal', function() {
 			menuVisible: '=',
 			newProject: '=',
 			newTask: '=',
+			task: '=',
 			newTeam: '=',
 			newUser: '=',
 		},
 		controller: 'optionsCtrl',
 		
 		link: function (scope, elem, attrs) {
-			console.log('teamMembers in parent directive:', scope.teamMembers);
+			//console.log('teamMembers in parent directive:', scope.teamMembers);
 
 		///////////////////////////////////////////////////////
 		//																									 //
@@ -38,16 +40,16 @@ app.directive('optionsModal', function() {
 			$('.fa').on('click', function(){
 				// Use the return of this to call a function to change vis on panel
 				var clicked = $(this).attr('class');
-				console.log(clicked, typeof clicked);
+				//console.log(clicked, typeof clicked);
 				if(clicked === 'fa fa-plus-circle') {
 					scope.showMenu = !scope.showMenu;
-					console.log('showMenu: ', scope.showMenu);
+					//console.log('showMenu: ', scope.showMenu);
 				} else if(clicked === 'fa fa-user-plus') {
 					scope.createUserVisible = !scope.createUserVisible;
-					console.log('userVisible: ', scope.createUserVisible);
+					//console.log('userVisible: ', scope.createUserVisible);
 				} else if(clicked === 'fa fa-users') {
 					scope.createTeamVisible = !scope.createTeamVisible;
-					console.log('teamVisible ', scope.createTeamVisible);
+					//console.log('teamVisible ', scope.createTeamVisible);
 				} else if (clicked === 'fa fa-calendar') {
 					scope.createCalendarVisible = !scope.createCalendarVisible;
 				}

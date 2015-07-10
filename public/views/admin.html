@@ -19,8 +19,8 @@
 			<div class="current-projects">
 				<div class="project-details">
 				</div> <!-- End of 'project-details' -->
-				<div class="task-container" >
-					<p class="task-text">{{ project.tasks[0].name }}</p>
+				<div class="task-container" ng-repeat="task in project.tasks">
+					<p class="task-text">{{ task.name }} - {{ task.status }}</p>
 				</div>
 				<h5>Due: {{ project.dueDate | date: "fullDate" }}</h5>
 			</div> <!-- End of 'current-projects' -->
@@ -49,13 +49,16 @@
 	create-team-visible="createTeamVisible" 
 	add-menu-view="addMenuView()"  
 	click-create="clickCreate()" 
-	add-project="addProject(newProject)" 
+	add-project="addProject(newProject, tasksArr)" 
 	add-task="addTask()"
 	add-user="addUser()"
+	get-users="getUsers($viewValue)"
 	remove-user="removeUser(member)"
 	create-new-user="createNewUser()" 
 	new-project="newProject" 
 	new-task="newTask"
+	tasks-arr="tasksArr"
+	task="task"
 	new-user="newUser"  
 	team-members="teamMembers"
 	member="member">

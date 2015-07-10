@@ -27,7 +27,9 @@
 		show-menu="showMenu"
 		new-project="newProject" 
 		new-task="newTask"
-		add-project="addProject(newProject)" 
+		tasks-arr="tasksArr"
+		task="task"
+		add-project="addProject(newProject, tasksArr)" 
 		add-task="addTask(newTask)">
 	</create-project-panel>
 
@@ -38,14 +40,18 @@
 		team-members="teamMembers"
 		add-team="addTeam(newTeam)"
 		remove-user="removeUser(member)"
+		get-users="getUsers($viewValue)"
 		member="member">
 	</create-team-panel>
 
 	<create-member-panel
 		ng-show="createUserVisible" 
 		create-user-visible="createUserVisible"
+		team-members="teamMembers"
+		member="member"
 		new-user="newUser"
-		add-user="addUser()">
+		add-user="addUser()"
+		remove-user="removeUser(member)">
 	</create-member-panel>
 
 	<!-- <create-calendar-panel

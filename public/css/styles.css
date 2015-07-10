@@ -75,11 +75,13 @@ a.menu {
 }
 
 .current-projects-container {
+	height: 150px;
 	margin: 10px 20px;
 	padding: 0 10px;
 	display: flex;
 	background: #fff;
 	border-radius: 5px;
+	overflow: hidden;
 	/*box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);*/
@@ -111,14 +113,14 @@ a.menu {
 	background: rgba(0, 0, 0, 0.6);
 }
 
-/*.projects-container {
-	display: flex;
-	justify-content: center;
-}*/
+.projects-container {
+	width: 100%;
+	margin-left: 4%;
+}
 
 .manage-container {
 	width: 28%;
-	max-height: 500px;
+	height: 250px;
 	overflow: hidden;
 	float: left;
 	display: flex;
@@ -135,7 +137,7 @@ a.menu {
 }
 
 
-.modal {
+/*.modal {
 	margin: 10px;
 	padding: 10px;
 	position: absolute;
@@ -146,13 +148,37 @@ a.menu {
 	box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+}*/
+
+.modal {
+	margin: 10px;
+	padding: 10px;
+	position: absolute;
+	top: 10%;
+	left: 12.5%;
+	width: 75%;
+	height: 75%;
+	background: #fff;
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 }
 
-.modal-input {
+/*.modal-input {
 	margin: 10px;
 	padding: 5px;
 	width: 350px;
 	height: 2em;
+}*/
+
+.modal-input {
+	margin: 10px;
+	padding: 5px;
+	height: 2em;
+}
+
+.popup-modal-inputs {
+	width: 60%;
 }
 
 .modal-btn {
@@ -179,18 +205,12 @@ a {
 	font-size: .75em;
 }
 
-.task-input {
+/*.task-input {
 	margin: 10px 20px;
 	padding: 0 10px;
 	border-radius: 5px;
 	height: 2em;
-}
-
-.btn-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
+}*/
 
 .directions {
 	margin: 0 20px;
@@ -237,7 +257,10 @@ a {
 }
 
 .task-input {
-	border: none;
+	margin: 10px 20px;
+	padding: 0 10px;
+	height: 2em;
+	border: 1px solid #dfdfdf;
 	width: 80%;
 	float: left;
 }
@@ -301,7 +324,18 @@ a {
 	height: 100%;
 }
 
+/*.create-project {
+	position: absolute;
+	top: 20%;
+	display: flex;
+	flex-direction: column;
+	margin-left: 3%;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}*/
+
 .create-project {
+	width: 24%;
 	position: absolute;
 	top: 20%;
 	display: flex;
@@ -311,14 +345,27 @@ a {
 	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.btn-container {
+/*.btn-container {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	position: absolute;
 	top: 20%;
 	left: 34%;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 0 20px;
+}*/
+
+.btn-container {
+	width: 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 0 10px 5px 0;
 }
 
 .modal-options-btn {
@@ -327,7 +374,7 @@ a {
 }
 
 .options-btn {
-	margin: 8.5px 0;
+	margin: 8.5px 10px;
 	height: 2em;
 }
 
@@ -359,7 +406,7 @@ a {
 .menu-input {
 	margin: 10px;
 	padding: 5px;
-	width: 76.2%;
+	width: 94.4%;
 	height: 2em;
 }
 
@@ -413,7 +460,7 @@ span.mini-panel-repeat {
 
 .notes-box {
 	width: 99.1%;
-	height: 199px;
+	height: 98%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -432,6 +479,56 @@ span.mini-panel-repeat {
 .task-text {
 	font-size: .85em;
 }
+
+input.memberText {
+	border: none;
+}
+
+.project-panel {
+	top: 24%;
+	width: 41.5%;
+	padding: 10px;
+	overflow: auto;
+}
+
+.project-btns {
+	display: flex;
+	width: 42.7%;
+	flex-direction: row;
+	top: 20%;
+	left: 3%;
+	padding: 0 5px 5px 0;
+	border: none;
+	justify-content: space-between;
+}
+
+.create-project-btns {
+	justify-content: flex-start;
+}
+
+.append {
+	display: flex;
+	margin: -40px 20px;
+	width: 15px;
+	float: right;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.remove-input-field {
+	font-size: 1em;
+	color: red;
+	display: flex;
+	justify-content: flex-end;
+	margin: -41px -4px;
+	float: right;
+}
+
+
+
+
+
+
+
 
 
 
