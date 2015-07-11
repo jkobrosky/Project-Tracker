@@ -20,7 +20,7 @@
 				<div class="project-details">
 				</div> <!-- End of 'project-details' -->
 				<div class="task-container" ng-repeat="task in project.tasks">
-					<p class="task-text">{{ task.name }} - {{ task.status }}</p>
+					<p class="task-text">{{ task }}</p>
 				</div>
 				<h5>Due: {{ project.dueDate | date: "fullDate" }}</h5>
 			</div> <!-- End of 'current-projects' -->

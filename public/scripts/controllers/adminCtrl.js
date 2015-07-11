@@ -2,7 +2,7 @@ var app = angular.module('tracker');
 
 app.controller('adminCtrl', function($scope, adminService, projectsList, membersList, taskList) {
 
-	//console.log('projects', projectsList)
+	console.log('projects', projectsList)
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -20,6 +20,13 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.backdropVisible = false;
 	$scope.menuVisible = false;
 	$scope.profileVisible = false;
+	$scope.dropdownMenuVisible = false;
+
+	// $scope.$watch('Projects', function() {
+	// 	adminService.getProjects().then(function(response) {
+	// 		$scope.Projects = response.data;
+	// 	});
+	// });
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -38,17 +45,22 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		//console.log('clicked task view ', $scope.addTaskVisible);
 		$scope.addTaskVisible = !$scope.addTaskVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	}
+	};
 
 	// Toggles the admin options menu from admin.html
 	$scope.addMenuView = function() {
 		$scope.menuVisible = !$scope.menuVisible;
-	}
+	};
 
 	// Toggles the user profile menu from admin.html
 	$scope.addProfileView = function() {
 		$scope.profileVisible = !$scope.profileVisible;
-	}
+	};
+
+	$scope.dropdownMenuView = function() {
+		console.log('dropdownMenuVisible ', $scope.dropdownMenuVisible);
+		$scope.dropdownMenuVisible = !$scope.dropdownMenuVisible;
+	};
 
 	/////////////// NOT WORKING ///////////////
 	$scope.closePanels = function() {

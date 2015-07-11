@@ -23,14 +23,3 @@ Project.pre('update', function(next) {
 });
 
 module.exports = mongoose.model('Project', Project);
-
-
-// {
-// 	title: "noogies for narcs",
-// 	description: "karma",
-// 	teamLead: "sir Dallin Crane",
-// 	tasks: [{
-// 		name: "punch Andrew",
-// 		status: "priority!!"
-// 	}],
-// }
