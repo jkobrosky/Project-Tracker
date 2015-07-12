@@ -13,6 +13,7 @@ app.directive('optionsModal', function() {
 			getUsers: '&',
 			closePanels: '&',
 			removeUser: '&',
+			toggleProjectPanel: '&',
 			showMenu: '=',
 			createTeamVisible: '=',
 			createUserVisible: '=',

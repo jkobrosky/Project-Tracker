@@ -1,7 +1,11 @@
 <!-- CREATE PROJECT PANEL -->
-<div class="create-project-container" ng-show="showMenu">
+<div class="create-project-container modal" ng-show="createProjectPanelVisible">
 
-<h3 class="panel-headline">Create a new project</h3>
+	<!-- Closes the options modal -->
+	<h3 class="panel-headline">Create a new project</h3>
+	<div class="close">
+		<a href="#admin"><i ng-click="toggleProjectPanel()" class="close-modal-btn fa fa-times"></i></a>
+	</div>
 
 	<div class="btn-container project-btns">
 		<i class="create-project-btns fa fa-clock-o"> Due Date</i>
@@ -11,22 +15,29 @@
 		<i class="fa fa-map-marker"> Location</i>
 	</div>
 
+	<div class="show-input-panel">
+		<span class="headline">Tasks Added</span>
+		<div class="tasks-panel" ng-repeat="newTasks in tasksArr">
+			{{ newTasks.name }} 
+			<i ng-click="removeTask(newTasks.name)" class="remove-task fa fa-times"></i> 
+		</div>
+	</div> <!-- End of 'show-input-panel' -->
+
 	<form>
 		<div class="create-project project-panel">
 			<input class="menu-input modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
 			<textarea rows="3" class="menu-input desc modal-input" ng-model="newProject.description" placeholder="Description"></textarea>
 			
-			<input class="menu-input task-input" type="text" ng-model="taskName" name="" placeholder="Enter Task"  />
+			<!-- <input class="menu-input task-input" type="text" ng-model="taskName" name="" placeholder="Enter Task"  />
 			<div class="input-icon">
 				<i ng-click="removeFirstTask()" class="remove-input-field fa fa-times" ng-hide="last"></i>
 				<span class="add-on"><i ng-click="addFirst()" class="append fa fa-plus"></i></span>
-			</div>
+			</div> -->
 
-			<div ng-repeat="item in tasksArr">
+			<div >
 				<input class="menu-input task-input" type="text" ng-model="task" name="" placeholder="Enter Task"  />
 				<div class="input-icon">
-					<i ng-click="removeNewTask(tasksArr, $index)" class="remove-input-field fa fa-times" ng-hide="$last"></i>
-					<span class="add-on"><i ng-click="addNewTask(task, $index)" class="append fa fa-plus"></i></span>
+					<span class="add-on"><i ng-click="addNewTask(task)" class="append fa fa-plus"></i></span>
 				</div>
 			</div>
 
@@ -35,7 +46,6 @@
 			</div>
 		</div> <!-- End of 'create-project' -->
 	</form>
-
 
 	<!--- This should be it's own directive for chat function -->
 	<div class="chat-container" label="Discussion">

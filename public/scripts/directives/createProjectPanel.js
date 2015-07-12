@@ -7,13 +7,21 @@ app.directive('createProjectPanel', function() {
 		scope: {
 			addProject: '&',
 			addTask: '&',
+			toggleProjectPanel: '&',
+			backdropVisible: '=',
 			Projects: '=',
-			showMenu: '=',
+			createProjectPanelVisible: '=',
 			newProject: '=',
 			newTask: '=',
 			tasksArr: '=',
 			task: '=',
 			ngModel: '='
+		},
+		link: function(scope, elem, attrs) {
+			$('.tasks-panel', function() {
+				var clicked = $(this).attr('class');
+				console.log('clicked in directive ', clicked);
+			});
 		},
 		controller: function($scope, adminService) {
 
@@ -26,40 +34,50 @@ app.directive('createProjectPanel', function() {
 		///////////////////////////////////////////////////////
 
 			$scope.tasksArr = [];
+			$scope.num = 0;
 			$scope.last = !($scope.tasksArr.length > 0);
 
 			// This is for the default input bar.
-			$scope.addFirst = function(){
-				$scope.tasksArr[0] = {
-					id: 0,
-					name: $scope.taskName
-				}
-				$scope.last = !($scope.tasksArr.length > 0);
-				console.log($scope.last)
-			}
+			// $scope.addFirst = function(){
+			// 	$scope.tasksArr[0] = {
+			// 		id: 0,
+			// 		name: $scope.taskName
+			// 	}
+			// 	$scope.last = !($scope.tasksArr.length > 0);
+			// 	console.log($scope.last)
+			// }
 
-			// removes the last task entered.
-			$scope.removeFirstTask = function(){
-				$scope.tasksArr.splice(0,1);
-				$scope.last = ($scope.tasksArr.length > 0);
-			}
+			// // removes the last task entered.
+			// $scope.removeFirstTask = function(){
+			// 	$scope.tasksArr.splice(0,1);
+			// 	$scope.last = ($scope.tasksArr.length > 0);
+			// }
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
-			$scope.addNewTask = function(task, num) {
+			$scope.addNewTask = function(task) {
+				console.log('num ', $scope.num);
 				console.log('clicked addNewTask', task, $scope.newProject, $scope.tasksArr);
-				$scope.tasksArr[num + 1] = {
-					id: num + 1,
+				$scope.tasksArr[$scope.num] = {
+					id: $scope.num + 1,
 					name: task
 				};
+				$scope.task = '';
+				$scope.num++;
 				$scope.last = !($scope.tasksArr.length > 0);
 				console.log($scope.last);
 				console.log('tasksArr ', $scope.tasksArr);
 			};
 
-			// Removes the last task or input bar
-			$scope.removeNewTask = function(arr, i) {
-				arr.splice(i + 1, 1)
-				$scope.last = !($scope.tasksArr.length > 0);
+			//Removes selected task
+			$scope.removeTask = function(task) {
+				console.log('removeTask was clicked ', task);
+				var search = '';
+				for(var i = 0; i < $scope.tasksArr.length; i++) {
+					if($scope.tasksArr[i].name === task) {
+						$scope.tasksArr.splice(i, 1);
+						break;
+					}
+				}
 			}
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton

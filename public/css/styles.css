@@ -19,8 +19,8 @@ html, body {
 }
 
 .nav-btn {
-	display: inline;
-	margin: 0 10px;
+	display: block;
+	margin: 0 0 15px 0;
 }
 
 .icons {
@@ -279,8 +279,8 @@ a {
 .menu-popout {
 	margin: 0;
 	padding: 10px;
-	height: 100%;
-	width: 50%;
+	height: 25%;
+	width: 20%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -335,13 +335,18 @@ a {
 
 .create-project {
 	width: 24%;
-	position: absolute;
-	top: 20%;
+	/*position: absolute;
+	top: 20%;*/
 	display: flex;
 	flex-direction: column;
 	margin-left: 3%;
 	padding: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.create-project-container {
+	width: 80%;
+	height: 70%;
 }
 
 /*.btn-container {
@@ -360,9 +365,9 @@ a {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	position: absolute;
+	/*position: absolute;
 	top: 20%;
-	left: 30%;
+	left: 30%;*/
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 0 10px 5px 0;
 }
@@ -378,11 +383,12 @@ a {
 }
 
 .chat-container {
-	position: absolute;
-	top: 70%;
-	left: 3%;
+	/*position: relative;
+	top: 52%;
+	left: 2.2%;*/
 	height: 25%;
-	width: 42.2%;
+	width: 43.2%;
+	margin: 3%;
 	background: #dcdfdc;
 	padding: 5px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
@@ -437,10 +443,15 @@ a {
 	margin: 20px;
 }
 
-.panel-headline {
+/*.panel-headline {
 	position: absolute;
 	top: 12%;
 	left: 3%;
+}*/
+
+.panel-headline {
+	margin: 0 3%;
+	float: left;
 }
 
 .desc {
@@ -492,10 +503,9 @@ input.memberText {
 
 .project-btns {
 	display: flex;
+	margin: 3%;
 	width: 42.7%;
 	flex-direction: row;
-	top: 20%;
-	left: 3%;
 	padding: 0 5px 5px 0;
 	border: none;
 	justify-content: space-between;
@@ -522,10 +532,27 @@ input.memberText {
 	float: right;
 }
 
+.close-modal-btn {
+	margin: 0;
+}
 
+.show-input-panel {
+	float: right;
+	width: 40%;
+	min-height: 45%;
+	max-height: 45%;
+	margin: 0 3%;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+}
 
+.tasks-panel {
+	margin: 0 3%;
+}
 
-
+.remove-task {
+	float: right;
+	margin: 0 3%;
+}
 
 
 

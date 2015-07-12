@@ -32,18 +32,48 @@
 <div class="backdrop" ng-show="backdropVisible">
 </div>
 
+<!-- This section triggers the visibilty of the modals -->
+
+<!-- project-modal is was displays when user clicks on a project from admin.html -->
 <projects-modal
 	ng-show="addProjectVisible"
 	add-project-visible="addProjectVisible"
 	add-project-view="addProjectView()"
 	update-project="updateProject(project, currentProject)"
+	toggle-project-panel="toggleProjectPanel()"
 	new-project="newProject"
 	current-project="currentProject"
 	project="project">
 </projects-modal>
 
-<options-modal 
-	ng-show="menuVisible" 
+<!-- options-modal is the dropdown menu the user sees when 'more options' button is clicked -->
+<options-modal
+	ng-show="menuVisible"
+	backdrop-visible="backdropVisible"
+	create-project-panel-visible="createProjectPanelVisible"
+	show-menu="showMenu"
+	toggle-project-panel="toggleProjectPanel()"
+	add-menu-view="addMenuView()"
+	add-profile-view="addProfileView()">
+</options-modal>
+
+<!-- When this button is clicked it opens a modal for creating a new project -->
+<create-project-panel 
+	ng-show="createProjectPanelVisible" 
+	create-project-panel-visible="createProjectPanelVisible"
+	toggle-project-panel="toggleProjectPanel()"
+	backdrop-visible="backdropVisible"
+	new-project="newProject" 
+	new-task="newTask"
+	tasks-arr="tasksArr"
+	task="task"
+	add-project="addProject(newProject, tasksArr)" 
+	add-task="addTask(newTask)">
+</create-project-panel>
+
+
+
+<!-- 	ng-show="menuVisible" 
 	show-menu="showMenu" 
 	create-user-visible="createUserVisible" 
 	create-team-visible="createTeamVisible" 
@@ -61,12 +91,7 @@
 	task="task"
 	new-user="newUser"  
 	team-members="teamMembers"
-	member="member">
-</options-modal>
-
-
-
-
+	member="member"> -->
 
 
 

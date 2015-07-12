@@ -20,7 +20,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.backdropVisible = false;
 	$scope.menuVisible = false;
 	$scope.profileVisible = false;
-	$scope.dropdownMenuVisible = false;
+	$scope.createProjectPanelVisible = false;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -40,35 +40,36 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		$scope.backdropVisible = !$scope.backdropVisible;
 	};
 
-	// NOT WORKING
-	$scope.addTaskView = function() {
-		//console.log('clicked task view ', $scope.addTaskVisible);
-		$scope.addTaskVisible = !$scope.addTaskVisible;
+	$scope.toggleProjectPanel = function() {
+		console.log('clicked toggleProjectPanel() ', $scope.createProjectPanelVisible);
+		$scope.createProjectPanelVisible = !$scope.createProjectPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	};
+	}
 
-	// Toggles the admin options menu from admin.html
+	// NOT WORKING
+	// $scope.addTaskView = function() {
+	// 	//console.log('clicked task view ', $scope.addTaskVisible);
+	// 	$scope.addTaskVisible = !$scope.addTaskVisible;
+	// 	$scope.backdropVisible = !$scope.backdropVisible;
+	// };
+
+	// // Toggles the admin options menu from admin.html
 	$scope.addMenuView = function() {
 		$scope.menuVisible = !$scope.menuVisible;
 	};
 
-	// Toggles the user profile menu from admin.html
-	$scope.addProfileView = function() {
-		$scope.profileVisible = !$scope.profileVisible;
-	};
-
-	$scope.dropdownMenuView = function() {
-		console.log('dropdownMenuVisible ', $scope.dropdownMenuVisible);
-		$scope.dropdownMenuVisible = !$scope.dropdownMenuVisible;
-	};
+	// // Toggles the user profile menu from admin.html
+	// $scope.addProfileView = function() {
+	// 	$scope.profileVisible = !$scope.profileVisible;
+	// };
 
 	/////////////// NOT WORKING ///////////////
-	$scope.closePanels = function() {
-		$scope.createTeamVisible = false;
-		$scope.createProjectVisible = false;
-		$scope.createUserVisible = false;
-		$scope.showMenu = false;
-	}
+	// $scope.closePanels = function() {
+	// 	$scope.createTeamVisible = false;
+	// 	$scope.createProjectVisible = false;
+	// 	$scope.createUserVisible = false;
+	// 	$scope.showMenu = false;
+	// }
 
 
 	///////////////////////////////////////////////////////

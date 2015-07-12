@@ -13,16 +13,30 @@
 
 		<div class="nav-bar-btn">
 			<ul class="nav-icons">
-				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-plus-circle"></i> Create Project</li>
-				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-user-plus"></i> Add Member</li>
-				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-users"></i> Create Team</li>
-				<li class="nav-btn"><i ng-click="closePanels()" class="fa fa-calendar"></i> Calendar</li>
-				<li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li>
+				<div class="false-btn" ng-click="toggleProjectPanel(); addMenuView()">
+					<a href="#admin"><li class="nav-btn"><i class="fa fa-plus-circle"></i> Create Project</li></a>
+				</div>
+
+				<div class="false-btn">
+					<a href="#admin"><li class="nav-btn"><i ng-click="closePanels()" class="fa fa-user-plus"></i> Add Member</li></a>
+				</div>
+
+				<div class="false-btn">
+					<a href="#admin"><li class="nav-btn"><i ng-click="closePanels()" class="fa fa-users"></i> Create Team</li></a>
+				</div>
+
+				<div class="false-btn">
+					<a href="#admin"><li class="nav-btn"><i ng-click="closePanels()" class="fa fa-calendar"></i> Calendar</li></a>
+				</div>
+
+				<div class="false-btn">
+					<a href="#admin"><li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li></a>
+				</div>
 			</ul>
 		</div> <!-- End of 'nav-bar-btn' -->
 	</div> <!-- End of 'menu-popout' -->
 
-	<create-project-panel 
+<!-- 	<create-project-panel 
 		ng-show="showMenu" 
 		show-menu="showMenu"
 		new-project="newProject" 
@@ -52,7 +66,7 @@
 		new-user="newUser"
 		add-user="addUser()"
 		remove-user="removeUser(member)">
-	</create-member-panel>
+	</create-member-panel> -->
 
 	<!-- <create-calendar-panel
 		ng-show="createCalendarVisible">
