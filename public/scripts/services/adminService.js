@@ -6,8 +6,7 @@ app.service('adminService', function($http) {
 		return $http({
 			method: 'POST',
 			url: 'http://localhost:8887/api/projects',
-			data: { project: newProject
-			 			}
+			data: { project: newProject	}
 		})
 	};
 
@@ -71,6 +70,44 @@ app.service('adminService', function($http) {
 			method: 'GET',
 			url: 'http://localhost:8887/api/tasks'
 		})
-	}
+	};
+
+	this.addTeam = function(newTeam) {
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:8887/api/teams',
+			data: { team: newTeam	}
+		})
+	};
+
+	this.getTeams = function() {
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:8887/api/teams'
+		})
+	};
+
+	this.removeTeam = function(team) {
+		return $http({
+			method: 'DELETE',
+			url: 'http://localhost:8887/api/teams/' + team._id
+		})
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

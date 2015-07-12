@@ -7,7 +7,8 @@ app.directive('createMemberPanel', function() {
 		scope: {
 			addUser: '&',
 			removeUser: '&',
-			createUserVisible: '=',
+			toggleNewUserPanel: '&',
+			createUserPanelVisible: '=',
 			teamMembers: '=',
 			member: '=',
 			newUser: '='
@@ -15,7 +16,8 @@ app.directive('createMemberPanel', function() {
 		controller: function($scope){
 			$scope.runRemove = function(member){
 				console.log("bottom", member)
-				$scope.removeUser({member: {member: member}})
+				//$scope.removeUser({member: {member: member}});
+				$scope.removeUser({member: member});
 			};
 		}
 	}

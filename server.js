@@ -11,6 +11,7 @@ var cors = require('cors');
 var ProjectCtrl = require('./controllers/ProjectCtrl');
 var UserCtrl = require('./controllers/UserCtrl');
 var TaskCtrl = require('./controllers/TaskCtrl');
+var TeamCtrl = require('./controllers/TeamCtrl');
 
 // Constants 
 var port = 8887;
@@ -34,6 +35,11 @@ var app = express();
 	app.get('/api/users', UserCtrl.readUser);
 	app.post('/api/users', UserCtrl.createUser);
 	app.delete('/api/users/:_id', UserCtrl.deleteUser);
+
+	// Routes for Team Controller
+	app.get('/api/teams', TeamCtrl.readTeams);
+	app.post('/api/teams', TeamCtrl.createTeam);
+	app.delete('/api/teams/:_id', TeamCtrl.removeTeam);
 
 	// Routes for Task Controller
 	app.get('/api/tasks', TaskCtrl.readTask);

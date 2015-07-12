@@ -21,6 +21,8 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.menuVisible = false;
 	$scope.profileVisible = false;
 	$scope.createProjectPanelVisible = false;
+	$scope.createUserPanelVisible = false;
+	$scope.createTeamPanelVisible = false;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -34,15 +36,33 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	//																									 //
 	///////////////////////////////////////////////////////
 
+	// // Toggles the admin options menu from admin.html
+	$scope.addMenuView = function() {
+		$scope.menuVisible = !$scope.menuVisible;
+	};
+
 	// Toggles the edit project view from admin.html
 	$scope.addProjectView = function() {
 		$scope.addProjectVisible = !$scope.addProjectVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	};
 
+	// Toggles the create project view from admin.html
 	$scope.toggleProjectPanel = function() {
 		console.log('clicked toggleProjectPanel() ', $scope.createProjectPanelVisible);
 		$scope.createProjectPanelVisible = !$scope.createProjectPanelVisible;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
+	$scope.toggleNewUserPanel = function() {
+		console.log('clicked toggleNewUserPanel() ', $scope.createUserPanelVisible);
+		$scope.createUserPanelVisible = !$scope.createUserPanelVisible;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
+	$scope.toggleNewTeamPanel = function() {
+		console.log('clicked toggleNewTeamPanel ', $scope.createTeamPanelVisible);
+		$scope.createTeamPanelVisible = !$scope.createTeamPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
@@ -53,10 +73,6 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	// 	$scope.backdropVisible = !$scope.backdropVisible;
 	// };
 
-	// // Toggles the admin options menu from admin.html
-	$scope.addMenuView = function() {
-		$scope.menuVisible = !$scope.menuVisible;
-	};
 
 	// // Toggles the user profile menu from admin.html
 	// $scope.addProfileView = function() {

@@ -51,10 +51,12 @@
 	ng-show="menuVisible"
 	backdrop-visible="backdropVisible"
 	create-project-panel-visible="createProjectPanelVisible"
-	show-menu="showMenu"
+	create-user-panel-visible="createUserPanelVisible"
+	create-team-panel-visible="createTeamPanelVisible"
 	toggle-project-panel="toggleProjectPanel()"
-	add-menu-view="addMenuView()"
-	add-profile-view="addProfileView()">
+	toggle-new-user-panel="toggleNewUserPanel()"
+	toggle-new-team-panel="toggleNewTeamPanel()"
+	add-menu-view="addMenuView()">
 </options-modal>
 
 <!-- When this button is clicked it opens a modal for creating a new project -->
@@ -71,7 +73,30 @@
 	add-task="addTask(newTask)">
 </create-project-panel>
 
+<!-- When the addMember button is clicked it opens a modal for adding a new user -->
+<create-member-panel
+	ng-show="createUserPanelVisible" 
+	create-user-panel-visible="createUserPanelVisible"
+	backdrop-visible="backdropVisible"
+	team-members="teamMembers"
+	member="member"
+	new-user="newUser"
+	toggle-new-user-panel="toggleNewUserPanel()"
+	add-user="addUser()"
+	remove-user="removeUser(member)">
+</create-member-panel>
 
+<create-team-panel 
+	ng-show="createTeamPanelVisible" 
+	create-team-panel-visible="createTeamPanelVisible"
+	toggle-new-team-panel="toggleNewTeamPanel()"
+	new-team="newTeam" 
+	team-members="teamMembers"
+	add-team="addTeam(newTeam)"
+	remove-user="removeUser(member)"
+	get-users="getUsers($viewValue)"
+	member="member">
+</create-team-panel>
 
 <!-- 	ng-show="menuVisible" 
 	show-menu="showMenu" 

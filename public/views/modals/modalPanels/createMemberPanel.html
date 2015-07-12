@@ -1,23 +1,27 @@
 <!-- ADD MEMBER PANEL -->
-<div class="create-project-container" ng-show="createUserVisible">
+<div class="create-project-container modal" ng-show="createUserPanelVisible">
 
-<h3 class="panel-headline">Add a new team member</h3>
+	<h3 class="panel-headline">Add a new team member</h3>
+	<div class="close">
+		<a href="#admin"><i ng-click="toggleNewUserPanel()" class="close-modal-btn fa fa-times"></i></a>
+	</div>
 
-	<!-- <div class="btn-container">
-		<button class="options-btn" type="submit">Make Lead</button>
-		<button class="options-btn" type="submit">Projects</button>
-		<button class="options-btn" type="submit">Department</button>
-	</div> -->
+	<div class="btn-container project-btns">
+		<i class="fa fa-empire"> Make Lead</i>
+		<i class="fa fa-briefcase"> Projects</i>
+		<i class="fa fa-sitemap"> Department</i>
+		<i class="fa fa-bell-o"> Notifications</i>
+	</div>
 
-	<div class="btn-container">
+	<div class="show-input-panel">
 		<h4 class="mini-panel-headline">Team Members</h4>
 		<div class="repeat-container" ng-repeat="member in teamMembers">
 			<span class="mini-panel-repeat">{{ member.name }}</span>
-			<i class="remove-member fa fa-times" member="member" ng-click="runRemove(member)"></i>
+			<i class="remove-item fa fa-times" member="member" ng-click="runRemove(member)"></i>
 		</div>
 	</div>
 
-	<div class="create-project">
+	<div class="create-project project-panel">
 		<input class="modal-input" type="text" ng-model="newUser.name" placeholder="Full name" />
 		<input class="modal-input" type="text" ng-model="newUser.email" placeholder="Email" />
 		<input class="modal-input" type="text" ng-model="newUser.phone" placeholder="Phone (optional)" />

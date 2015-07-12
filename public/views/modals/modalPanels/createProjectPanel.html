@@ -19,7 +19,7 @@
 		<span class="headline">Tasks Added</span>
 		<div class="tasks-panel" ng-repeat="newTasks in tasksArr">
 			{{ newTasks.name }} 
-			<i ng-click="removeTask(newTasks.name)" class="remove-task fa fa-times"></i> 
+			<i ng-click="removeTask(newTasks.name)" class="remove-item fa fa-times"></i> 
 		</div>
 	</div> <!-- End of 'show-input-panel' -->
 
@@ -27,12 +27,6 @@
 		<div class="create-project project-panel">
 			<input class="menu-input modal-input" type="text" ng-model="newProject.title" placeholder="Project Title" />
 			<textarea rows="3" class="menu-input desc modal-input" ng-model="newProject.description" placeholder="Description"></textarea>
-			
-			<!-- <input class="menu-input task-input" type="text" ng-model="taskName" name="" placeholder="Enter Task"  />
-			<div class="input-icon">
-				<i ng-click="removeFirstTask()" class="remove-input-field fa fa-times" ng-hide="last"></i>
-				<span class="add-on"><i ng-click="addFirst()" class="append fa fa-plus"></i></span>
-			</div> -->
 
 			<div >
 				<input class="menu-input task-input" type="text" ng-model="task" name="" placeholder="Enter Task"  />

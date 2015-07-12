@@ -4,16 +4,6 @@ app.controller('optionsCtrl', function($scope) {
 
 	///////////////////////////////////////////////////////
 	//																									 //
-	// This section triggers the visiblity of the panels //
-	//																									 //
-	///////////////////////////////////////////////////////
-
-	$scope.showMenu = false;
-	$scope.createTeamVisible = false;
-	$scope.createUserVisible = false;
-
-	///////////////////////////////////////////////////////
-	//																									 //
 	// 		Removes user from the createTeamPanel.html     //
 	//																									 //
 	///////////////////////////////////////////////////////

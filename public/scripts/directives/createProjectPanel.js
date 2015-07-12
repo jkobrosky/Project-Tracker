@@ -6,16 +6,10 @@ app.directive('createProjectPanel', function() {
 		templateUrl: '../views/modals/modalPanels/createProjectPanel.html',
 		scope: {
 			addProject: '&',
-			addTask: '&',
 			toggleProjectPanel: '&',
-			backdropVisible: '=',
-			Projects: '=',
 			createProjectPanelVisible: '=',
 			newProject: '=',
-			newTask: '=',
 			tasksArr: '=',
-			task: '=',
-			ngModel: '='
 		},
 		link: function(scope, elem, attrs) {
 			$('.tasks-panel', function() {
@@ -36,22 +30,6 @@ app.directive('createProjectPanel', function() {
 			$scope.tasksArr = [];
 			$scope.num = 0;
 			$scope.last = !($scope.tasksArr.length > 0);
-
-			// This is for the default input bar.
-			// $scope.addFirst = function(){
-			// 	$scope.tasksArr[0] = {
-			// 		id: 0,
-			// 		name: $scope.taskName
-			// 	}
-			// 	$scope.last = !($scope.tasksArr.length > 0);
-			// 	console.log($scope.last)
-			// }
-
-			// // removes the last task entered.
-			// $scope.removeFirstTask = function(){
-			// 	$scope.tasksArr.splice(0,1);
-			// 	$scope.last = ($scope.tasksArr.length > 0);
-			// }
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
 			$scope.addNewTask = function(task) {

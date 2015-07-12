@@ -17,12 +17,12 @@
 					<a href="#admin"><li class="nav-btn"><i class="fa fa-plus-circle"></i> Create Project</li></a>
 				</div>
 
-				<div class="false-btn">
-					<a href="#admin"><li class="nav-btn"><i ng-click="closePanels()" class="fa fa-user-plus"></i> Add Member</li></a>
+				<div class="false-btn" ng-click="toggleNewUserPanel(); addMenuView()">
+					<a href="#admin"><li class="nav-btn"><i class="fa fa-user-plus"></i> Add Member</li></a>
 				</div>
 
-				<div class="false-btn">
-					<a href="#admin"><li class="nav-btn"><i ng-click="closePanels()" class="fa fa-users"></i> Create Team</li></a>
+				<div class="false-btn" ng-click="toggleNewTeamPanel(); addMenuView()">
+					<a href="#admin"><li class="nav-btn"><i class="fa fa-users"></i> Create Team</li></a>
 				</div>
 
 				<div class="false-btn">

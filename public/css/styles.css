@@ -469,11 +469,14 @@ span.mini-panel-repeat {
 }
 
 .notes-box {
-	width: 99.1%;
+	width: 101%;
+	height: 171px;
+	margin: -5px;
+	/*width: 99.1%;
 	height: 98%;
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 0;*/
 }
 
 .remove-container {
@@ -496,7 +499,7 @@ input.memberText {
 
 .project-panel {
 	top: 24%;
-	width: 41.5%;
+	width: 42.5%;
 	padding: 10px;
 	overflow: auto;
 }
@@ -504,7 +507,7 @@ input.memberText {
 .project-btns {
 	display: flex;
 	margin: 3%;
-	width: 42.7%;
+	width: 94%;
 	flex-direction: row;
 	padding: 0 5px 5px 0;
 	border: none;
@@ -549,7 +552,7 @@ input.memberText {
 	margin: 0 3%;
 }
 
-.remove-task {
+.remove-item {
 	float: right;
 	margin: 0 3%;
 }
