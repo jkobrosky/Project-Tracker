@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var moment = require('moment');
 
 //Controllers
 var ProjectCtrl = require('./controllers/ProjectCtrl');

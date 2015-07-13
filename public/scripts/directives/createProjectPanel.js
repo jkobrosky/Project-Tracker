@@ -7,14 +7,17 @@ app.directive('createProjectPanel', function() {
 		scope: {
 			addProject: '&',
 			toggleProjectPanel: '&',
+			toggleTimePicker: '&',
 			createProjectPanelVisible: '=',
+			timePickerModalVisible: '=',
+			Projects: '=',
 			newProject: '=',
 			tasksArr: '=',
 		},
 		link: function(scope, elem, attrs) {
 			$('.tasks-panel', function() {
 				var clicked = $(this).attr('class');
-				console.log('clicked in directive ', clicked);
+				//console.log('clicked in directive ', clicked);
 			});
 		},
 		controller: function($scope, adminService) {
@@ -33,8 +36,8 @@ app.directive('createProjectPanel', function() {
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
 			$scope.addNewTask = function(task) {
-				console.log('num ', $scope.num);
-				console.log('clicked addNewTask', task, $scope.newProject, $scope.tasksArr);
+				// console.log('num ', $scope.num);
+				// console.log('clicked addNewTask', task, $scope.newProject, $scope.tasksArr);
 				$scope.tasksArr[$scope.num] = {
 					id: $scope.num + 1,
 					name: task
@@ -42,13 +45,13 @@ app.directive('createProjectPanel', function() {
 				$scope.task = '';
 				$scope.num++;
 				$scope.last = !($scope.tasksArr.length > 0);
-				console.log($scope.last);
-				console.log('tasksArr ', $scope.tasksArr);
+				// console.log($scope.last);
+				// console.log('tasksArr ', $scope.tasksArr);
 			};
 
 			//Removes selected task
 			$scope.removeTask = function(task) {
-				console.log('removeTask was clicked ', task);
+				//console.log('removeTask was clicked ', task);
 				var search = '';
 				for(var i = 0; i < $scope.tasksArr.length; i++) {
 					if($scope.tasksArr[i].name === task) {
@@ -65,7 +68,7 @@ app.directive('createProjectPanel', function() {
 
 				newProject.tasks = [];
 				for (var i = 0; i < tasksArr.length; i++) {
-					console.log('names in tasksArr ', tasksArr[i].name);
+					//console.log('names in tasksArr ', tasksArr[i].name);
 					newProject.tasks.push(tasksArr[i].name);
 					// newProject.tasks = [{ 
 					// 	name: tasksArr[i].name
@@ -87,11 +90,11 @@ app.directive('createProjectPanel', function() {
 					$scope.tasksArr = [];
 
 					$scope.getProjects();
-					console.log('response ', response);
+					//console.log('response ', response);
 				}, function(err) {
 					console.log('error adding project ', err);
 				});
-			}
+			};
 
 			// after the newProject is 'POST'ed a 'GET' is sent to repopulate the projects
 			$scope.getProjects = function() {
@@ -103,6 +106,26 @@ app.directive('createProjectPanel', function() {
 					console.log('error ', err);
 				})
 			};
+
+			// $scope.timePicker = function() {
+			// 	console.log('timePicker clicked');
+			// 	$('')
+			// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		}
 	}
 });

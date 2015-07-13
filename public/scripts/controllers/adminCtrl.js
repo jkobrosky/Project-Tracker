@@ -2,7 +2,7 @@ var app = angular.module('tracker');
 
 app.controller('adminCtrl', function($scope, adminService, projectsList, membersList, taskList) {
 
-	console.log('projects', projectsList)
+	//console.log('projects', projectsList)
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -23,6 +23,11 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.createProjectPanelVisible = false;
 	$scope.createUserPanelVisible = false;
 	$scope.createTeamPanelVisible = false;
+	$scope.createCalendarPanelVisible = false;
+
+	// Sets the modal views within the 'Create Project' panel
+	$scope.timePickerModalVisible = false;
+	$scope.teamleadSelectorVisible = false;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -49,22 +54,58 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Toggles the create project view from admin.html
 	$scope.toggleProjectPanel = function() {
-		console.log('clicked toggleProjectPanel() ', $scope.createProjectPanelVisible);
+		//console.log('clicked toggleProjectPanel() ', $scope.createProjectPanelVisible);
 		$scope.createProjectPanelVisible = !$scope.createProjectPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.toggleNewUserPanel = function() {
-		console.log('clicked toggleNewUserPanel() ', $scope.createUserPanelVisible);
+		//console.log('clicked toggleNewUserPanel() ', $scope.createUserPanelVisible);
 		$scope.createUserPanelVisible = !$scope.createUserPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
 
 	$scope.toggleNewTeamPanel = function() {
-		console.log('clicked toggleNewTeamPanel ', $scope.createTeamPanelVisible);
+		//console.log('clicked toggleNewTeamPanel ', $scope.createTeamPanelVisible);
 		$scope.createTeamPanelVisible = !$scope.createTeamPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	}
+
+	///////////////////////////////////////////////////////
+	//																									 //
+	// This section triggers the visiblity of the modals //
+	// within the 'Create Project' panel                 //
+	//																									 //
+	///////////////////////////////////////////////////////
+
+	$scope.toggleCalendarPanel = function() {
+		//console.log('clicked toggleCalendarPanel ', $scope.createCalendarPanelVisible);
+		$scope.createCalendarPanelVisible = !$scope.createCalendarPanelVisible;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	}
+
+	$scope.toggleTimePicker = function() {
+		//console.log('toggleTimePicker clicked');
+		$scope.timePickerModalVisible = !$scope.timePickerModalVisible;
+	}
+
+	$scope.toggleTeamLeadSelector = function() {
+		$scope.teamleadSelectorVisible = !$scope.teamleadSelectorVisible;
+	}
+
+	///////////////////////////////////////////////////////
+	//																									 //
+	// This section triggers the visiblity of the modals //
+	// within the 'Add Member' panel                     //
+	//																									 //
+	///////////////////////////////////////////////////////
+
+	///////////////////////////////////////////////////////
+	//																									 //
+	// This section triggers the visiblity of the modals //
+	// within the 'Create Team' panel                    //
+	//																									 //
+	///////////////////////////////////////////////////////
 
 	// NOT WORKING
 	// $scope.addTaskView = function() {
@@ -114,7 +155,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Adds a project from the ADMIN OPTIONS MODAL
 	$scope.addProject = function(newProject, tasksArr) {
-		console.log('arr in ctrl ', tasksArr);
+		//console.log('arr in ctrl ', tasksArr);
 
 		// for(var i = 0; i < arr.length; i++) {
 		// 	newProject.tasks = [{
@@ -126,12 +167,12 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		// 	name: $scope.task
 		// }]
 		//console.log('newProject.tasks[0].name ', newProject.tasks[0].name);
-		console.log('newProject ', newProject);
+		//console.log('newProject ', newProject);
 		return adminService.addProject(newProject).then(function(response) {
 			$scope.newProject = '';
 			$scope.task = '';
 			$scope.getProjects();
-			console.log('response ', response);
+			//console.log('response ', response);
 		}, function(err) {
 			console.log('error adding project ', err);
 		});

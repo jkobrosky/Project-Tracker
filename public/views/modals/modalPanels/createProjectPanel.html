@@ -8,11 +8,13 @@
 	</div>
 
 	<div class="btn-container project-btns">
-		<i class="create-project-btns fa fa-clock-o"> Due Date</i>
-		<i class="fa fa-empire"> Team Lead</i>
-		<i class="fa fa-users"> Team Members</i>
+		<div class="false-btn" ng-click="toggleTimePicker()">
+			<a href="#admin"><i class="create-project-btns fa fa-clock-o"> Due Date</i></a>
+		</div>
+		<i class="create-project-btns fa fa-empire"> Team Lead</i>
+		<i class="create-project-btns fa fa-users"> Team Members</i>
 		<i class="create-project-btns fa fa-paperclip"> Attachments</i>
-		<i class="fa fa-map-marker"> Location</i>
+		<i class="create-project-btns fa fa-map-marker"> Location</i>
 	</div>
 
 	<div class="show-input-panel">
@@ -47,6 +49,12 @@
 			Project discussion
 		</div>
 	</div> <!-- End of 'chat-container' -->
+
+	<time-picker-modal
+		ng-show="timePickerModalVisible"
+		time-picker-modal-visible="timePickerModalVisible"
+		toggle-time-picker="toggleTimePicker()">
+	</time-picker-modal>
 
 </div> <!-- End of 'create-project-container' -->
 <!-- End of CREATE PROJECT PANEL -->

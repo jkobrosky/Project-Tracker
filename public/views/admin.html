@@ -34,7 +34,7 @@
 
 <!-- This section triggers the visibilty of the modals -->
 
-<!-- project-modal is was displays when user clicks on a project from admin.html -->
+<!-- project-modal displays when user clicks on a project from admin.html -->
 <projects-modal
 	ng-show="addProjectVisible"
 	add-project-visible="addProjectVisible"
@@ -53,9 +53,14 @@
 	create-project-panel-visible="createProjectPanelVisible"
 	create-user-panel-visible="createUserPanelVisible"
 	create-team-panel-visible="createTeamPanelVisible"
+	create-calendar-panel-visible="createCalendarPanelVisible"
+	time-picker-modal-visible="timePickerModalVisible"
 	toggle-project-panel="toggleProjectPanel()"
 	toggle-new-user-panel="toggleNewUserPanel()"
 	toggle-new-team-panel="toggleNewTeamPanel()"
+	toggle-calendar-panel="toggleCalendarPanel()"
+	toggle-time-picker="toggleTimePicker()"
+	get-events="getEvents()"
 	add-menu-view="addMenuView()">
 </options-modal>
 
@@ -63,8 +68,11 @@
 <create-project-panel 
 	ng-show="createProjectPanelVisible" 
 	create-project-panel-visible="createProjectPanelVisible"
+	time-picker-modal-visible="timePickerModalVisible"
 	toggle-project-panel="toggleProjectPanel()"
+	toggle-time-picker="toggleTimePicker()"
 	backdrop-visible="backdropVisible"
+	Project="Project"
 	new-project="newProject" 
 	new-task="newTask"
 	tasks-arr="tasksArr"
@@ -97,6 +105,13 @@
 	get-users="getUsers($viewValue)"
 	member="member">
 </create-team-panel>
+
+<create-calendar-panel
+	ng-show="createCalendarPanelVisible"
+	create-calendar-panel-visible="createCalendarPanelVisible"
+	toggle-calendar-panel="toggleCalendarPanel()"
+	get-events="getEvents()">
+</create-calendar-panel>
 
 <!-- 	ng-show="menuVisible" 
 	show-menu="showMenu" 

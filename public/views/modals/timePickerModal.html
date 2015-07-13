@@ -1,0 +1,19 @@
+<div class="mini-modal" ng-show="timePickerModalVisible">
+
+	<h3 class="panel-headline">Select Due Date</h3>
+	<div class="close">
+		<a href="#admin"><i ng-click="toggleTimePicker()" class="close-modal-btn fa fa-times"></i></a>
+	</div>
+
+	<div class="confirmation">
+			<span class="confirmation-text">{{ projectDate | amCalendar }}</span>
+		</div>
+
+	<div class="time-picker">
+		<datepicker date-format="longDate">
+      <input ng-model="date" type="text" placeholder="Choose a date" />
+      <i ng-click="setDate(date)" class="fa fa-lg fa-calendar"></i>
+		</datepicker>
+
+	</div>
+</div>

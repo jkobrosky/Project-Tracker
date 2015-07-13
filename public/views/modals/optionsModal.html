@@ -25,8 +25,8 @@
 					<a href="#admin"><li class="nav-btn"><i class="fa fa-users"></i> Create Team</li></a>
 				</div>
 
-				<div class="false-btn">
-					<a href="#admin"><li class="nav-btn"><i ng-click="closePanels()" class="fa fa-calendar"></i> Calendar</li></a>
+				<div class="false-btn" ng-click="toggleCalendarPanel(); getEvents(); addMenuView()">
+					<a href="#admin"><li class="nav-btn"><i class="fa fa-calendar"></i> Calendar</li></a>
 				</div>
 
 				<div class="false-btn">

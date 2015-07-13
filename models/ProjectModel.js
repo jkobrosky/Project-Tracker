@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
 var TeamMembers = require('./TeamMembersSchema');
 
 
@@ -19,6 +20,7 @@ var Project = new mongoose.Schema({
 
 Project.pre('update', function(next) {
 	this.startDate = new Date();
+	this.startDate = moment(startDate, moment.ISO_8601);
 	next();
 });
 

@@ -9,14 +9,33 @@
 	</div>
 
 	<!-- Form for adding project -->
+	<form class="update-project-form">
 		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
 		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
 		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
 		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" placeholder="{{ currentProject.teamMembers }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate | amCalendar }}" />
+		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate | amCalendar }}" />
+	</form>
+
+	<div class="show-input-panel">
+		<span class="headline">Tasks Added</span>
+		<div class="tasks-panel" ng-repeat="newTasks in tasksArr">
+			{{ newTasks.name }} 
+			<i ng-click="removeTask(newTasks.name)" class="remove-item fa fa-times"></i> 
+		</div>
+	</div> <!-- End of 'show-input-panel' -->
+
+	<!--- This should be it's own directive for chat function -->
+	<div class="chat-container edit-project-chat-container" label="Discussion">
+		<div class="chat-box">
+			Project discussion
+		</div>
+	</div> <!-- End of 'chat-container' -->
+
+	<div class="btn-container modal-btn-container">
 		<button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button>
 		<button class="modal-btn" ng-click="updateProject(project, currentProject); getProjects(); clearText()" type="submit">Update</button>
-	</form>
-</div>
-<!-- End of ADMIN MODAL -->
+	</div>
+
+</div> <!-- End of ADMIN MODAL -->

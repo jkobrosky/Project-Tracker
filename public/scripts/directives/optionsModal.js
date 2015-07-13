@@ -8,7 +8,11 @@ app.directive('optionsModal', function() {
 			addMenuView: '&',
 			toggleProjectPanel: '&',
 			toggleNewUserPanel: '&',
-			toggleNewTeamPanel: '&'
+			toggleNewTeamPanel: '&',
+			toggleCalendarPanel: '&',
+			toggleTimePicker: '&',
+			getEvents: '&',
+			Projects: '='
 		},
 		controller: 'optionsCtrl',
 		
