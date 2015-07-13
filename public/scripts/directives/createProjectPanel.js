@@ -8,9 +8,14 @@ app.directive('createProjectPanel', function() {
 			addProject: '&',
 			toggleProjectPanel: '&',
 			toggleTimePicker: '&',
+			toggleTeamLeadPicker: '&',
+			setProjectDate: '&',
 			createProjectPanelVisible: '=',
 			timePickerModalVisible: '=',
+			teamLeadPickerModalVisible: '=',
 			Projects: '=',
+			date: '=',
+			newProjectDate: '=',
 			newProject: '=',
 			tasksArr: '=',
 		},
@@ -62,10 +67,11 @@ app.directive('createProjectPanel', function() {
 			}
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
-			$scope.addProject = function(newProject, tasksArr) {
+			$scope.addProject = function(newProject, tasksArr, newProjectDate) {
+				console.log('newProjectDate in createProjectPanel.js ', newProjectDate);
 				// console.log('newProject in ctrl ', newProject);
 				// console.log('arr in ctrl ', tasksArr, tasksArr.length);
-
+				newProject.dueDate = newProjectDate;
 				newProject.tasks = [];
 				for (var i = 0; i < tasksArr.length; i++) {
 					//console.log('names in tasksArr ', tasksArr[i].name);

@@ -6,15 +6,18 @@ app.directive('timePickerModal', function() {
 		templateUrl: '../views/modals/timePickerModal.html',
 		scope: {
 			toggleTimePicker: '&',
-			timePickerModalVisible: '='
+			setProjectDate: '&',
+			timePickerModalVisible: '=',
+			date: '='
 		},
 		controller: function($scope) {
 			$scope.projectDate = new Date();
-			console.log('projectDate outside of setDate ', $scope.projectDate);
+			//console.log('projectDate outside of setDate ', $scope.projectDate);
 
 			$scope.setDate = function(date) {
 				$scope.projectDate = date;
-				console.log('projectDate ', $scope.projectDate);
+				$scope.setProjectDate(new Date(date));
+				//console.log('projectDate ', $scope.projectDate, typeof $scope.projectDate, date, typeof date);
 			}
 		}
 	}

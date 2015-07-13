@@ -27,7 +27,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Sets the modal views within the 'Create Project' panel
 	$scope.timePickerModalVisible = false;
-	$scope.teamleadSelectorVisible = false;
+	$scope.teamLeadPickerModalVisible = false;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -57,19 +57,19 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		//console.log('clicked toggleProjectPanel() ', $scope.createProjectPanelVisible);
 		$scope.createProjectPanelVisible = !$scope.createProjectPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	}
+	};
 
 	$scope.toggleNewUserPanel = function() {
 		//console.log('clicked toggleNewUserPanel() ', $scope.createUserPanelVisible);
 		$scope.createUserPanelVisible = !$scope.createUserPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	}
+	};
 
 	$scope.toggleNewTeamPanel = function() {
 		//console.log('clicked toggleNewTeamPanel ', $scope.createTeamPanelVisible);
 		$scope.createTeamPanelVisible = !$scope.createTeamPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	}
+	};
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -82,16 +82,17 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		//console.log('clicked toggleCalendarPanel ', $scope.createCalendarPanelVisible);
 		$scope.createCalendarPanelVisible = !$scope.createCalendarPanelVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
-	}
+	};
 
 	$scope.toggleTimePicker = function() {
 		//console.log('toggleTimePicker clicked');
 		$scope.timePickerModalVisible = !$scope.timePickerModalVisible;
-	}
+	};
 
-	$scope.toggleTeamLeadSelector = function() {
-		$scope.teamleadSelectorVisible = !$scope.teamleadSelectorVisible;
-	}
+	$scope.toggleTeamLeadPicker = function() {
+		console.log('toggleTeamLeadPicker clicked')
+		$scope.teamLeadPickerModalVisible = !$scope.teamLeadPickerModalVisible;
+	};
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -153,8 +154,16 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
+	$scope.setProjectDate = function(newDate) {
+		console.log('setProjectDate in adminCtrl', newDate);
+		$scope.newProjectDate = newDate;
+	};
+
 	// Adds a project from the ADMIN OPTIONS MODAL
 	$scope.addProject = function(newProject, tasksArr) {
+		console.log('newProject within addProject ', newProject);
+		//newProject.startDate = $scope.newProjectDate;
+
 		//console.log('arr in ctrl ', tasksArr);
 
 		// for(var i = 0; i < arr.length; i++) {

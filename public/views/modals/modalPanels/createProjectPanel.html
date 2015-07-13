@@ -11,9 +11,14 @@
 		<div class="false-btn" ng-click="toggleTimePicker()">
 			<a href="#admin"><i class="create-project-btns fa fa-clock-o"> Due Date</i></a>
 		</div>
-		<i class="create-project-btns fa fa-empire"> Team Lead</i>
+
+		<div class="false-btn" ng-click="toggleTeamLeadPicker()">
+			<a href="#admin"><i class="create-project-btns fa fa-empire"> Team Lead</i></a>
+		</div>
+
 		<i class="create-project-btns fa fa-users"> Team Members</i>
 		<i class="create-project-btns fa fa-paperclip"> Attachments</i>
+
 		<i class="create-project-btns fa fa-map-marker"> Location</i>
 	</div>
 
@@ -37,8 +42,8 @@
 				</div>
 			</div>
 
-			<div class="btns">
-				<button class="create modal-options-btn" ng-click="addProject(newProject, tasksArr)">Create</button>
+			<div class="btns" new-project-date="newProjectDate">
+				<button class="create modal-options-btn" ng-click="addProject(newProject, tasksArr, newProjectDate)">Create</button>
 			</div>
 		</div> <!-- End of 'create-project' -->
 	</form>
@@ -49,12 +54,21 @@
 			Project discussion
 		</div>
 	</div> <!-- End of 'chat-container' -->
+	
+	<team-lead-picker-modal
+		ng-show="teamLeadPickerModalVisible"
+		team-lead-picker-modal-visible="teamLeadPickerModalVisible"
+		toggle-team-lead-picker"toggleTeamLeadPicker()">
+	</team-lead-picker-modal>
 
 	<time-picker-modal
 		ng-show="timePickerModalVisible"
 		time-picker-modal-visible="timePickerModalVisible"
-		toggle-time-picker="toggleTimePicker()">
+		toggle-time-picker="toggleTimePicker()"
+		set-project-date="setProjectDate({date: date})"
+		date="date">
 	</time-picker-modal>
+
 
 </div> <!-- End of 'create-project-container' -->
 <!-- End of CREATE PROJECT PANEL -->

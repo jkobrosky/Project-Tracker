@@ -279,8 +279,8 @@ a {
 .menu-popout {
 	margin: 0;
 	padding: 10px;
-	height: 25%;
-	width: 20%;
+	/*height: 25%;
+	width: 20%;*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -395,7 +395,7 @@ a {
 	/*position: relative;
 	top: 52%;
 	left: 2.2%;*/
-	height: 25%;
+	height: 15%;
 	width: 43.2%;
 	margin: 3%;
 	background: #dcdfdc;
@@ -520,7 +520,7 @@ input.memberText {
 
 .project-btns {
 	display: flex;
-	margin: 3%;
+	margin: 3% 3% 1% 3%;
 	width: 94%;
 	flex-direction: row;
 	padding: 0 5px 5px 0;
@@ -576,17 +576,21 @@ input.memberText {
 }
 
 .mini-modal {
-	width: 30%;
+	width: 37%;
 	height: 15%;
 	margin: 10px;
 	padding: 10px;
 	position: absolute;
-	top: 12%;
+	top: 15%;
 	left: 3%;
 	background: #fff;
 	box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+}
+
+.team-lead {
+	left: 22%;
 }
 
 .time-picker {

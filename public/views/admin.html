@@ -55,11 +55,16 @@
 	create-team-panel-visible="createTeamPanelVisible"
 	create-calendar-panel-visible="createCalendarPanelVisible"
 	time-picker-modal-visible="timePickerModalVisible"
+	team-lead-picker-modal-visible="teamLeadPickerModalVisible"
 	toggle-project-panel="toggleProjectPanel()"
 	toggle-new-user-panel="toggleNewUserPanel()"
 	toggle-new-team-panel="toggleNewTeamPanel()"
 	toggle-calendar-panel="toggleCalendarPanel()"
 	toggle-time-picker="toggleTimePicker()"
+	toggle-team-lead-picker="toggleTeamLeadPicker()"
+	set-project-date="setProjectDate(date)"
+	new-project-date="newProjectDate"
+	date="date"
 	get-events="getEvents()"
 	add-menu-view="addMenuView()">
 </options-modal>
@@ -69,15 +74,20 @@
 	ng-show="createProjectPanelVisible" 
 	create-project-panel-visible="createProjectPanelVisible"
 	time-picker-modal-visible="timePickerModalVisible"
+	team-lead-picker-modal-visible="teamLeadPickerModalVisible"
 	toggle-project-panel="toggleProjectPanel()"
 	toggle-time-picker="toggleTimePicker()"
+	toggle-team-lead-picker="toggleTeamLeadPicker()"
+	set-project-date="setProjectDate(date)"
 	backdrop-visible="backdropVisible"
 	Project="Project"
 	new-project="newProject" 
 	new-task="newTask"
 	tasks-arr="tasksArr"
 	task="task"
-	add-project="addProject(newProject, tasksArr)" 
+	date="date"
+	new-project-date="newProjectDate"
+	add-project="addProject(newProject, tasksArr, newProjectDate)" 
 	add-task="addTask(newTask)">
 </create-project-panel>
 
