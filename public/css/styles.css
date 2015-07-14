@@ -110,7 +110,7 @@ a.menu {
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.75);
 }
 
 .projects-container {
@@ -590,6 +590,7 @@ input.memberText {
 }
 
 .team-lead {
+	width: 50%;
 	left: 22%;
 }
 
@@ -616,10 +617,28 @@ span.confirmation-text {
 	float: right;
 }
 
+.wrap-dd-menu {
+	margin: 0;
+}
 
+.lead-selector {
+	width: 100%;
+	margin: 5% 0;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
 
+.selected-text {
+	margin: 2% 0;
+}
 
+.dropdown-arrow {
+	margin: 0 6px;
+}
 
-
+.team-lead-confirmation-btn {
+	margin: 15px 0;
+}
 
 

@@ -1,4 +1,4 @@
-var app = angular.module('tracker', ['ngRoute', 'autocomplete', '720kb.datepicker', 'angularMoment']);
+var app = angular.module('tracker', ['ngRoute', 'autocomplete', '720kb.datepicker', 'angularMoment', 'ngDropdowns']);
 
 app.constant('lh', {
 	url: 'http://localhost:8887'

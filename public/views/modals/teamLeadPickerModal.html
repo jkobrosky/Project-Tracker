@@ -4,4 +4,16 @@
 	<div class="close">
 		<a href="#admin"><i ng-click="toggleTeamLeadPicker()" class="close-modal-btn fa fa-times"></i></a>
 	</div>
+
+	<div class="lead-selector">
+    <span class="selected-text">You have selected: {{ selectedMember.text }}</span>
+    <i ng-click="setLead(selectedMember)" class="team-lead-confirmation-btn fa fa-check"></i>
+    <a href=''
+        dropdown-menu="memberSelection"
+        dropdown-model="selectedMember"
+        dropdown-item-label="text">
+        <span class="selector-text">Select Lead</span>
+        <i class="dropdown-arrow fa fa-chevron-down"></i>
+    </a>
+	</div>
 </div>

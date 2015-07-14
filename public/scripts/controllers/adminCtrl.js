@@ -159,6 +159,11 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		$scope.newProjectDate = newDate;
 	};
 
+	$scope.setTeamLead = function(selectedMember) {
+		console.log('setTeamLead in adminCtrl ', selectedMember);
+		$scope.newTeamLead = selectedMember;
+	}
+
 	// Adds a project from the ADMIN OPTIONS MODAL
 	$scope.addProject = function(newProject, tasksArr) {
 		console.log('newProject within addProject ', newProject);

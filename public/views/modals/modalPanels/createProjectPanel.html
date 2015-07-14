@@ -58,7 +58,10 @@
 	<team-lead-picker-modal
 		ng-show="teamLeadPickerModalVisible"
 		team-lead-picker-modal-visible="teamLeadPickerModalVisible"
-		toggle-team-lead-picker"toggleTeamLeadPicker()">
+		team-members="teamMembers"
+		toggle-team-lead-picker="toggleTeamLeadPicker()"
+		set-team-lead="setTeamLead({selectedMember: selectedMember})"
+		selected-member="selectedMember">
 	</team-lead-picker-modal>
 
 	<time-picker-modal

@@ -13,9 +13,12 @@ app.directive('optionsModal', function() {
 			toggleTimePicker: '&',
 			toggleTeamLeadPicker: '&',
 			setProjectDate: '&',
+			setTeamLead: '&',
 			getEvents: '&',
 			date: '=',
+			selectedMember: '=',
 			newProjectDate: '=',
+			teamMembers: '=',
 			Projects: '='
 		},
 		controller: 'optionsCtrl',
