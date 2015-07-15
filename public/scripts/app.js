@@ -1,4 +1,4 @@
-var app = angular.module('tracker', ['ngRoute', 'autocomplete', '720kb.datepicker', 'angularMoment', 'ngDropdowns']);
+var app = angular.module('tracker', ['ngRoute', 'autocomplete', '720kb.datepicker', 'angularMoment', 'ngDropdowns', 'angularjs-dropdown-multiselect', 'isteven-multi-select']);
 
 app.constant('lh', {
 	url: 'http://localhost:8887'
@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
 			projectsList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getProjects().then(function(response) {
-					//console.log('from the config ', response);
+					console.log('from the config ', response);
 					var projects = response.data;
 					deferred.resolve(projects);
 				}, function(err) {

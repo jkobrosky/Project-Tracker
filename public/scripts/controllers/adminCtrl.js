@@ -15,6 +15,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.Projects = projectsList;
 	$scope.teamMembers = membersList;
 	$scope.tasks = taskList;
+	$scope.tasksArr = [];
 
 	// Sets the modal views of the backdrop, menu and profile menu to false
 	$scope.backdropVisible = false;
@@ -28,6 +29,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	// Sets the modal views within the 'Create Project' panel
 	$scope.timePickerModalVisible = false;
 	$scope.teamLeadPickerModalVisible = false;
+	$scope.teamMemberPickerModalVisible = false;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -90,9 +92,14 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	};
 
 	$scope.toggleTeamLeadPicker = function() {
-		console.log('toggleTeamLeadPicker clicked')
+		//console.log('toggleTeamLeadPicker clicked')
 		$scope.teamLeadPickerModalVisible = !$scope.teamLeadPickerModalVisible;
 	};
+
+	$scope.toggleTeamMemberPicker = function() {
+		//console.log('toggleTeamMemberPicker clicked');
+		$scope.teamMemberPickerModalVisible = !$scope.teamMemberPickerModalVisible;
+	}
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -146,6 +153,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 
 	// Gets projects once user 'saves' from ADMIND MODAL
 	$scope.getProjects = function() {
+		console.log('getProjects from adminCtrl');
 		adminService.getProjects().then(function(response) {
 			//console.log('response ', response);
 			$scope.Projects = response.data;
@@ -154,19 +162,39 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		})
 	};
 
-	$scope.setProjectDate = function(newDate) {
-		console.log('setProjectDate in adminCtrl', newDate);
-		$scope.newProjectDate = newDate;
-	};
+	// $scope.setProjectDate = function(newDate) {
+	// 	//console.log('setProjectDate in adminCtrl', newDate);
+	// 	$scope.newProjectDate = newDate;
+	// };
 
-	$scope.setTeamLead = function(selectedMember) {
-		console.log('setTeamLead in adminCtrl ', selectedMember);
-		$scope.newTeamLead = selectedMember;
-	}
+	// $scope.setTeamLead = function(selectedMember) {
+	// 	//console.log('setTeamLead in adminCtrl ', selectedMember);
+	// 	$scope.newTeamLead = selectedMember.text;
+	// 	console.log('setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
+	// }
+
+	// $scope.setTeamMembers = function(selectedTeamMembers) {
+	// 	//console.log('setTeamMembers in adminCtrl ', selectedTeamMembers);
+	// 	$scope.newTeamMembers = selectedTeamMembers;
+	// 	console.log('newTeamMembers adminCtrl ', $scope.newTeamMembers);
+	// }
 
 	// Adds a project from the ADMIN OPTIONS MODAL
-	$scope.addProject = function(newProject, tasksArr) {
-		console.log('newProject within addProject ', newProject);
+	// $scope.addProject = function(newProject, tasksArr) {
+	// 	console.log('newProject within addProject ', newProject);
+
+		// $scope.teamMembersArr = [];
+
+		// newProject.dueDate = $scope.newProjectDate;
+		// newProject.teamLead = $scope.newTeamLead;
+
+		// for (var i = 0; i < $scope.newTeamMembers.length; i++) {
+		// 	teamMembersArr.push({
+		// 		_id: newTeamMembers[i]._id
+		// 	})
+		// };
+		// console.log('teamMembersArr ', teamMembersArr);
+		// newProject.teamMembers = $scope.teamMembersArr;
 		//newProject.startDate = $scope.newProjectDate;
 
 		//console.log('arr in ctrl ', tasksArr);
@@ -181,16 +209,16 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		// 	name: $scope.task
 		// }]
 		//console.log('newProject.tasks[0].name ', newProject.tasks[0].name);
-		//console.log('newProject ', newProject);
-		return adminService.addProject(newProject).then(function(response) {
-			$scope.newProject = '';
-			$scope.task = '';
-			$scope.getProjects();
-			//console.log('response ', response);
-		}, function(err) {
-			console.log('error adding project ', err);
-		});
-	};
+	// 	console.log('completed 	newProject ', newProject);
+	// 	return adminService.addProject(newProject).then(function(response) {
+	// 		$scope.newProject = '';
+	// 		$scope.task = '';
+	// 		$scope.getProjects();
+	// 		//console.log('response ', response);
+	// 	}, function(err) {
+	// 		console.log('error adding project ', err);
+	// 	});
+	// };
 
 	// Updates a project from admin.html
 	$scope.updateProject = function(project, currentProject) {
@@ -278,7 +306,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	// Gets tasks list
 	$scope.getTasks = function() {
 		adminService.getTasks().then(function(response) {
-			//console.log(response);
+			console.log('getTasks in adminCtrl ', response);
 			$scope.tasks = response.data;
 		}, function(err) {
 			console.log(err);

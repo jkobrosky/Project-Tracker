@@ -12,11 +12,11 @@ app.directive('teamLeadPickerModal', function() {
 			teamMembers: '='
 		},
 		link: function(scope, elem, attrs) {
-			console.log('from link in teamLeadPickerModal.js ', scope.teamMembers);
+			//console.log('from link in teamLeadPickerModal.js ', scope.teamMembers);
 			// scope.ddSelectOptions = teamMembers;
 		},
 		controller: function($scope) {
-			console.log('teamMembers ctrl in teamLead directive', $scope.teamMembers);
+			//console.log('teamMembers ctrl in teamLead directive', $scope.teamMembers);
 			$scope.memberSelection = [];
 
 			for (var i = 0; i < $scope.teamMembers.length; i++) {
@@ -26,10 +26,10 @@ app.directive('teamLeadPickerModal', function() {
 				})
 			}
 
-			console.log('memberSelection ', $scope.memberSelection);
+			//console.log('memberSelection ', $scope.memberSelection);
 
 			$scope.setLead = function(selectedMember) {
-				console.log('selectedMember ', selectedMember);
+				//console.log('selectedMember ', selectedMember);
 				$scope.setTeamLead(selectedMember);
 			};
 		}

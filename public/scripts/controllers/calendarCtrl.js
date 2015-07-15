@@ -2,14 +2,14 @@ var app = angular.module('tracker');
 
 app.controller('calendarCtrl', function($scope, $http, adminService) {
 
-  console.log('inside calendarCtrl');
+  //console.log('inside calendarCtrl');
 
-  console.log('getCalendarInfo clicked');
+  //console.log('getCalendarInfo clicked');
 
   var events = [];
   $scope.data;
   $scope.getEvents = function() {
-    console.log('getEvents was clicked')
+    //console.log('getEvents was clicked')
     adminService.getProjects().then(function(response){
       console.log('response in calendarCtrl ', response, response.data.length);
       $scope.data = response.data;

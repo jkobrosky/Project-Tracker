@@ -154,8 +154,8 @@ a.menu {
 	margin: 10px;
 	padding: 10px;
 	position: absolute;
-	top: 10%;
-	left: 8.5%;
+	top: 5%;
+	left: 5.5%;
 	width: 75%;
 	height: 75%;
 	background: #fff;
@@ -345,8 +345,8 @@ a {
 }
 
 .create-project-container {
-	width: 80%;
-	height: 70%;
+	width: 85%;
+	height: 85%;
 }
 
 /*.btn-container {
@@ -373,7 +373,8 @@ a {
 }
 
 .modal-btn-container {
-	margin: 17.5% 0 0;
+	/* margin: 19% 0 0; */
+	margin: 0 2.3%;
 	float: right;
 	display: flex;
 	flex-direction: row;
@@ -554,11 +555,11 @@ input.memberText {
 }
 
 .show-input-panel {
-	float: right;
+	float: left;
 	width: 40%;
 	min-height: 45%;
 	max-height: 45%;
-	margin: 0 3%;
+	margin: 0 3.5%;
 	border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -589,9 +590,14 @@ input.memberText {
 	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 }
 
-.team-lead {
+.team-lead-modal {
 	width: 50%;
 	left: 22%;
+}
+
+.team-member-modal {
+	width: 50%;
+	left: 42%;
 }
 
 .time-picker {
@@ -600,12 +606,19 @@ input.memberText {
 	justify-content: center;
 }
 
+.form-container {
+	width: 50%;
+	float: left;
+	max-height: 81%;
+	overflow: auto;
+}
+
 .update-project-form {
 	margin: 0 0 0 3%;
 	float: left;
 	display: flex;
 	flex-direction: column;
-	width: 44%;
+	width: 95%;
 	border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -640,5 +653,64 @@ span.confirmation-text {
 .team-lead-confirmation-btn {
 	margin: 15px 0;
 }
+
+.label {
+	margin: 0 3px;
+}
+
+.comments-container {
+	width: 40%;
+	height: 30%;
+	display: flex;
+	float: left;
+	margin: 33px 0 0 42px;
+	border: 1px solid;
+}
+
+.comment {
+	width: 98.5%;
+}
+
+.comments-field {
+	width: 98%;
+	margin: 10px;
+	border: none;
+}
+
+
+/*.team-member-dropdown-multiselect {
+	background: #fff;
+	width: 45%;
+}
+
+ul.dropdown-menu.dropdown-menu-form {
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+}
+
+li {
+	display: flex;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

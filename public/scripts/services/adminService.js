@@ -11,7 +11,7 @@ app.service('adminService', function($http) {
 	};
 
 	this.getProjects = function() {
-		console.log('adminService requesting projects');
+		//console.log('adminService requesting projects');
 		return $http({
 			method: 'GET',
 			url: 'http://localhost:8887/api/projects'

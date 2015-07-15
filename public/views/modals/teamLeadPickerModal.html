@@ -1,4 +1,4 @@
-<div class="mini-modal team-lead" ng-show="teamLeadPickerModalVisible">
+<div class="mini-modal team-lead-modal" ng-show="teamLeadPickerModalVisible">
 
 	<h3 class="panel-headline">Select Team Lead</h3>
 	<div class="close">
@@ -7,7 +7,7 @@
 
 	<div class="lead-selector">
     <span class="selected-text">You have selected: {{ selectedMember.text }}</span>
-    <i ng-click="setLead(selectedMember)" class="team-lead-confirmation-btn fa fa-check"></i>
+    <a href=''><i ng-click="setTeamLead(selectedMember); toggleTeamLeadPicker()" class="team-lead-confirmation-btn fa fa-check"></i></a>
     <a href=''
         dropdown-menu="memberSelection"
         dropdown-model="selectedMember"

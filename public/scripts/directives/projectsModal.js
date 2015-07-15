@@ -12,14 +12,25 @@ app.directive('projectsModal', function() {
 			updateProject: '&',
 			addProjectVisible: '=',
 			currentProject: '=',
+			Projects: '=',
 			project: '=',
-			test: '=',
+			tasks: '=',
 			tasksArr: '=',
 			newProject: '=',
 			project: '=',
 			newUser: '@'
 		},
 		link: function(scope, element, attrs) {
+
+			// console.log('Projects in projectsModal.js ', scope.Projects);
+			// console.log('tasks in projectsModal.js ', scope.tasks);
+			// console.log('tasksArr in projectsModal.js ', scope.tasksArr);
+
+			$('.tasks-panel', function() {
+				var clicked = $(this).attr('class');
+				//console.log('clicked in directive ', clicked);
+			});
+
 			element.on('click', function() {
 				scope.setProject({ project: scope.project });
 				scope.$apply();

@@ -1,6 +1,6 @@
 <!-- ADMIN MODAL -->
 <!-- Toggles the ng-show of the modal -->
-<div class="modal" ng-show="addProjectVisible" current-project="currentProject">
+<div class="modal create-project-container" ng-show="addProjectVisible" current-project="currentProject">
 	<h4 class="title">{{ currentProject.title }}</h4>
 
 	<!-- Modal with input fields for adding a project -->
@@ -9,29 +9,48 @@
 	</div>
 
 	<!-- Form for adding project -->
-	<form class="update-project-form">
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" placeholder="{{ currentProject.teamMembers }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate" placeholder="{{currentProject.startDate | amCalendar }}" />
-		<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate | amCalendar }}" />
-	</form>
+	<div class="form-container">
+		<form class="update-project-form">
+			<span class="label">Title</span>
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
+
+			<span class="label">Description</span>
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
+
+			<span class="label">Team Lead</span>
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
+
+			<span class="label">Team Members</span>
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" ng-repeat="members in currentProject.teamMembers" placeholder="{{ members.name }}" />
+
+			<span class="label">Start Date</span>
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate" placeholder="{{ currentProject.startDate | amCalendar }}" />
+
+			<span class="label">Due Date</span>
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate | amCalendar }}" />
+		</form>
+	</div> <!-- End of 'form-container' -->
 
 	<div class="show-input-panel">
 		<span class="headline">Tasks Added</span>
-		<div class="tasks-panel" ng-repeat="newTasks in tasksArr">
-			{{ newTasks.name }} 
-			<i ng-click="removeTask(newTasks.name)" class="remove-item fa fa-times"></i> 
+		<div class="tasks-panel" current=project="currentProject" ng-repeat="task in currentProject.tasks">
+			{{ task }} 
+			<!-- <i ng-click="removeTask(newTasks.name)" class="remove-item fa fa-times"></i> -->
 		</div>
 	</div> <!-- End of 'show-input-panel' -->
 
+	<div class="comments-container">
+		<div class="comment">
+			<input class="comments-field" type="text" placeholder="Enter comments" />
+		</div>
+	</div>
+
 	<!--- This should be it's own directive for chat function -->
-	<div class="chat-container edit-project-chat-container" label="Discussion">
+	<!-- <div class="chat-container edit-project-chat-container" label="Discussion">
 		<div class="chat-box">
 			Project discussion
 		</div>
-	</div> <!-- End of 'chat-container' -->
+	</div> --> <!-- End of 'chat-container' -->
 
 	<div class="btn-container modal-btn-container">
 		<button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button>

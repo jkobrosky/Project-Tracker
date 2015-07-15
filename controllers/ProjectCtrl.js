@@ -18,6 +18,7 @@ module.exports = {
 
 	readProject: function(req, res) {
 		ProjectModel.find(req.query)
+		.populate('teamMembers')
 		.exec(function(err, result) {
 			if(err) {
 				return res.status(500).json(err);

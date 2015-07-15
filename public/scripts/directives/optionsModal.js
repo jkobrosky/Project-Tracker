@@ -12,12 +12,8 @@ app.directive('optionsModal', function() {
 			toggleCalendarPanel: '&',
 			toggleTimePicker: '&',
 			toggleTeamLeadPicker: '&',
-			setProjectDate: '&',
-			setTeamLead: '&',
+			toggleTeamMemberPicker: '&',
 			getEvents: '&',
-			date: '=',
-			selectedMember: '=',
-			newProjectDate: '=',
 			teamMembers: '=',
 			Projects: '='
 		},

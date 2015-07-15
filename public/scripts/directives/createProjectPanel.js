@@ -9,23 +9,29 @@ app.directive('createProjectPanel', function() {
 			toggleProjectPanel: '&',
 			toggleTimePicker: '&',
 			toggleTeamLeadPicker: '&',
+			toggleTeamMemberPicker: '&',
 			setProjectDate: '&',
 			setTeamLead: '&',
+			setTeamMembers: '&',
+			getProjects: '&',
 			createProjectPanelVisible: '=',
 			timePickerModalVisible: '=',
 			teamLeadPickerModalVisible: '=',
+			teamMemberPickerModalVisible: '=',
 			teamMembers: '=',
 			Projects: '=',
 			date: '=',
 			selectedMember: '=',
+			selectedTeamMembers: '=',
 			newProjectDate: '=',
 			newProject: '=',
-			tasksArr: '=',
+			tasks: '=',
+			tasksArr: '='
 		},
 		link: function(scope, elem, attrs) {
 			$('.tasks-panel', function() {
 				var clicked = $(this).attr('class');
-				//console.log('clicked in directive ', clicked);
+				console.log('clicked in directive ', clicked);
 			});
 		},
 		controller: function($scope, adminService) {
@@ -69,20 +75,44 @@ app.directive('createProjectPanel', function() {
 				}
 			}
 
+			$scope.setProjectDate = function(newDate) {
+				console.log('createProjectPanel.js setProjectDate in adminCtrl', newDate);
+				$scope.newProjectDate = newDate;
+			};
+
+			$scope.setTeamLead = function(selectedMember) {
+				//console.log('setTeamLead in adminCtrl ', selectedMember);
+				$scope.newTeamLead = selectedMember.text;
+				console.log('createProjectPanel.js setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
+			}
+
+			$scope.setTeamMembers = function(selectedTeamMembers) {
+				//console.log('setTeamMembers in adminCtrl ', selectedTeamMembers);
+				$scope.newTeamMembers = selectedTeamMembers;
+				console.log('createProjectPanel.js newTeamMembers adminCtrl ', $scope.newTeamMembers);
+			}
+
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
 			$scope.addProject = function(newProject, tasksArr, newProjectDate) {
-				console.log('newProjectDate in createProjectPanel.js ', newProjectDate);
-				// console.log('newProject in ctrl ', newProject);
-				// console.log('arr in ctrl ', tasksArr, tasksArr.length);
-				newProject.dueDate = newProjectDate;
+				newProject.dueDate = newProjectDate.date;
 				newProject.tasks = [];
 				for (var i = 0; i < tasksArr.length; i++) {
-					//console.log('names in tasksArr ', tasksArr[i].name);
 					newProject.tasks.push(tasksArr[i].name);
 					// newProject.tasks = [{ 
 					// 	name: tasksArr[i].name
 					// }]
-				}
+				};
+				
+				newProject.teamLead = $scope.newTeamLead;
+
+				$scope.teamMembersArr = [];
+				for (var i = 0; i < $scope.newTeamMembers.length; i++) {
+					$scope.teamMembersArr.push({
+						_id: $scope.newTeamMembers[i]._id
+					})
+				};
+
+				newProject.teamMembers = $scope.teamMembersArr;
 
 				///////////////////////////////////////////////////////
 				//																									 //
@@ -106,15 +136,15 @@ app.directive('createProjectPanel', function() {
 			};
 
 			// after the newProject is 'POST'ed a 'GET' is sent to repopulate the projects
-			$scope.getProjects = function() {
-				adminService.getProjects().then(function(response) {
-					console.log('getProjects request sent');
-					//console.log('response ', response);
-					$scope.Projects = response.data;
-				}, function(err) {
-					console.log('error ', err);
-				})
-			};
+			// $scope.getProjects = function() {
+			// 	adminService.getProjects().then(function(response) {
+			// 		console.log('getProjects request sent');
+			// 		//console.log('response ', response);
+			// 		$scope.Projects = response.data;
+			// 	}, function(err) {
+			// 		console.log('error ', err);
+			// 	})
+			// };
 
 			// $scope.timePicker = function() {
 			// 	console.log('timePicker clicked');

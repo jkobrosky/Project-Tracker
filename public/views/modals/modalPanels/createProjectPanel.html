@@ -1,4 +1,4 @@
-<!-- CREATE PROJECT PANEL -->
+CREATE PROJECT PANEL -->
 <div class="create-project-container modal" ng-show="createProjectPanelVisible">
 
 	<!-- Closes the options modal -->
@@ -16,11 +16,19 @@
 			<a href="#admin"><i class="create-project-btns fa fa-empire"> Team Lead</i></a>
 		</div>
 
-		<i class="create-project-btns fa fa-users"> Team Members</i>
-		<i class="create-project-btns fa fa-paperclip"> Attachments</i>
+		<div class="false-btn" ng-click="toggleTeamMemberPicker()">
+			<i class="create-project-btns fa fa-users"> Team Members</i>
+		</div>
 
-		<i class="create-project-btns fa fa-map-marker"> Location</i>
-	</div>
+		<div class="false-btn">
+			<i class="create-project-btns fa fa-paperclip"> Attachments</i>
+		</div>
+
+		<div class="false-btn">
+			<i class="create-project-btns fa fa-map-marker"> Location</i>
+		</div>
+
+	</div> <!-- End of 'btn-container project-btns' -->
 
 	<div class="show-input-panel">
 		<span class="headline">Tasks Added</span>
@@ -55,15 +63,6 @@
 		</div>
 	</div> <!-- End of 'chat-container' -->
 	
-	<team-lead-picker-modal
-		ng-show="teamLeadPickerModalVisible"
-		team-lead-picker-modal-visible="teamLeadPickerModalVisible"
-		team-members="teamMembers"
-		toggle-team-lead-picker="toggleTeamLeadPicker()"
-		set-team-lead="setTeamLead({selectedMember: selectedMember})"
-		selected-member="selectedMember">
-	</team-lead-picker-modal>
-
 	<time-picker-modal
 		ng-show="timePickerModalVisible"
 		time-picker-modal-visible="timePickerModalVisible"
@@ -72,6 +71,27 @@
 		date="date">
 	</time-picker-modal>
 
+	<team-lead-picker-modal
+		ng-show="teamLeadPickerModalVisible"
+		team-lead-picker-modal-visible="teamLeadPickerModalVisible"
+		team-members="teamMembers"
+		toggle-team-lead-picker="toggleTeamLeadPicker()"
+		set-team-lead="setTeamLead(selectedMember)"
+		selected-member="selectedMember">
+	</team-lead-picker-modal>
+
+	<team-member-picker-modal
+		ng-show="teamMemberPickerModalVisible"
+		team-member-picker-modal-visible="teamMemberPickerModalVisible"
+		team-members="teamMembers"
+		selected-team-members="selectedTeamMembers"
+		toggle-team-member-picker="toggleTeamMemberPicker()"
+		set-team-members="setTeamMembers(selectedTeamMembers)">
+	</team-member-picker-modal>
+
+<!-- set-team-lead="setTeamLead({selectedMember: selectedMember})" 
+		 set-team-members="setTeamMembers({selectedTeamMembers: selectedTeamMembers})" -->
+
 
 </div> <!-- End of 'create-project-container' -->
-<!-- End of CREATE PROJECT PANEL -->
+<!-- End of CREATE PROJECT PANEL
