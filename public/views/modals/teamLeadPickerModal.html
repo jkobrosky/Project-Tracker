@@ -5,8 +5,8 @@
 		<a href="#admin"><i ng-click="toggleTeamLeadPicker()" class="close-modal-btn fa fa-times"></i></a>
 	</div>
 
-	<div class="lead-selector">
-    <span class="selected-text">You have selected: {{ selectedMember.text }}</span>
+	<!-- <div class="lead-selector"> -->
+    <!-- <span class="selected-text">You have selected: {{ selectedMember.text }}</span>
     <a href=''><i ng-click="setTeamLead(selectedMember); toggleTeamLeadPicker()" class="team-lead-confirmation-btn fa fa-check"></i></a>
     <a href=''
         dropdown-menu="memberSelection"
@@ -14,6 +14,18 @@
         dropdown-item-label="text">
         <span class="selector-text">Select Lead</span>
         <i class="dropdown-arrow fa fa-chevron-down"></i>
-    </a>
-	</div>
+    </a> -->
+
+    <div class="lead-selector">
+        <button class="selected-text" ng-click="setTeamLead(selectedMember); toggleTeamLeadPicker()">Select Team Lead</button>
+           <isteven-multi-select    
+            input-model="memberSelection"    
+            output-model="selectedMember"
+            button-label="Select Lead"
+            item-label="icon name maker"
+            tick-property="ticked"
+            selection-mode="single">
+        </isteven-multi-select>
+    </div>
+	<!-- </div> -->
 </div>

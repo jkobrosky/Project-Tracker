@@ -15,7 +15,8 @@ var Project = new mongoose.Schema({
 	//teamMembers: [TeamMembers],
 	teamMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	startDate: { type: Date, default: Date.now },
-	dueDate: Date
+	dueDate: Date,
+	comments: [{ type: String }]
 });
 
 Project.pre('update', function(next) {

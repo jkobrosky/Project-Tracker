@@ -31,7 +31,7 @@
 		</form>
 	</div> <!-- End of 'form-container' -->
 
-	<div class="show-input-panel">
+	<div class="show-input-panel show-tasks-edit-panel">
 		<span class="headline">Tasks Added</span>
 		<div class="tasks-panel" current=project="currentProject" ng-repeat="task in currentProject.tasks">
 			{{ task }} 
@@ -40,8 +40,14 @@
 	</div> <!-- End of 'show-input-panel' -->
 
 	<div class="comments-container">
+		<div class="comments-display">
+			<p class="comment-text" ng-repeat="comment in comments">Joe - {{ comment }}</p>
+		</div>
 		<div class="comment">
-			<input class="comments-field" type="text" placeholder="Enter comments" />
+			<input class="comments-field" type="text" ng-model="comment" placeholder="Enter comments" />
+			<div class="comments-btn">
+				<i ng-click="sendComment(comment)" class="send-comment fa fa-share-square-o"></i>
+			</div>
 		</div>
 	</div>
 

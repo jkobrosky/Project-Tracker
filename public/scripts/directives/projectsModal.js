@@ -36,6 +36,18 @@ app.directive('projectsModal', function() {
 				scope.$apply();
 				//console.log('this is the current project in link ', scope.project);
 			})
+		},
+		controller: function($scope) {
+
+			$scope.comments = [];
+
+			$scope.sendComment = function(comment) {
+				console.log('comment ', comment);
+				console.log('currentProject ', $scope.currentProject);
+
+				$scope.comments.push(comment);
+				$scope.comment = '';
+			}
 		}
 	}
 });

@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
 			projectsList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getProjects().then(function(response) {
-					console.log('from the config ', response);
+					// console.log('from the config ', response);
 					var projects = response.data;
 					deferred.resolve(projects);
 				}, function(err) {

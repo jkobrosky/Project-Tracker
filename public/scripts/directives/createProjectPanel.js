@@ -31,7 +31,7 @@ app.directive('createProjectPanel', function() {
 		link: function(scope, elem, attrs) {
 			$('.tasks-panel', function() {
 				var clicked = $(this).attr('class');
-				console.log('clicked in directive ', clicked);
+				//console.log('clicked in directive ', clicked);
 			});
 		},
 		controller: function($scope, adminService) {
@@ -50,6 +50,7 @@ app.directive('createProjectPanel', function() {
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
 			$scope.addNewTask = function(task) {
+				console.log($scope.tasksArr);
 				// console.log('num ', $scope.num);
 				// console.log('clicked addNewTask', task, $scope.newProject, $scope.tasksArr);
 				$scope.tasksArr[$scope.num] = {
@@ -76,13 +77,13 @@ app.directive('createProjectPanel', function() {
 			}
 
 			$scope.setProjectDate = function(newDate) {
-				console.log('createProjectPanel.js setProjectDate in adminCtrl', newDate);
+				//console.log('createProjectPanel.js setProjectDate in adminCtrl', newDate);
 				$scope.newProjectDate = newDate;
 			};
 
 			$scope.setTeamLead = function(selectedMember) {
-				//console.log('setTeamLead in adminCtrl ', selectedMember);
-				$scope.newTeamLead = selectedMember.text;
+				console.log('setTeamLead in createProjectPanel.js ', selectedMember);
+				//$scope.newTeamLead = selectedMember[0].name;
 				console.log('createProjectPanel.js setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
 			}
 
@@ -127,9 +128,10 @@ app.directive('createProjectPanel', function() {
 					$scope.taskName = '';
 					$scope.task = '';
 					$scope.tasksArr = [];
-
+					$scope.num = 0;
 					$scope.getProjects();
 					//console.log('response ', response);
+					// $scope.$apply();
 				}, function(err) {
 					console.log('error adding project ', err);
 				});

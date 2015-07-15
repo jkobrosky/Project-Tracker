@@ -9,6 +9,7 @@ app.directive('teamLeadPickerModal', function() {
 			setTeamLead: '&',
 			teamLeadPickerModalVisible: '=',
 			selectedMember: '=',
+			memberSelection: '=',
 			teamMembers: '='
 		},
 		link: function(scope, elem, attrs) {
@@ -16,20 +17,24 @@ app.directive('teamLeadPickerModal', function() {
 			// scope.ddSelectOptions = teamMembers;
 		},
 		controller: function($scope) {
-			//console.log('teamMembers ctrl in teamLead directive', $scope.teamMembers);
+			console.log('teamMembers ctrl in teamLead directive', $scope.teamMembers);
+			// $scope.selectedMember = {};
 			$scope.memberSelection = [];
 
 			for (var i = 0; i < $scope.teamMembers.length; i++) {
 				$scope.memberSelection.push({
-					text: $scope.teamMembers[i].name,
-					value: $scope.teamMembers[i]
-				})
+					_id: $scope.teamMembers[i]._id,
+					name: $scope.teamMembers[i].name,
+					email: $scope.teamMembers[i].email,
+					phone: $scope.teamMembers[i].phone,
+					ticked: false
+				});
 			}
 
 			//console.log('memberSelection ', $scope.memberSelection);
 
 			$scope.setLead = function(selectedMember) {
-				//console.log('selectedMember ', selectedMember);
+				console.log('selectedMember ', selectedMember.name);
 				$scope.setTeamLead(selectedMember);
 			};
 		}
