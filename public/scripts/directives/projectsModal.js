@@ -39,13 +39,13 @@ app.directive('projectsModal', function() {
 		},
 		controller: function($scope) {
 
-			$scope.comments = [];
+			$scope.sendComments = [];
 
 			$scope.sendComment = function(comment) {
 				console.log('comment ', comment);
 				console.log('currentProject ', $scope.currentProject);
 
-				$scope.comments.push(comment);
+				$scope.sendComments.push(comment);
 				$scope.comment = '';
 			}
 		}

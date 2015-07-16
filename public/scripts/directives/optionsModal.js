@@ -13,6 +13,7 @@ app.directive('optionsModal', function() {
 			toggleTimePicker: '&',
 			toggleTeamLeadPicker: '&',
 			toggleTeamMemberPicker: '&',
+			toggleAttachmentPicker: '&',
 			getEvents: '&',
 			teamMembers: '=',
 			Projects: '='

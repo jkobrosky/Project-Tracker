@@ -30,6 +30,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.timePickerModalVisible = false;
 	$scope.teamLeadPickerModalVisible = false;
 	$scope.teamMemberPickerModalVisible = false;
+	$scope.attachmentPickerModalVisible = false;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -99,6 +100,11 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.toggleTeamMemberPicker = function() {
 		//console.log('toggleTeamMemberPicker clicked');
 		$scope.teamMemberPickerModalVisible = !$scope.teamMemberPickerModalVisible;
+	}
+
+	$scope.toggleAttachmentPicker = function() {
+		console.log('toggleAttachmentPicker clicked');
+		$scope.attachmentPickerModalVisible = !$scope.attachmentPickerModalVisible;
 	}
 
 	///////////////////////////////////////////////////////

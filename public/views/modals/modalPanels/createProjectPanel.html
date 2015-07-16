@@ -17,11 +17,11 @@ CREATE PROJECT PANEL -->
 		</div>
 
 		<div class="false-btn" ng-click="toggleTeamMemberPicker()">
-			<i class="create-project-btns fa fa-users"> Team Members</i>
+			<a href="#admin"><i class="create-project-btns fa fa-users"> Team Members</i></a>
 		</div>
 
-		<div class="false-btn">
-			<i class="create-project-btns fa fa-paperclip"> Attachments</i>
+		<div class="false-btn" ng-click="toggleAttachmentPicker()">
+			<a href="#admin"><i class="create-project-btns fa fa-paperclip"> Attachments</i></a>
 		</div>
 
 		<div class="false-btn">
@@ -88,6 +88,12 @@ CREATE PROJECT PANEL -->
 		toggle-team-member-picker="toggleTeamMemberPicker()"
 		set-team-members="setTeamMembers(selectedTeamMembers)">
 	</team-member-picker-modal>
+
+	<attachment-picker-modal
+		ng-show="attachmentPickerModalVisible"
+		attachment-picker-modal-visible="attachmentPickerModalVisible"
+		toggle-attachment-picker="toggleAttachmentPicker()">
+	</attachment-picker-modal>
 
 <!-- set-team-lead="setTeamLead({selectedMember: selectedMember})" 
 		 set-team-members="setTeamMembers({selectedTeamMembers: selectedTeamMembers})" -->
