@@ -95,7 +95,14 @@ app.service('adminService', function($http) {
 		})
 	};
 
-
+	this.sendEmail = function(newProject) {
+		console.warn(newProject);
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:8887/api/email',
+			data: newProject
+		})
+	};
 
 
 

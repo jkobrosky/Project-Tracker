@@ -1,19 +1,14 @@
 <div class="mini-modal attachment-modal" ng-show="attachmentPickerModalVisible">
 
-	<h3 class="panel-headline">Select Team Members</h3>
+	<h3 class="panel-headline">Select Attachments</h3>
 	<div class="close">
 		<a href="#admin"><i ng-click="toggleAttachmentPicker()" class="close-modal-btn fa fa-times"></i></a>
 	</div>
 
-	<div class="lead-selector">
-        <button class="selected-text" ng-click="createTeam(selectedTeamMembers); toggleAttachmentPicker()">Create Team</button>
-  <!--   <a href=''><i ng-click="setTeamMembers(teamMember)" class="team-lead-confirmation-btn fa fa-check"></i></a> -->
-   <isteven-multi-select    
-      input-model="teamMembersData"    
-      output-model="selectedTeamMembers"
-      button-label="Select Team"
-      item-label="icon name maker"
-      tick-property="ticked">
-    </isteven-multi-select>
-	</div>
+  <form class="upload-form" method="POST" enctype="multipart/form-data" action="/api/upload">
+    <input type="file" name="file1" />
+    <input class="upload-btn" type="submit" />
+  </form>
+
+
 </div>

@@ -14,6 +14,7 @@ app.directive('createProjectPanel', function() {
 			setProjectDate: '&',
 			setTeamLead: '&',
 			setTeamMembers: '&',
+			setFileType: '&',
 			getProjects: '&',
 			createProjectPanelVisible: '=',
 			timePickerModalVisible: '=',
@@ -25,6 +26,7 @@ app.directive('createProjectPanel', function() {
 			date: '=',
 			selectedMember: '=',
 			selectedTeamMembers: '=',
+			selectedFileType: '=',
 			newProjectDate: '=',
 			newProject: '=',
 			tasks: '=',
@@ -85,8 +87,8 @@ app.directive('createProjectPanel', function() {
 
 			$scope.setTeamLead = function(selectedMember) {
 				console.log('setTeamLead in createProjectPanel.js ', selectedMember);
-				//$scope.newTeamLead = selectedMember[0].name;
-				console.log('createProjectPanel.js setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
+				$scope.newTeamLead = selectedMember[0];
+				//console.log('createProjectPanel.js setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
 			}
 
 			$scope.setTeamMembers = function(selectedTeamMembers) {
@@ -111,7 +113,10 @@ app.directive('createProjectPanel', function() {
 				$scope.teamMembersArr = [];
 				for (var i = 0; i < $scope.newTeamMembers.length; i++) {
 					$scope.teamMembersArr.push({
-						_id: $scope.newTeamMembers[i]._id
+						_id: $scope.newTeamMembers[i]._id,
+						name: $scope.newTeamMembers[i].name,
+						email: $scope.newTeamMembers[i].email,
+						phone: $scope.newTeamMembers[i].phone
 					})
 				};
 
@@ -139,6 +144,13 @@ app.directive('createProjectPanel', function() {
 				});
 			};
 
+			$scope.sendEmail = function() {
+				console.log('newProject inside of sendEmail ', $scope.newProject);
+				return adminService.sendEmail($scope.newProject).then(function(response) {
+					console.log('email sent ', response);
+				});
+			};
+
 			// after the newProject is 'POST'ed a 'GET' is sent to repopulate the projects
 			// $scope.getProjects = function() {
 			// 	adminService.getProjects().then(function(response) {
@@ -154,18 +166,6 @@ app.directive('createProjectPanel', function() {
 			// 	console.log('timePicker clicked');
 			// 	$('')
 			// }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

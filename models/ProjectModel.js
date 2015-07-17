@@ -4,9 +4,9 @@ var TeamMembers = require('./TeamMembersSchema');
 
 
 var Project = new mongoose.Schema({
-	title: { type: String, required: true },
-	description: { type: String, required: true },
-	teamLead: String,
+	title: { type: String },
+	description: { type: String },
+	teamLead: { type: String },
 	// tasks: [{
 	// 	name: { type: String, required: true },
 	// 	status: { type: String, default: 'incomplete' }
@@ -15,14 +15,17 @@ var Project = new mongoose.Schema({
 	//teamMembers: [TeamMembers],
 	teamMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	startDate: { type: Date, default: Date.now },
-	dueDate: Date,
-	comments: [{ type: String }]
+	dueDate: { type: Date },
+	comments: [{ 
+		userlabel: { type: String },
+		message: { type: String }
+	}]
 });
 
-Project.pre('update', function(next) {
-	this.startDate = new Date();
-	this.startDate = moment(startDate, moment.ISO_8601);
-	next();
-});
+// Project.pre('update', function(next) {
+// 	this.startDate = new Date();
+// 	this.startDate = moment(startDate, moment.ISO_8601);
+// 	next();
+// });
 
 module.exports = mongoose.model('Project', Project);

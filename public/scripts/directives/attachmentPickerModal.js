@@ -6,7 +6,26 @@ app.directive('attachmentPickerModal', function() {
 		templateUrl: '../views/modals/attachmentPickerModal.html',
 		scope: {
 			toggleAttachmentPicker: '&',
-			attachmentPickerModalVisible: '='
+			setFileType: '&',
+			attachmentPickerModalVisible: '=',
+			selectedFileType: '=',
+			fileTypes: '='
+		},
+		controller: function($scope) {
+			$scope.fileTypes = [];
+			$scope.extensions = [ '.jpg', '.svg', '.psd', '.doc',	'.ppt', '.xml', '.mp4', '.mov' ];
+
+			for (var i = 0; i < $scope.extensions.length; i++) {
+				$scope.fileTypes.push({
+					name: $scope.extensions[i],
+					ticked: false
+				});
+			};
+
+			$scope.setFileType = function(selectedFileType) {
+				console.log('selectedFileType ', selectedFileType);
+			};
+
 		}
 	}
 })

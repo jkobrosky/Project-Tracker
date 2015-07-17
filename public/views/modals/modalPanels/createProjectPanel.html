@@ -1,4 +1,4 @@
-CREATE PROJECT PANEL -->
+<!-- CREATE PROJECT PANEL -->
 <div class="create-project-container modal" ng-show="createProjectPanelVisible">
 
 	<!-- Closes the options modal -->
@@ -51,7 +51,7 @@ CREATE PROJECT PANEL -->
 			</div>
 
 			<div class="btns" new-project-date="newProjectDate">
-				<button class="create modal-options-btn" ng-click="addProject(newProject, tasksArr, newProjectDate)">Create</button>
+				<button class="create modal-options-btn" ng-click="addProject(newProject, tasksArr, newProjectDate); sendEmail()">Create</button>
 			</div>
 		</div> <!-- End of 'create-project' -->
 	</form>
@@ -92,7 +92,9 @@ CREATE PROJECT PANEL -->
 	<attachment-picker-modal
 		ng-show="attachmentPickerModalVisible"
 		attachment-picker-modal-visible="attachmentPickerModalVisible"
-		toggle-attachment-picker="toggleAttachmentPicker()">
+		toggle-attachment-picker="toggleAttachmentPicker()"
+		selected-file-type="selectedFileType"
+		set-file-type="setFileType(selectedFileType)">
 	</attachment-picker-modal>
 
 <!-- set-team-lead="setTeamLead({selectedMember: selectedMember})" 

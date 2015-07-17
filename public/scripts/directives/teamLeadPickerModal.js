@@ -29,7 +29,7 @@ app.directive('teamLeadPickerModal', function() {
 					phone: $scope.teamMembers[i].phone,
 					ticked: false
 				});
-			}
+			};
 
 			//console.log('memberSelection ', $scope.memberSelection);
 
