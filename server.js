@@ -5,6 +5,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var moment = require('moment');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var cors = require('cors');
 var moment = require('moment');
 var fs = require('fs');
@@ -29,6 +30,7 @@ require('./config/passport')(passport);
 var app = express();
 
 	// app.use(bodyParser.json());
+	app.use(cookieParser());
 	app.use(bodyParser({ limit: 1000 * 1024 * 1024 }));
 	app.use(cors());
 
@@ -75,6 +77,7 @@ var app = express();
 
 	// Routes for Login
 	app.post('/api/login', passport.authenticate('local'), function(req, res) {
+		console.log('server.js req.body ', req.body)
 		res.send(req.user);
 	})
 
