@@ -1,16 +1,16 @@
 <div class="container">
-	<div class="login-box" ng-show="loginVisible">
+	<div class="login-box" ng-hide="loginVisible">
 		<h4 class="title">Login</h4>
 		<form>
-			<input class="modal-input" type="email" placeholder="Email ..." />
+			<input ng-model="email" class="modal-input" type="email" placeholder="Email ..." />
 			<br />
-			<input class="modal-input" type="password" placeholder="Password ..." />
+			<input ng-model="password" class="modal-input" type="password" placeholder="Password ..." />
 			<br />
-			<button class="login-btn" type="submit">Login</button>
+			<button ng-click="login(email, password)" class="login-btn" type="submit">Login</button>
 		</form>
 	</div>
 
-	<div class="login-box" ng-hide="loginVisible">
+	<div class="login-box" ng-show="loginVisible">
 		<h4 class="title">Register</h4>
 		<form>
 			<input class="modal-input" type="text" placeholder="Fullname ..." />
@@ -19,7 +19,7 @@
 			<br />
 			<input class="modal-input" type="password" placeholder="Password ..." />
 			<br />
-			<button class="login-btn" type="submit">Register</button>
+			<button " class="login-btn" type="submit">Register</button>
 		</form>
 	</div>
 </div><!-- End of 'container' -->

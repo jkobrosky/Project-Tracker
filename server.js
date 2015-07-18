@@ -7,9 +7,9 @@ var moment = require('moment');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var moment = require('moment');
-var nodemailer = require('nodemailer');
-var multer = require('multer');
 var fs = require('fs');
+var passport = require('passport');
+var session = require('express-session');
 
 //Controllers
 var ProjectCtrl = require('./controllers/ProjectCtrl');
@@ -23,6 +23,8 @@ var AmazonCtrl = require('./controllers/AmazonCtrl');
 var port = 8887;
 var mongoUri = 'mongodb://localhost:27017/management-tracker';
 
+require('./config/passport')(passport);
+
 // Express
 var app = express();
 
@@ -31,6 +33,14 @@ var app = express();
 	app.use(cors());
 
 	app.use(express.static(__dirname + '/public'));
+
+	app.use(session({
+		secret: 'this is an awesome secret'
+	}));
+
+	app.use(passport.initialize());
+
+	app.use(passport.session());
 
 	// Routes for Project Controller
 	app.get('/api/projects', ProjectCtrl.readProject);
@@ -60,7 +70,13 @@ var app = express();
 	// Routes for Email Controller
 	app.post('/api/email', EmailCtrl.prepEmail);
 
+	// Routes for Amazon S3
 	app.post('/api/amazon', AmazonCtrl.uploadToS3);
+
+	// Routes for Login
+	app.post('/api/login', passport.authenticate('local'), function(req, res) {
+		res.send(req.user);
+	})
 
 
 	mongoose.connect(mongoUri);

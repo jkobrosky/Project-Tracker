@@ -7,7 +7,8 @@ app.constant('lh', {
 app.config(function($routeProvider) {
 	$routeProvider
 	.when('/auth', {
-		templateUrl: 'views/auth.html'
+		templateUrl: 'views/auth.html',
+		controller: 'authCtrl'
 	})
 	.when('/member', {
 		templateUrl: 'views/member.html',

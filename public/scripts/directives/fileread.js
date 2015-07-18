@@ -5,7 +5,11 @@ app.directive('fileread', function(amazonService) {
 	return {
 		restrict: 'EA',
 		// templateUrl: '../views/modals/modalPanels/fileread.html',
-		scope: true,
+		scope: {
+			setAttachments: '&',
+			attachmentLocation: '=',
+			attachmentsArr: '='
+		},
 		link: function(scope, elem, attrs) {
 			
 			elem.bind('change', function(changeEvent) {
@@ -23,8 +27,8 @@ app.directive('fileread', function(amazonService) {
 
 						amazonService.uploadToS3(fileread, fileName).then(function(response) {
 							console.log(response);
-							scope.attachmentLocation = response.data.Location;
-							console.log('location ', scope.attachmentLocation);
+							scope.attachmentsArr.push(response.data.Location);
+							console.log('location array', scope.attachmentsArr);
 						}, function(err) {
 							console.log(err);
 						})
@@ -36,47 +40,14 @@ app.directive('fileread', function(amazonService) {
 				reader.readAsDataURL(changeEvent.target.files[0]);
 			});
 		},
+		controller: function($scope) {
 
+			$scope.attachmentsArr = [];
+
+			$scope.createAttachments = function() {
+				console.log('attachmentLocations from controller in fileread directive ', $scope.attachmentsArr);
+				$scope.setAttachments($scope.attachmentsArr);
+			}
+		}
 	};
 });
-
-		
-		// controller: function($scope, amazonService) {
-		// 	$scope.showFile = function() {
-		// 		console.log('$scope.file ', $scope.file);
-		// 		amazonService.uploadToS3($scope.file).then(function(response) {
-		// 			console.log(response);
-		// 		}, function(err) {
-		// 			console.log(err);
-		// 		});
-		// 	}
-		// }
-
-	//PREVIOUS ATTEMPT
-
-	// return {
-	// 	scope: {
-	// 		fileread: '='
-	// 	},
-	// 	link: function(scope, elem, attrs) {
-	// 		elem.bind('change', function(changeEvent) {
-	// 			var reader = new FileReader();
-	// 			reader.onload = function(loadEvent) {
-	// 				scope.$apply(function() {
-	// 					scope.fileread = loadEvent.target.result;
-	// 					console.log('scope.fileread ', scope.fileread);
-	// 					console.log('reader ', reader);
-	// 				});
-	// 			}
-	// 			//reader.readAsDataUrl(changeEvent.target.files[0]);
-	// 		});
-	// 	}
-	// }
-
-	// elem.bind('change', function(event) {
-	// 	var files = event.target.files;
-	// 	var file = files[0];
-	// 	scope.file = file;
-	// 	scope.$parent.file = file;
-	// 	scope.$apply();
-	// });

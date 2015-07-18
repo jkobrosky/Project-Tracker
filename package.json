@@ -26,10 +26,10 @@
   "homepage": "https://github.com/jkobrosky/Project-Tracker#readme",
   "dependencies": {
     "aws-sdk": "^2.1.39",
-    "fs": "0.0.2",
+    "express-session": "^1.11.3",
     "mandrill-api": "^1.0.45",
     "moment": "^2.10.3",
-    "multer": "^0.1.8",
-    "nodemailer": "^1.4.0"
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0"
   }
 }

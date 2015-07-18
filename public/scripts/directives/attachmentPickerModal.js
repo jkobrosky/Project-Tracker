@@ -7,9 +7,12 @@ app.directive('attachmentPickerModal', function() {
 		scope: {
 			toggleAttachmentPicker: '&',
 			setFileType: '&',
+			setAttachments: '&',
 			attachmentPickerModalVisible: '=',
 			selectedFileType: '=',
-			fileTypes: '='
+			attachmentsArr: '=',
+			fileTypes: '=',
+			attachmentLocation: '='
 		},
 		controller: function($scope) {
 			$scope.fileTypes = [];

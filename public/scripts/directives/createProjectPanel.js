@@ -15,6 +15,7 @@ app.directive('createProjectPanel', function() {
 			setTeamLead: '&',
 			setTeamMembers: '&',
 			setFileType: '&',
+			setAttachments: '&',
 			getProjects: '&',
 			createProjectPanelVisible: '=',
 			timePickerModalVisible: '=',
@@ -27,6 +28,8 @@ app.directive('createProjectPanel', function() {
 			selectedMember: '=',
 			selectedTeamMembers: '=',
 			selectedFileType: '=',
+			attachmentLocation: '=',
+			attachmentsArr: '=',
 			newProjectDate: '=',
 			newProject: '=',
 			tasks: '=',
@@ -39,6 +42,7 @@ app.directive('createProjectPanel', function() {
 			});
 		},
 		controller: function($scope, adminService) {
+			console.log('$scope.attachmentsArr in createProjectPanel.js ctrl ', $scope.attachmentsArr);
 
 		///////////////////////////////////////////////////////
 		//																									 //
@@ -88,6 +92,8 @@ app.directive('createProjectPanel', function() {
 			$scope.setTeamLead = function(selectedMember) {
 				console.log('setTeamLead in createProjectPanel.js ', selectedMember);
 				$scope.newTeamLead = selectedMember[0];
+			console.log('$scope.attachmentsArr in createProjectPanel.js ctrl ', $scope.attachmentsArr);
+
 				//console.log('createProjectPanel.js setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
 			}
 
@@ -95,6 +101,11 @@ app.directive('createProjectPanel', function() {
 				//console.log('setTeamMembers in adminCtrl ', selectedTeamMembers);
 				$scope.newTeamMembers = selectedTeamMembers;
 				console.log('createProjectPanel.js newTeamMembers adminCtrl ', $scope.newTeamMembers);
+			}
+
+			$scope.setAttachments = function(attachmentArr) {
+				$scope.newAttachments = attachmentArr;
+				console.log('createProjectPanel.js newAttachments ', $scope.newAttachments);
 			}
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
@@ -119,7 +130,7 @@ app.directive('createProjectPanel', function() {
 						phone: $scope.newTeamMembers[i].phone
 					})
 				};
-
+				newProject.attachments = $scope.newAttachments;
 				newProject.teamMembers = $scope.teamMembersArr;
 
 				///////////////////////////////////////////////////////
