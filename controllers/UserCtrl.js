@@ -15,7 +15,7 @@ module.exports = {
 	},
 
 	readUser: function(req, res) {
-		console.log('readUser: req.query ', req.query);
+		// console.log('readUser: req.query ', req.query);
 		UserModel.find(req.query)
 		.exec(function(err, result) {
 			if(err) {

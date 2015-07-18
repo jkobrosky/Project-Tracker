@@ -7,12 +7,8 @@ var Project = new mongoose.Schema({
 	title: { type: String },
 	description: { type: String },
 	teamLead: { type: String },
-	// tasks: [{
-	// 	name: { type: String, required: true },
-	// 	status: { type: String, default: 'incomplete' }
-	// }],
 	tasks: [{type: String}],
-	//teamMembers: [TeamMembers],
+	attachments: [{ type: String }],
 	teamMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	startDate: { type: Date, default: Date.now },
 	dueDate: { type: Date },

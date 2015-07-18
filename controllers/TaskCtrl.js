@@ -15,7 +15,7 @@ module.exports = {
 	},
 
 	readTask: function(req, res) {
-		console.log('readUser: req.query ', req.query);
+		// console.log('readUser: req.query ', req.query);
 		TaskModel.find(req.query)
 		.exec(function(err, result) {
 			if(err) {

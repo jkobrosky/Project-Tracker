@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var moment = require('moment');
 var nodemailer = require('nodemailer');
-var AWS = require('aws-sdk');
 var multer = require('multer');
 var fs = require('fs');
 
@@ -18,6 +17,7 @@ var UserCtrl = require('./controllers/UserCtrl');
 var TaskCtrl = require('./controllers/TaskCtrl');
 var TeamCtrl = require('./controllers/TeamCtrl');
 var EmailCtrl = require('./controllers/EmailCtrl');
+var AmazonCtrl = require('./controllers/AmazonCtrl');
 
 // Constants 
 var port = 8887;
@@ -26,13 +26,11 @@ var mongoUri = 'mongodb://localhost:27017/management-tracker';
 // Express
 var app = express();
 
-	app.use(bodyParser.json());
+	// app.use(bodyParser.json());
+	app.use(bodyParser({ limit: 1000 * 1024 * 1024 }));
 	app.use(cors());
 
 	app.use(express.static(__dirname + '/public'));
-
-	AWS.config.loadFromPath('./config/aws-config.json');
-	var photoBucket = new AWS.S3({ params: { Bucket: 'jadesphere' }});
 
 	// Routes for Project Controller
 	app.get('/api/projects', ProjectCtrl.readProject);
@@ -62,34 +60,7 @@ var app = express();
 	// Routes for Email Controller
 	app.post('/api/email', EmailCtrl.prepEmail);
 
-	// Routes for AWS
-	app.post('/api/upload', multer({ limits: { filesize: 10*1024*1024 }}), function(req, res) {
-		if(!req.files || !req.files.file1) {
-			return res.status(403).send('pick a file');
-		} 
-		var file1 = req.files.file1;
-		console.log('111111111111', file1);
-
-		uploadToS3(file1, function(err, data) {
-			console.log('22222222222', data);
-			if(err) return res.status(500).json(err);
-			//else return res.json(data);
-			console.log('url cutoff ', data.Location);
-			res.redirect('/#/admin');
-		});
-
-	});
-
-	function uploadToS3(file, callback) {
-		photoBucket
-			.upload({ ACL: 'public-read',
-								Body: fs.createReadStream(file.path),
-								Key: file.originalname,
-								ContentType: 'file.mimetype'
-		})
-
-			.send(callback);
-	};
+	app.post('/api/amazon', AmazonCtrl.uploadToS3);
 
 
 	mongoose.connect(mongoUri);
