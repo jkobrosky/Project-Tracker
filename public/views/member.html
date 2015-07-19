@@ -1,24 +1,62 @@
-<div class="nav-bar">
+<div class="nav">	
 	<div class="icons left">
-		<i class="fa fa-bars"></i>
+		<a class="menu" href="#/admin"><i ng-click="addMenuView()" class="fa fa-bars"></i>
 	</div>
 
 	<div class="icons right">
-		<i class="fa fa-cog"></i>
+		<a class="menu" href="#/admin"><i ng-click="addProfileView()" class="fa fa-cog"></i></a>
 	</div>
-</div> <!-- End of 'nav-bar' -->
+</div> <!-- End of 'nav' -->
 
-<div class="project-listing-container" ng-repeat="project in Projects">
-	<div class="project-listing">
-		<h2>{{ project.title }}</h2>
-		<h4>Description: {{ project.description }}</h4>
-		<p>Team Lead: {{ project.teamLead }}</p>
-		<span>{{ project.teamLead }}'s Team: 
-			<div class="member-list" ng-repeat="member in project.teamMembers">
-				{{ member }}
-			</div>
-		</span>
-		<p>Start Date: {{ curTime | amCalendar }}</p>
-		<p>Due Date: {{ project.dueDate | amCalendar }}</p>
-	</div>
-</div> <!-- End of 'project-listing-container' -->
+<div class="lead-associated-projects-container">
+
+	<!-- Create a new modal that displays each project -->
+	<div class="team-lead-container" ng-show="teamLeadBox">
+	<h4 class="member-project-message">{{ leadProjectMessage }}</h4>
+		<div class="projects-container">	
+			<div class="manage-container" ng-repeat="project in leadProjects">
+				<i class="edit-icon fa fa-times"></i>
+				<h4 class="title">{{ project.title }}</h4>
+
+				<div class="current-projects-container">
+					<div class="current-projects">
+						<div class="project-details">
+						</div> <!-- End of 'project-details' -->
+						<div class="task-container" ng-repeat="task in project.tasks">
+							<p class="task-text">{{ task }}</p>
+						</div>
+						<h5 ng-style="past-due">Due: {{ project.dueDate | date: "fullDate" }}</h5>
+					</div> <!-- End of 'current-projects' -->
+				</div> <!-- End of 'current-projects-container' -->
+			</div> <!-- End of 'manage-container' -->
+		</div> <!-- End of 'projects-container' -->
+	</div> <!-- End of 'team-lead-container' -->
+
+
+	<div class="associated-projects-container" ng-show="associatedBox">
+		<h4 class='member-project-message'>{{ associatedProjectMessage }}</h4>
+		<div class="projects-container">	
+			<div class="manage-container" ng-repeat="project in associatedProjects">
+				<i class="edit-icon fa fa-times"></i>
+				<h4 class="title">{{ project.title }}</h4>
+
+				<div class="current-projects-container">
+					<div class="current-projects">
+						<div class="project-details">
+						</div> <!-- End of 'project-details' -->
+						<div class="task-container" ng-repeat="task in project.tasks">
+							<p class="task-text">{{ task }}</p>
+						</div>
+						<h5 ng-style="past-due">Due: {{ project.dueDate | date: "fullDate" }}</h5>
+					</div> <!-- End of 'current-projects' -->
+				</div> <!-- End of 'current-projects-container' -->
+			</div> <!-- End of 'manage-container' -->
+		</div> <!-- End of 'projects-container' -->
+	</div> <!-- End of 'associated-projects-container' -->
+
+</div> <!-- End of 'lead-associated-projects-container' -->
+
+
+<!-- Darkens the background when the modal pops up -->
+<div class="backdrop" ng-show="backdropVisible">
+</div>

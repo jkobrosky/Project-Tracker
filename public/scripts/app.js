@@ -15,6 +15,9 @@ app.config(function($routeProvider) {
 		controller: 'memberCtrl',
 		resolve: {
 			userProjects: function($q, $http, $location, authService, memberService) {
+				
+				// authorizing user to check to see if they have admin priveledges
+				// This should be moved to the backend for security purposes
 				var user = authService.isAuthed();
 				if(user.admin) {
 					$location.path('/admin');
@@ -22,8 +25,17 @@ app.config(function($routeProvider) {
 				var deferred = $q.defer();
 				memberService.getUserProjects(user._id).then(function(response) {
 					console.log('response in member resolve - teamMembers ', response);
+					if(response.data.length) {
+						response.data.visible = true;
+					} else {
+						response.data.visible = false;
+					}
+					var teamProjectsArr = response.data;
+					console.log(' teamProjectsArr in resolve ', teamProjectsArr);
 
+					deferred.resolve(teamProjectsArr);
 				})
+				return deferred.promise;
 			},
 
 			teamLeadProjects: function($q, $http, authService, memberService) {
@@ -31,8 +43,18 @@ app.config(function($routeProvider) {
 				var deferred = $q.defer();
 				memberService.getTeamLeadProjects(user._id).then(function(response) {
 					console.log('response in member resolve - teamLead ', response);
+					if(response.data.length) {
+						response.data.visible = true;
+					} else {
+						response.data.visible = false;
+					}
+					var leadProjectsArr = response.data;
+					console.log(' leadProjectsArr in resolve ', leadProjectsArr);
+				
+					deferred.resolve(leadProjectsArr);
 				})
-			}
+				return deferred.promise;
+			},
 		}
 	})
 	.when('/dashboard', {
@@ -42,6 +64,16 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/admin.html',
 		controller: 'adminCtrl',
 		resolve: {
+
+			// authorizing user to check to see if they have admin priveledges
+			// This should be moved to the backend for security purposes
+			authedUser: function($http, $location, authService) {
+				var user = authService.isAuthed();
+				if(!user.admin) {
+					$location.path('/member');
+				}
+			},
+
 			projectsList: function($q, $http, adminService) {
 				var deferred = $q.defer();
 				adminService.getProjects().then(function(response) {
@@ -51,7 +83,6 @@ app.config(function($routeProvider) {
 				}, function(err) {
 					console.log('Houston... ', err);
 				})
-
 				return deferred.promise;
 			},
 

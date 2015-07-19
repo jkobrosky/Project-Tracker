@@ -741,6 +741,29 @@ span.confirmation-text {
 	color: red;
 }
 
+/*----------------------- MEMBERS.HTML SECTION -----------------------*/
+.lead-associated-projects-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.team-lead-container {
+	width: 98%;
+	margin: 0 auto;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.associated-projects-container {
+	width: 98%;
+	margin: 2% auto;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.member-project-message {
+	display: flex;
+	justify-content: center;
+}
 
 /*.team-member-dropdown-multiselect {
 	background: #fff;
