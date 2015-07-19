@@ -14,7 +14,7 @@ app.controller('authCtrl', function($scope, $location, authService) {
 		console.log('clicked login', email, password);
 		authService.login($scope.email, $scope.password).then(function(response) {
 			console.log('success', response);
-			$location.path('/admin');
+			$location.path('/member');
 		}, function(err) {
 			console.log('err');
 		})

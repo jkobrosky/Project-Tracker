@@ -6,7 +6,7 @@ var TeamMembers = require('./TeamMembersSchema');
 var Project = new mongoose.Schema({
 	title: { type: String },
 	description: { type: String },
-	teamLead: { type: String },
+	teamLead: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	tasks: [{type: String}],
 	attachments: [{ 
 		name: { type: String },

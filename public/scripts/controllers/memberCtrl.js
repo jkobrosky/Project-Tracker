@@ -1,13 +1,12 @@
 var app = angular.module('tracker');
 
-app.controller('memberCtrl', function($scope, memberService) {
-
-	var self = this;
+app.controller('memberCtrl', function($scope, memberService, authService) {
 
 	var now = new Date();
 	$scope.curTime = now;
 	//console.log('current time: ', $scope.curTime);
 
+	$scope.projects = [];
 
 	$scope.getProjects = function() {
 		memberService.getProjects().then(function(response) {
@@ -17,5 +16,10 @@ app.controller('memberCtrl', function($scope, memberService) {
 		})
 	}
 
+	$scope.isAuthed = function() {
+		authService.isAuthed().then(function(response) {
+			console.log('response in memberCtrl ', response);
+		})
+	}
 
 });

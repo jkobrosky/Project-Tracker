@@ -18,7 +18,7 @@
 			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
 
 			<span class="label">Team Lead</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead" placeholder="{{ currentProject.teamLead }}" />
+			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead.name" placeholder="{{ currentProject.teamLead }}" />
 
 			<span class="label">Team Members</span>
 			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" ng-repeat="members in currentProject.teamMembers" placeholder="{{ members.name }}" />

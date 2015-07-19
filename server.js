@@ -45,10 +45,14 @@ var app = express();
 	app.use(passport.session());
 
 	// Routes for Project Controller
-	app.get('/api/projects', ProjectCtrl.readProject);
+	app.get('/api/projects/', ProjectCtrl.readProject);
 	app.post('/api/projects', ProjectCtrl.createProject);
 	app.put('/api/projects/:_id', ProjectCtrl.updateProject);
 	app.delete('/api/projects/:_id', ProjectCtrl.removeProject);
+
+	// Routes for pulling user and associated projects
+	app.get('/api/projects/user/:id', ProjectCtrl.userProjects);
+	app.get('/api/projects/teamLead/:id', ProjectCtrl.userTeamLead);
 
 	// Routes for Comments Controller
 	app.get('/api/comments', ProjectCtrl.readComments);
@@ -77,16 +81,35 @@ var app = express();
 	app.post('/api/amazon', AmazonCtrl.uploadToS3);
 
 	// Routes for Login
-	app.post('/api/login', passport.authenticate('local'), function(req, res) {
-		console.log('server.js req.body ', req.body)
+	app.post('/api/login', isAdmin, passport.authenticate('local'), function(req, res) {
+		console.log('server.js req.body ', req.user);
 		res.send(req.user);
 	});
 
 	mongoose.connect(mongoUri);
 	mongoose.connection.once('open', function() {
 		console.log('Connected to Mongo at ', mongoUri);
-	})
+	});
 
 	app.listen(port, function() {
 		console.log('listening on port ' + port);
-	})
+	});
+
+
+function isAdmin(req, res, done) {
+	console.log('req.body in isAdmin fn ', req.body);
+	console.log('req.user ', req.user);
+	done();
+};
+
+
+
+
+
+
+
+
+
+
+
+

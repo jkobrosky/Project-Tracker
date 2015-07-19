@@ -12,7 +12,28 @@ app.config(function($routeProvider) {
 	})
 	.when('/member', {
 		templateUrl: 'views/member.html',
-		controller: 'memberCtrl'
+		controller: 'memberCtrl',
+		resolve: {
+			userProjects: function($q, $http, $location, authService, memberService) {
+				var user = authService.isAuthed();
+				if(user.admin) {
+					$location.path('/admin');
+				}
+				var deferred = $q.defer();
+				memberService.getUserProjects(user._id).then(function(response) {
+					console.log('response in member resolve - teamMembers ', response);
+
+				})
+			},
+
+			teamLeadProjects: function($q, $http, authService, memberService) {
+				var user = authService.isAuthed();
+				var deferred = $q.defer();
+				memberService.getTeamLeadProjects(user._id).then(function(response) {
+					console.log('response in member resolve - teamLead ', response);
+				})
+			}
+		}
 	})
 	.when('/dashboard', {
 		templateUrl: 'views/dashboard.html',

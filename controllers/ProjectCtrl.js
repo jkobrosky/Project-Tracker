@@ -22,6 +22,36 @@ module.exports = {
 	readProject: function(req, res) {
 		ProjectModel.find(req.query)
 		.populate('teamMembers')
+		// .populate('teamLead')
+		.exec(function(err, result) {
+			if(err) {
+				return res.status(500).json(err);
+			} else {
+				return res.json(result);
+			}
+		})
+	},
+
+	userProjects: function(req, res) {
+		// console.log('userProjects req.params ', req.params)
+		console.log('userProjects req.params.id ', req.params.id)
+		ProjectModel.find({ teamMembers : req.params.id })
+		.populate('teamMembers')
+		.populate('teamLead')
+		.exec(function(err, result) {
+			if(err) {
+				return res.status(500).json(err);
+			} else {
+				return res.json(result);
+			}
+		})
+	},
+
+	userTeamLead: function(req, res) {
+		console.log('userTeamLead req.params._id ', req.params.id)
+		ProjectModel.find({ teamLead : req.params.id })
+		.populate('teamMembers')
+		.populate('teamLead')
 		.exec(function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
