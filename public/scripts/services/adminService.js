@@ -18,6 +18,13 @@ app.service('adminService', function($http) {
 		})
 	};
 
+	this.getAttachments = function() {
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:8887/api/amazon'
+		})
+	}
+
 	this.updateProject = function(project, currentProject) {
 		console.log('project passed to service ', project, currentProject);
 		return $http({

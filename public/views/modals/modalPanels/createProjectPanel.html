@@ -62,6 +62,15 @@
 			Project discussion
 		</div>
 	</div> <!-- End of 'chat-container' -->
+
+	<div class="attachments-container">
+		<div class="attachments-box" ng-repeat="attachment in attachmentsArr">
+			<div ng-click="displayInModal()" class="false-btn">
+				<i class="fa fa-paperclip"></i>
+				<span class="text">{{ attachment.name }}</span>
+			</div>
+		</div>
+	</div>
 	
 	<time-picker-modal
 		ng-show="timePickerModalVisible"

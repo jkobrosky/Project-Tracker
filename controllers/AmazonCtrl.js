@@ -11,7 +11,8 @@ exports.uploadToS3 = function(req, res) {
 	var fileName = req.body.name;
 
 	var b64string = file;
-	var buf = new Buffer(b64string, 'base64');
+	//console.log('b64String ', b64string)
+	buf = new Buffer(b64string.replace(/^data:image\/\w+;base64,/, ""), 'base64');
 
 	console.log('buf ', buf);
 
@@ -31,11 +32,12 @@ exports.uploadToS3 = function(req, res) {
 				ACL: 'public-read',
 				Body: buf,
 				Key: fileName,
-				ContentType: 'file.mimetype'
+				ContentType: 'file.mimetype',
+				ContentDisposition: 'attachment'
 		}, function(err, data) {
 			if (err) console.log('there was an error uploading file');
 			console.log('Successfully uploaded file', data);
 			return res.json(data);
 		})
-	}
+	};
 }

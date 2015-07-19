@@ -34,7 +34,7 @@ console.log(req.body);
 
 	message.html = "<p>You have been assigned to the following project: " + title + "</p>";
 	message.text = "You have been assigned to the following project: " + title;
-	message.subject = title;
+	message.subject = "JadeSphere.com" + title;
 
 
 	// Defining user emails

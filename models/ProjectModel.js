@@ -8,7 +8,10 @@ var Project = new mongoose.Schema({
 	description: { type: String },
 	teamLead: { type: String },
 	tasks: [{type: String}],
-	attachments: [{ type: String }],
+	attachments: [{ 
+		name: { type: String },
+		location: { type: String }
+	}],
 	teamMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	startDate: { type: Date, default: Date.now },
 	dueDate: { type: Date },

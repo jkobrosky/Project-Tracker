@@ -27,7 +27,7 @@ app.directive('fileread', function(amazonService) {
 
 						amazonService.uploadToS3(fileread, fileName).then(function(response) {
 							console.log(response);
-							scope.attachmentsArr.push(response.data.Location);
+							scope.attachmentsArr.push({ location: response.data.Location, name: fileName });
 							console.log('location array', scope.attachmentsArr);
 						}, function(err) {
 							console.log(err);

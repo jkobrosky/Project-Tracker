@@ -73,14 +73,14 @@ var app = express();
 	app.post('/api/email', EmailCtrl.prepEmail);
 
 	// Routes for Amazon S3
+	// app.get('/api/amazon', AmazonCtrl.readAttachments);
 	app.post('/api/amazon', AmazonCtrl.uploadToS3);
 
 	// Routes for Login
 	app.post('/api/login', passport.authenticate('local'), function(req, res) {
 		console.log('server.js req.body ', req.body)
 		res.send(req.user);
-	})
-
+	});
 
 	mongoose.connect(mongoUri);
 	mongoose.connection.once('open', function() {

@@ -57,6 +57,17 @@ app.config(function($routeProvider) {
 				})
 				return deferred.promise;
 			}
+
+			// attachmentList: function($q, $http, adminService) {
+			// 	var deferred = $q.defer();
+			// 	adminService.getAttachments().then(function(response) {
+			// 		var attachments = response.data;
+			// 		deferred.resolve(attachments);
+			// 	}, function(err) {
+			// 		console.log('Houston... ', err);
+			// 	})
+			// 	return deferred.promise;
+			// }
 		}
 	})
 	.otherwise({

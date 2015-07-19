@@ -251,6 +251,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.setProject = function(project) {
 		//console.log('setting current project from adminCtrl ', project);
 		$scope.currentProject = project;
+		console.log('currentProject from adminCtrl ', $scope.currentProject);
 	}
 
 	///////////////////////////////////////////////////////

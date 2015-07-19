@@ -146,7 +146,11 @@ app.directive('createProjectPanel', function() {
 					$scope.taskName = '';
 					$scope.task = '';
 					$scope.tasksArr = [];
+					$scope.teamMembersArr = [];
+					$scope.attachmentsArr = [];
 					$scope.num = 0;
+					$scope.newDate = '';
+					$scope.newProject.teamLead = '';
 					$scope.getProjects();
 					//console.log('response ', response);
 					// $scope.$apply();

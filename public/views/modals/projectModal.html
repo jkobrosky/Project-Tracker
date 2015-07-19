@@ -5,7 +5,7 @@
 
 	<!-- Modal with input fields for adding a project -->
 	<div class="close">
-		<a href="#admin"><i ng-click="addProjectView()" class="fa fa-times"></i>
+		<a href="#admin"><i ng-click="addProjectView()" class="fa fa-times"></i></a>
 	</div>
 
 	<!-- Form for adding project -->
@@ -29,6 +29,12 @@
 			<span class="label">Due Date</span>
 			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate | amCalendar }}" />
 		</form>
+
+		<div class="attachments" ng-repeat="attachment in currentProject.attachments">
+			<i class="fa fa-paperclip"></i>
+			<a href="{{ attachment.location }}"><span class="text">{{ attachment.name }}</span></a>
+		</div>
+
 	</div> <!-- End of 'form-container' -->
 
 	<div class="show-input-panel show-tasks-edit-panel">
@@ -44,7 +50,7 @@
 			<p class="comment-text" ng-repeat="comment in sendComments">Joe - {{ comment }}</p>
 		</div>
 		<div class="comment">
-			<input class="comments-field" type="text" ng-model="comment" placeholder="Enter comments" />
+			<input ng-click="$event.stopPropagation();" class="comments-field" type="text" ng-model="comment" placeholder="Enter comments" />
 			<div class="comments-btn">
 				<i ng-click="sendComment(comment)" class="send-comment fa fa-share-square-o"></i>
 			</div>
@@ -59,7 +65,7 @@
 	</div> --> <!-- End of 'chat-container' -->
 
 	<div class="btn-container modal-btn-container">
-		<button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button>
+		<a href="#admin"><button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button></a>
 		<button class="modal-btn" ng-click="updateProject(project, currentProject); getProjects(); clearText()" type="submit">Update</button>
 	</div>
 
