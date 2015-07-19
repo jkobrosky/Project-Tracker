@@ -737,6 +737,10 @@ span.confirmation-text {
 	margin: 0 3%;
 }
 
+.past-due {
+	color: red;
+}
+
 
 /*.team-member-dropdown-multiselect {
 	background: #fff;

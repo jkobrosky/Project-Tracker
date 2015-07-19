@@ -13,7 +13,7 @@ app.controller('authCtrl', function($scope, $location, authService) {
 		$scope.password = password
 		console.log('clicked login', email, password);
 		authService.login($scope.email, $scope.password).then(function(response) {
-			console.log('sucess', response);
+			console.log('success', response);
 			$location.path('/admin');
 		}, function(err) {
 			console.log('err');

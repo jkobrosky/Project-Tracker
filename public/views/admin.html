@@ -22,7 +22,7 @@
 				<div class="task-container" ng-repeat="task in project.tasks">
 					<p class="task-text">{{ task }}</p>
 				</div>
-				<h5>Due: {{ project.dueDate | date: "fullDate" }}</h5>
+				<h5 ng-style="past-due">Due: {{ project.dueDate | date: "fullDate" }}</h5>
 			</div> <!-- End of 'current-projects' -->
 		</div> <!-- End of 'current-projects-container' -->
 	</div> <!-- End of 'manage-container' -->

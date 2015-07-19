@@ -36,6 +36,21 @@ app.directive('projectsModal', function() {
 				scope.$apply();
 				//console.log('this is the current project in link ', scope.project);
 			})
+
+			scope.$watch('project', function() {
+
+				$('.edit-icon').on('mouseenter', function() {
+				  $(this).css({ 'color': 'black' })
+				})
+
+				$('.edit-icon').on('mouseleave', function() {
+				  $(this).css({ 'color': 'rgba(0, 0, 0, 0.15)' })
+				});
+
+			});
+
+			scope.$apply();
+
 		},
 		controller: function($scope) {
 

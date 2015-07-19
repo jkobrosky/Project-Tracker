@@ -32,6 +32,8 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.teamMemberPickerModalVisible = false;
 	$scope.attachmentPickerModalVisible = false;
 
+	$scope.pastDue = false;
+
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
 	// 		$scope.Projects = response.data;
