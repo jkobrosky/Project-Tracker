@@ -1,15 +1,16 @@
 var app = angular.module('tracker');
 
-app.directive('projectsModal', function() {
+app.directive('userProjectModal', function() {
 	return {
 		restrict: 'EA',
-		templateUrl: '../views/modals/projectModal.html',
+		templateUrl: '../views/modals/modalPanels/userProjectModal.html',
 		scope: {
 			addProject: '&',
 			getProjects: '&',
-			addProjectView: '&',
 			setProject: '&',
 			updateProject: '&',
+			viewProjectModal: '&',
+			memberProjectVisible: '=',
 			addProjectVisible: '=',
 			currentProject: '=',
 			currentUser: '=',
@@ -74,6 +75,7 @@ app.directive('projectsModal', function() {
 
 							$scope.postedComments.push(response.data.comments);
 							console.log('postedComments ', $scope.postedComments);
+
 					})
 				})
 			}

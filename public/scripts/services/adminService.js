@@ -111,7 +111,12 @@ app.service('adminService', function($http) {
 		})
 	};
 
-
+this.logout = function() {
+	return $http({
+		method: 'GET',
+		url: 'http://localhost:8887/logout'
+	})
+}
 
 
 

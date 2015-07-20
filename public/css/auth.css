@@ -9,8 +9,13 @@
 }
 
 .login-box {
-	width: 40%;
+	width: 35%;
 	margin: 20px auto;
 	background: rgba(0, 0, 0, 0.15);
 
+}
+
+.welcome {
+	display: flex;
+	justify-content: center;
 }

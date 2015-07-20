@@ -43,12 +43,21 @@
 	toggle-project-panel="toggleProjectPanel()"
 	new-project="newProject"
 	current-project="currentProject"
+	current-user="currentUser"
 	tasks="tasks"
 	tasks-arr="tasksArr"
 	attachments-arr="attachmentsArr"
 	projects="Projects"
 	project="project">
 </projects-modal>
+
+<profile-modal
+	ng-show="addProfileVisible"
+	add-profile-visible="addProfileVisible"
+	add-profile-view="addProfileView()"
+	allow-passage="allowPassage()"
+	logout="logout()">
+</profile-modal>
 
 <!-- options-modal is the dropdown menu the user sees when 'more options' button is clicked -->
 <options-modal

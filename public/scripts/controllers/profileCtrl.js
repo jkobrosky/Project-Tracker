@@ -1,6 +1,6 @@
 var app = angular.module('tracker');
 
-app.controller('optionsCtrl', function($scope, adminService) {
+app.controller('profileCtrl', function($scope, $location, adminService) {
 
 	///////////////////////////////////////////////////////
 	//																									 //
@@ -14,8 +14,10 @@ app.controller('optionsCtrl', function($scope, adminService) {
 	};
 
 	$scope.logout = function() {
-		adminService.logout().then(function(response) {
+		console.log('logout clicked');
+		return adminService.logout().then(function(response) {
 			console.log('logged out');
+			$location.path('/auth');
 		})
 	}
 

@@ -50,7 +50,7 @@ module.exports = {
 	userTeamLead: function(req, res) {
 		console.log('userTeamLead req.params._id ', req.params.id)
 		ProjectModel.find({ teamLead : req.params.id })
-		.populate('teamMembers')
+		// .populate('teamMembers')
 		.populate('teamLead')
 		.exec(function(err, result) {
 			if(err) {
@@ -62,6 +62,19 @@ module.exports = {
 	},
 
 	updateProject: function(req, res) {
+		console.log('req.params updateProject ', req.params, req.body);
+		ProjectModel.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
+			if(err) {
+				return res.status(500).json(err);
+			} else {
+				return res.json(result);
+			}
+		})
+	},
+
+	addComments: function(req, res) {
+		console.log('req.params addcomments ', req.params._id);
+		console.log('req.body addcomments ', req.body);
 		ProjectModel.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
@@ -83,6 +96,7 @@ module.exports = {
 	},
 
 	createComment: function(req, res) {
+		//console.log('createComment ', req.body)
 		ProjectModel.findById(
 			req.body._id, 
 			function(err, projectFromMongo) {
@@ -90,8 +104,8 @@ module.exports = {
 				console.log(projectFromMongo);
 				projectObj = projectFromMongo.toObject();
 				delete projectObj._id
-				projectObj.comments.push(req.body.comment);
-				console.log(projectObj);
+				projectObj.comments.push(req.body.comments);
+				console.log('987987908709870987098709870987', projectObj);
 				ProjectModel.update(
 					{ _id: req.body._id },
 					projectObj,
@@ -111,8 +125,10 @@ module.exports = {
 	},
 
 	readComments: function(req, res) {
-		ProjectModel.find(req.query)
-		.select('comments')
+		console.log('232341234123412341234123423434 ', req.params);
+		ProjectModel.findById(req.params.id)
+		//.select('comments')
+		//.populate('comments')
 		.exec(function(err, result) {
 			if(err) {
 				res.status(500).json(err);

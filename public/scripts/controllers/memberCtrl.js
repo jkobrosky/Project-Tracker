@@ -4,10 +4,29 @@ app.controller('memberCtrl', function($scope, userProjects, teamLeadProjects) {
 
 	$scope.associatedProjects = userProjects;
 	$scope.leadProjects = teamLeadProjects;
+	console.log('associatedProjects memberCtrl ', $scope.associatedProjects);
+
+	// Sets the currentUser from the resolve
+	$scope.currentUser = $scope.associatedProjects.currentUser.name;
+
+	$scope.memberProjectVisible = false;
+
+	$scope.memberProfileVisible = false;
 
 
 	console.log('associatedProjects ', $scope.associatedProjects);
 	console.log('leadProjects ', $scope.leadProjects);
+
+	$scope.viewProjectModal = function() {
+		console.log('viewProjectModal ', $scope.memberProjectVisible);
+		$scope.memberProjectVisible = !$scope.memberProjectVisible;
+		$scope.backdropVisible = !$scope.backdropVisible;
+	};
+
+	$scope.viewProfileModal = function() {
+		console.log('toggle profile')
+		$scope.memberProfileVisible = !$scope.memberProfileVisible;
+	}
 
 	// ng-show visibilty items
 	$scope.backdrop = false;
@@ -28,6 +47,13 @@ app.controller('memberCtrl', function($scope, userProjects, teamLeadProjects) {
 		if($scope.associatedProjects.length) {
 			$scope.associatedBox = true;
 		}
+	};
+
+	// Sets the current project variable in the admin.html
+	$scope.setProject = function(project) {
+		//console.log('setting current project from adminCtrl ', project);
+		$scope.currentProject = project;
+		console.log('currentProject from adminCtrl ', $scope.currentProject);
 	};
 
 	// var now = new Date();

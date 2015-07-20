@@ -21,6 +21,8 @@ app.config(function($routeProvider) {
 				var user = authService.isAuthed();
 				if(user.admin) {
 					$location.path('/admin');
+				} else if (user.admin && pass) {
+					$location.path('/member')
 				}
 				var deferred = $q.defer();
 				memberService.getUserProjects(user._id).then(function(response) {
@@ -30,8 +32,15 @@ app.config(function($routeProvider) {
 					} else {
 						response.data.visible = false;
 					}
+
+					response.data.currentUser = user;
+					console.log('currentUser in resolve ', response.data.currentUser);
+
 					var teamProjectsArr = response.data;
 					console.log(' teamProjectsArr in resolve ', teamProjectsArr);
+
+					var postedComments = teamProjectsArr[0].comments;
+					console.log('postedComments in app.js /member ', postedComments);
 
 					deferred.resolve(teamProjectsArr);
 				})
@@ -74,11 +83,17 @@ app.config(function($routeProvider) {
 				}
 			},
 
-			projectsList: function($q, $http, adminService) {
+			projectsList: function($q, $http, adminService, authService) {
+				var user = authService.isAuthed();
+
 				var deferred = $q.defer();
 				adminService.getProjects().then(function(response) {
-					// console.log('from the config ', response);
+					console.log('from the config projectsList', response);
 					var projects = response.data;
+					response.data.currentUser = user;
+					console.log('projects in app.js /admin ', projects)
+					
+
 					deferred.resolve(projects);
 				}, function(err) {
 					console.log('Houston... ', err);

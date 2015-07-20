@@ -47,6 +47,7 @@ var app = express();
 	// Routes for Project Controller
 	app.get('/api/projects/', ProjectCtrl.readProject);
 	app.post('/api/projects', ProjectCtrl.createProject);
+	app.post('/api/projects/comments/:_id', ProjectCtrl.addComments);
 	app.put('/api/projects/:_id', ProjectCtrl.updateProject);
 	app.delete('/api/projects/:_id', ProjectCtrl.removeProject);
 
@@ -55,7 +56,7 @@ var app = express();
 	app.get('/api/projects/teamLead/:id', ProjectCtrl.userTeamLead);
 
 	// Routes for Comments Controller
-	app.get('/api/comments', ProjectCtrl.readComments);
+	app.get('/api/comments/:id', ProjectCtrl.readComments);
 	app.post('/api/comments', ProjectCtrl.createComment);
 	// app.delete('/api/comments', ProjectCtrl.removeComment);
 
@@ -85,6 +86,11 @@ var app = express();
 		console.log('server.js req.body ', req.user);
 		res.send(req.user);
 	});
+
+	app.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/#/auth');
+	})
 
 	mongoose.connect(mongoUri);
 	mongoose.connection.once('open', function() {

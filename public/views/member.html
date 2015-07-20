@@ -1,10 +1,10 @@
 <div class="nav">	
 	<div class="icons left">
-		<a class="menu" href="#/admin"><i ng-click="addMenuView()" class="fa fa-bars"></i>
+		<a class="menu" href="#/member"><i ng-click="addMenuView()" class="fa fa-bars"></i></a>
 	</div>
 
 	<div class="icons right">
-		<a class="menu" href="#/admin"><i ng-click="addProfileView()" class="fa fa-cog"></i></a>
+		<a class="menu" href="#/member"><i ng-click="viewProfileModal()" class="fa fa-cog"></i></a>
 	</div>
 </div> <!-- End of 'nav' -->
 
@@ -14,20 +14,26 @@
 	<div class="team-lead-container" ng-show="teamLeadBox">
 	<h4 class="member-project-message">{{ leadProjectMessage }}</h4>
 		<div class="projects-container">	
-			<div class="manage-container" ng-repeat="project in leadProjects">
+			<div class="manage-container" ng-repeat="project in leadProjects" project="project">
 				<i class="edit-icon fa fa-times"></i>
-				<h4 class="title">{{ project.title }}</h4>
+				<h4 ng-click="viewProjectModal(); setProject(project)" class="title">{{ project.title }}</h4>
 
 				<div class="current-projects-container">
 					<div class="current-projects">
 						<div class="project-details">
 						</div> <!-- End of 'project-details' -->
-						<div class="task-container" ng-repeat="task in project.tasks">
-							<p class="task-text">{{ task }}</p>
+						<div class="member-task-container task-container" ng-repeat="task in project.tasks">
+							{{ task }}
 						</div>
-						<h5 ng-style="past-due">Due: {{ project.dueDate | date: "fullDate" }}</h5>
+						<h5>Due: {{ project.dueDate | date: "fullDate" }}</h5>
 					</div> <!-- End of 'current-projects' -->
 				</div> <!-- End of 'current-projects-container' -->
+<!-- 
+				<div class="member-project-btn-container">
+					<button class="member-project-btn" type="submit">Update</button>
+					<button class="member-project-btn" type="submit">Track</button>
+				</div> -->
+
 			</div> <!-- End of 'manage-container' -->
 		</div> <!-- End of 'projects-container' -->
 	</div> <!-- End of 'team-lead-container' -->
@@ -38,14 +44,14 @@
 		<div class="projects-container">	
 			<div class="manage-container" ng-repeat="project in associatedProjects">
 				<i class="edit-icon fa fa-times"></i>
-				<h4 class="title">{{ project.title }}</h4>
+				<h4 ng-click="viewProjectModal(); setProject(project)" class="title">{{ project.title }}</h4>
 
 				<div class="current-projects-container">
 					<div class="current-projects">
 						<div class="project-details">
 						</div> <!-- End of 'project-details' -->
-						<div class="task-container" ng-repeat="task in project.tasks">
-							<p class="task-text">{{ task }}</p>
+						<div class="member-task-container task-container" ng-repeat="task in project.tasks">
+							{{ task }}
 						</div>
 						<h5 ng-style="past-due">Due: {{ project.dueDate | date: "fullDate" }}</h5>
 					</div> <!-- End of 'current-projects' -->
@@ -60,3 +66,32 @@
 <!-- Darkens the background when the modal pops up -->
 <div class="backdrop" ng-show="backdropVisible">
 </div>
+
+<user-project-modal
+	ng-show="memberProjectVisible"
+	member-project-visible="memberProjectVisible"
+	current-project="currentProject"
+	current-user="currentUser"
+	project="project"
+	set-project="setProject(project)"
+	view-project-modal="viewProjectModal()">
+</user-project-modal>
+
+<member-profile
+	ng-show="memberProfileVisible"
+	member-profile-visible="memberProfileVisible"
+	view-profile-modal="viewProfileModal()">
+</member-profile>
+
+
+
+
+
+
+
+
+
+
+
+
+

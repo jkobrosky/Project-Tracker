@@ -1,5 +1,4 @@
 html, body {
-	height: 100%;
 	width: 100%;
 	margin: 0;
 	background: #16a085;
@@ -177,6 +176,10 @@ a.menu {
 	height: 2em;
 }
 
+.login-input {
+	width: 93%;
+}
+
 /*.popup-modal-inputs {
 	width: 60%;
 }*/
@@ -291,11 +294,13 @@ a {
 	-moz-box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
 }
 
+
+
 .profile-popout {
 	margin: 0;
 	padding: 10px;
-	height: 100%;
-	width: 50%;
+	/*height: 100%;
+	width: 50%;*/
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -374,7 +379,7 @@ a {
 
 .modal-btn-container {
 	/* margin: 19% 0 0; */
-	margin: 0 2.5%;
+	margin: 0 1.95%;
 	float: right;
 	display: flex;
 	flex-direction: row;
@@ -450,7 +455,7 @@ a {
 .create {
 	height: 45px;
 	padding: 0 25px;
-	margin: 5px 10px;
+	margin: 5px 2%;
 }
 
 .due-date-btn {
@@ -513,6 +518,14 @@ span.mini-panel-repeat {
 .remove-member {
 	float: right;
 	color: rgba(0, 0, 0, 0.3);
+}
+
+.task-container {
+	display: flex;
+}
+
+.checkbox-tasks {
+	margin: 0 5px;
 }
 
 .task-text {
@@ -684,7 +697,7 @@ span.confirmation-text {
 	width: 40%;
 	height: 30%;
 	float: left;
-	margin: 33px 0 0 42px;
+	margin: 33px 0 0 3.5%;
 	border: 1px solid;
 }
 
@@ -763,6 +776,27 @@ span.confirmation-text {
 .member-project-message {
 	display: flex;
 	justify-content: center;
+}
+
+.completed-task {
+	text-decoration: line-through;
+}
+
+.member-project-btn-container {
+	display: flex;
+	justify-content: center;
+}
+
+.member-task-container {
+	font-size: .85em;
+}
+
+.member-project-btn {
+	width: 45%;
+}
+
+.bold {
+	font-weight: 700;
 }
 
 /*.team-member-dropdown-multiselect {

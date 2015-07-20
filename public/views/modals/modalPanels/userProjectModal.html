@@ -1,33 +1,33 @@
-<!-- ADMIN MODAL -->
+<!-- MEMBER PROJECT MODAL -->
 <!-- Toggles the ng-show of the modal -->
-<div class="modal create-project-container" ng-show="addProjectVisible" current-project="currentProject">
+<div class="modal create-project-container" ng-show="memberProjectVisible" current-project="currentProject">
 	<h4 class="title">{{ currentProject.title }}</h4>
 
 	<!-- Modal with input fields for adding a project -->
 	<div class="close">
-		<a href="#admin"><i ng-click="addProjectView()" class="fa fa-times"></i></a>
+		<i ng-click="viewProjectModal()" class="fa fa-times"></i>
 	</div>
 
 	<!-- Form for adding project -->
 	<div class="form-container">
 		<form class="update-project-form">
-			<span class="label">Title</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.title" placeholder="{{ currentProject.title }}" />
+			<span class="label bold">Title</span>
+			<span class="popup-modal-inputs modal-input" type="text" ng-model="project.title">{{ currentProject.title }}</span>
 
-			<span class="label">Description</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.description" placeholder="{{ currentProject.description }}" />
+			<span class="label bold">Description</span>
+			<span class="popup-modal-inputs modal-input" type="text" ng-model="project.description">{{ currentProject.description }}</span>
 
-			<span class="label">Team Lead</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead.name" ng-repeat="lead in currentProject.teamLead" placeholder="{{ lead.name }}" />
+			<span class="label bold">Team Lead</span>
+			<span class="popup-modal-inputs modal-input" type="text" ng-model="project.teamLead" ng-repeat="lead in currentProject.teamLead">{{ lead.name }}</span>
 
-			<span class="label">Team Members</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" ng-repeat="members in currentProject.teamMembers" placeholder="{{ members.name }}" />
+			<span class="label bold">Team Members</span>
+			<span class="popup-modal-inputs modal-input" type="text" ng-model="project.teamMembers" ng-repeat="members in currentProject.teamMembers">{{ members.name }}</span>
 
-			<span class="label">Start Date</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate" placeholder="{{ currentProject.startDate | amCalendar }}" />
+			<span class="label bold">Start Date</span>
+			<span class="popup-modal-inputs modal-input" type="text" ng-model="project.startDate">{{ currentProject.startDate | amCalendar }}</span>
 
-			<span class="label">Due Date</span>
-			<input class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate" placeholder="{{ currentProject.dueDate | amCalendar }}" />
+			<span class="label bold">Due Date</span>
+			<span class="popup-modal-inputs modal-input" type="text" ng-model="project.dueDate">{{ currentProject.dueDate | amCalendar }}</span>
 		</form>
 
 		<div class="attachments" ng-repeat="attachment in currentProject.attachments">
@@ -40,14 +40,14 @@
 	<div class="show-input-panel show-tasks-edit-panel">
 		<span class="headline">Tasks Added</span>
 		<div class="tasks-panel" current-project="currentProject" ng-repeat="task in currentProject.tasks">
-			{{ task }} 
+			<input class="checkbox-tasks" type="checkbox" ng-model="completed" /><span class="task-text" ng-class="{'completed-task': completed}">{{ task }}</span>
 			<!-- <i ng-click="removeTask(newTasks.name)" class="remove-item fa fa-times"></i> -->
 		</div>
 	</div> <!-- End of 'show-input-panel' -->
 
 	<div class="comments-container">
 		<div class="comments-display">
-			<p class="comment-text" current-user="currentUser" ng-repeat="comment in postedComments[0]">{{ comment.userlabel }} - {{ comment.message }}</p>
+			<p class="comment-text" current-user="currentUser" ng-repeat="comment in currentProject.comments">{{ comment.userlabel }} - {{ comment.message }}</p>
 		</div>
 		<div class="comment">
 			<input class="comments-field" type="text" ng-model="comment" placeholder="Enter comments" />
@@ -69,4 +69,4 @@
 		<button class="modal-btn" ng-click="updateProject(project, currentProject); getProjects(); clearText()" type="submit">Update</button>
 	</div>
 
-</div> <!-- End of ADMIN MODAL -->
+</div> <!-- End of MEMBER PROJECT MODAL -->

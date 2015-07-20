@@ -16,4 +16,29 @@ app.service('memberService', function(lh, $http) {
 		})
 	};
 
+	this.postComments = function(comment, currentUserId, projectId) {
+		var comments = {};
+		comments.userLabel = currentUserId;
+		comments.message = comment;
+		console.log('comments in postComments ', comments);
+		return $http({
+			method: 'POST',
+			url: 'http://localhost:8887/api/comments',
+			data: { 
+				comments: {
+					userlabel: currentUserId,
+					message: comment
+				},
+				_id: projectId
+			}
+		})
+	};
+
+	this.getComments = function(projectId) {
+		return $http({
+			method: 'GET',
+			url: 'http://localhost:8887/api/comments/' + projectId
+		})
+	}
+
 });

@@ -20,7 +20,7 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	// Sets the modal views of the backdrop, menu and profile menu to false
 	$scope.backdropVisible = false;
 	$scope.menuVisible = false;
-	$scope.profileVisible = false;
+	$scope.addprofileVisible = false;
 	$scope.createProjectPanelVisible = false;
 	$scope.createUserPanelVisible = false;
 	$scope.createTeamPanelVisible = false;
@@ -33,6 +33,14 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 	$scope.attachmentPickerModalVisible = false;
 
 	$scope.pastDue = false;
+
+	$scope.pass = false;
+
+	$scope.allowPassage = function() {
+		$scope.pass = true;
+	};
+
+	$scope.currentUser = $scope.Projects.currentUser.name;
 
 	// $scope.$watch('Projects', function() {
 	// 	adminService.getProjects().then(function(response) {
@@ -56,6 +64,10 @@ app.controller('adminCtrl', function($scope, adminService, projectsList, members
 		$scope.addProjectVisible = !$scope.addProjectVisible;
 		$scope.backdropVisible = !$scope.backdropVisible;
 	};
+
+	$scope.addProfileView = function() {
+		$scope.addProfileVisible = !$scope.addProfileVisible;
+	}
 
 	// Toggles the create project view from admin.html
 	$scope.toggleProjectPanel = function() {

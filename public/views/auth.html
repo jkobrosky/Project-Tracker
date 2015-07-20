@@ -1,10 +1,11 @@
+<h1 class="welcome">Welcome to JadeSphere</h1>
 <div class="container">
 	<div class="login-box" ng-hide="loginVisible">
 		<h4 class="title">Login</h4>
 		<form>
-			<input ng-model="email" class="modal-input" type="email" placeholder="Email ..." />
+			<input ng-model="email" class="modal-input login-input" type="email" placeholder="Email ..." />
 			<br />
-			<input ng-model="password" class="modal-input" type="password" placeholder="Password ..." />
+			<input ng-model="password" class="modal-input login-input" type="password" placeholder="Password ..." />
 			<br />
 			<button ng-click="login(email, password)" class="login-btn" type="submit">Login</button>
 		</form>
@@ -19,7 +20,7 @@
 			<br />
 			<input class="modal-input" type="password" placeholder="Password ..." />
 			<br />
-			<button " class="login-btn" type="submit">Register</button>
+			<button class="login-btn" type="submit">Register</button>
 		</form>
 	</div>
 </div><!-- End of 'container' -->
