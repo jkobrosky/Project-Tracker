@@ -40,7 +40,7 @@
 	<div class="show-input-panel show-tasks-edit-panel">
 		<span class="headline">Tasks Added</span>
 		<div class="tasks-panel" current-project="currentProject" ng-repeat="task in currentProject.tasks">
-			<input class="checkbox-tasks" type="checkbox" ng-model="completed" /><span class="task-text" ng-class="{'completed-task': completed}">{{ task }}</span>
+			<input class="checkbox-tasks" type="checkbox" ng-click="saveTask(task, completed)" ng-model="completed" /><span class="task-text" ng-class="{'completed-task': completed}">{{ task }}</span>
 			<!-- <i ng-click="removeTask(newTasks.name)" class="remove-item fa fa-times"></i> -->
 		</div>
 	</div> <!-- End of 'show-input-panel' -->
@@ -65,7 +65,7 @@
 	</div> --> <!-- End of 'chat-container' -->
 
 	<div class="btn-container modal-btn-container">
-		<a href="#admin"><button class="modal-btn" ng-click="addProjectView()" type="submit">Cancel</button></a>
+		<button class="modal-btn" ng-click="viewProjectModal()" type="submit">Cancel</button>
 		<button class="modal-btn" ng-click="updateProject(project, currentProject); getProjects(); clearText()" type="submit">Update</button>
 	</div>
 
