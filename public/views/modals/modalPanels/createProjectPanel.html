@@ -24,9 +24,10 @@
 			<a href="#admin"><i class="create-project-btns fa fa-paperclip"> Attachments</i></a>
 		</div>
 
-		<div class="false-btn">
+		<!-- Location idea was not well recieved. Will leave here incase I decide to put it back in -->
+		<!-- <div class="false-btn">
 			<i class="create-project-btns fa fa-map-marker"> Location</i>
-		</div>
+		</div> -->
 
 	</div> <!-- End of 'btn-container project-btns' -->
 
@@ -56,13 +57,6 @@
 		</div> <!-- End of 'create-project' -->
 	</form>
 
-	<!--- This should be it's own directive for chat function -->
-	<div class="chat-container" label="Discussion">
-		<div class="chat-box">
-			Project discussion
-		</div>
-	</div> <!-- End of 'chat-container' -->
-
 	<div class="attachments-container">
 		<div class="attachments-box" ng-repeat="attachment in attachmentsArr">
 			<div ng-click="displayInModal()" class="false-btn">
@@ -72,6 +66,7 @@
 		</div>
 	</div>
 	
+	<!-- Modal that allows the user to select a due date -->
 	<time-picker-modal
 		ng-show="timePickerModalVisible"
 		time-picker-modal-visible="timePickerModalVisible"
@@ -80,6 +75,7 @@
 		date="date">
 	</time-picker-modal>
 
+	<!-- Modal that allows the user to select a team lead -->
 	<team-lead-picker-modal
 		ng-show="teamLeadPickerModalVisible"
 		team-lead-picker-modal-visible="teamLeadPickerModalVisible"
@@ -89,6 +85,7 @@
 		selected-member="selectedMember">
 	</team-lead-picker-modal>
 
+<!-- Modal that allows the user to select team members to work on a project -->
 	<team-member-picker-modal
 		ng-show="teamMemberPickerModalVisible"
 		team-member-picker-modal-visible="teamMemberPickerModalVisible"
@@ -98,6 +95,7 @@
 		set-team-members="setTeamMembers(selectedTeamMembers)">
 	</team-member-picker-modal>
 
+	<!-- Modal that allows the user to select an image to upload to Amazon S3 -->
 	<attachment-picker-modal
 		ng-show="attachmentPickerModalVisible"
 		attachment-picker-modal-visible="attachmentPickerModalVisible"
@@ -114,4 +112,16 @@
 
 
 </div> <!-- End of 'create-project-container' -->
-<!-- End of CREATE PROJECT PANEL
+<!-- End of CREATE PROJECT PANEL -->
+
+
+
+
+
+
+<!-- DEPRECATED - Chat container is now on the project panel - not needed when a new project is created -->
+	<!-- <div class="chat-container" label="Discussion">
+		<div class="chat-box">
+			Project discussion
+		</div>
+	</div> --> <!-- End of 'chat-container' -->

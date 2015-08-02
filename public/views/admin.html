@@ -1,3 +1,4 @@
+<!-- Header section -->
 <div class="nav">	
 	<div class="icons left">
 		<a class="menu" href="#/admin"><i ng-click="addMenuView()" class="fa fa-bars"></i>
@@ -9,7 +10,6 @@
 </div> <!-- End of 'nav' -->
 
 <!-- Create a new modal that displays each project -->
-
 <div class="projects-container">	
 	<div class="manage-container" ng-repeat="project in Projects" project="project">
 		<i ng-click="removeProject(project)" class="edit-icon fa fa-times"></i>
@@ -54,8 +54,8 @@
 <profile-modal
 	ng-show="addProfileVisible"
 	add-profile-visible="addProfileVisible"
+	user-object="userObject"
 	add-profile-view="addProfileView()"
-	allow-passage="allowPassage()"
 	logout="logout()">
 </profile-modal>
 
@@ -145,6 +145,8 @@
 	get-events="getEvents()">
 </create-calendar-panel>
 
+
+<!-- DEPRECATED Keeping for reference -->
 <!-- 	ng-show="menuVisible" 
 	show-menu="showMenu" 
 	create-user-visible="createUserVisible" 

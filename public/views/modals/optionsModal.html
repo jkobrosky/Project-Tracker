@@ -1,6 +1,7 @@
 <!-- OPTIONS MODAL -->
 <!-- Toggles the ng-show of the modal -->
 <div class="options-menu-container">
+
 	<div class="menu-popout">
 		<div class="header">
 			<h4 class="title options-title">Admin Options</h4>
@@ -21,21 +22,27 @@
 					<a href="#admin"><li class="nav-btn"><i class="fa fa-user-plus"></i> Add Member</li></a>
 				</div>
 
-				<div class="false-btn" ng-click="toggleNewTeamPanel(); addMenuView()">
+				<!-- DEPRECATED - Teams are created when a project is created, this no longer needed -->
+				<!-- <div class="false-btn" ng-click="toggleNewTeamPanel(); addMenuView()">
 					<a href="#admin"><li class="nav-btn"><i class="fa fa-users"></i> Create Team</li></a>
-				</div>
+				</div> -->
 
 				<div class="false-btn" ng-click="toggleCalendarPanel(); getEvents(); addMenuView()">
 					<a href="#admin"><li class="nav-btn"><i class="fa fa-calendar"></i> Calendar</li></a>
 				</div>
 
-				<div class="false-btn">
+				<!-- DEPRECATED - Email is sent out once a person is assigned to a project. -->
+				<!-- <div class="false-btn">
 					<a href="#admin"><li class="nav-btn"><i class="fa fa-bell-o"></i> Notifications</li></a>
-				</div>
+				</div> -->
 			</ul>
 		</div> <!-- End of 'nav-bar-btn' -->
 	</div> <!-- End of 'menu-popout' -->
 
+</div> <!-- End of 'options-menu-container' -->
+
+
+<!-- DEPRECATED - keeping for reference -->
 <!-- 	<create-project-panel 
 		ng-show="showMenu" 
 		show-menu="showMenu"
@@ -71,5 +78,3 @@
 	<!-- <create-calendar-panel
 		ng-show="createCalendarVisible">
 	</create-calendar-panel> -->
-
-</div> <!-- End of 'options-menu-container' -->

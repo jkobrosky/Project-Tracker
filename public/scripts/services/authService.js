@@ -5,7 +5,7 @@ app.service('authService', function($q, $http) {
 	var currentUser;
 
 	this.login = function(email, password) {
-		console.log('in authService', email, password);
+		// console.log('in authService', email, password);
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',
@@ -16,9 +16,9 @@ app.service('authService', function($q, $http) {
 			}
 		})
 		.then(function(response) {
-			console.log('response in authService ', response);
+			//console.log('response in authService ', response);
 			currentUser = response.data;
-			console.log('currentUser ', currentUser);
+			// console.log('currentUser ', currentUser);
 			deferred.resolve(currentUser);
 		}, function(err) {
 			console.log('error ', err);

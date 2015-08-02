@@ -3,24 +3,12 @@ app.directive('profileModal', function() {
 		restrict: 'EA',
 		templateUrl: '../views/modals/profileModal.html',
 		scope: {
-			allowPassage: '&',
 			logout: '&',
 			addMenuView: '&',
 			addProfileView: '&',
-			// toggleProjectPanel: '&',
-			// toggleNewUserPanel: '&',
-			// toggleNewTeamPanel: '&',
-			//toggleCalendarPanel: '&',
-			//toggleTimePicker: '&',
-			//toggleTeamLeadPicker: '&',
-			//toggleTeamMemberPicker: '&',
-			//toggleAttachmentPicker: '&',
-			//getEvents: '&',
-			//teamMembers: '=',
-			//Projects: '='
+			userObject: '='
 		},
 		controller: 'profileCtrl',
-		
 		link: function (scope, elem, attrs) {
 			//console.log('teamMembers in parent directive:', scope.teamMembers);
 
@@ -53,3 +41,16 @@ app.directive('profileModal', function() {
 		}
 	}
 });
+
+<!-- DEPRECATED -->
+// toggleProjectPanel: '&',
+// toggleNewUserPanel: '&',
+// toggleNewTeamPanel: '&',
+//toggleCalendarPanel: '&',
+//toggleTimePicker: '&',
+//toggleTeamLeadPicker: '&',
+//toggleTeamMemberPicker: '&',
+//toggleAttachmentPicker: '&',
+//getEvents: '&',
+//teamMembers: '=',
+//Projects: '='

@@ -1,4 +1,4 @@
-var app = angular.module('tracker', ['ngRoute', 'autocomplete', '720kb.datepicker', 'angularMoment', 'ngDropdowns', 'angularjs-dropdown-multiselect', 'isteven-multi-select']);
+var app = angular.module('tracker', ['ngRoute', '720kb.datepicker', 'angularMoment', 'ngDropdowns', 'angularjs-dropdown-multiselect', 'isteven-multi-select']);
 
 app.constant('lh', {
 	url: 'http://localhost:8887'
@@ -14,19 +14,29 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/member.html',
 		controller: 'memberCtrl',
 		resolve: {
+
+			user: function(authService) {
+				var user = authService.isAuthed();
+				return user;
+			},
+
 			userProjects: function($q, $http, $location, authService, memberService) {
 				
 				// authorizing user to check to see if they have admin priveledges
 				// This should be moved to the backend for security purposes
 				var user = authService.isAuthed();
-				if(user.admin) {
-					$location.path('/admin');
-				} else if (user.admin && pass) {
-					$location.path('/member')
-				}
+				if(!user.admin) $location.path('/member');
+
+				// if(user.admin) {
+				// 	$location.path('/admin');
+				// } else if (user.admin && pass) {
+				// 	$location.path('/member')
+				// }
+
+
 				var deferred = $q.defer();
 				memberService.getUserProjects(user._id).then(function(response) {
-					console.log('response in member resolve - teamMembers ', response);
+					// console.log('response in member resolve - teamMembers ', response);
 					if(response.data.length) {
 						response.data.visible = true;
 					} else {
@@ -34,13 +44,13 @@ app.config(function($routeProvider) {
 					}
 
 					response.data.currentUser = user;
-					console.log('currentUser in resolve ', response.data.currentUser);
+					// console.log('currentUser in resolve ', response.data.currentUser);
 
 					var teamProjectsArr = response.data;
-					console.log(' teamProjectsArr in resolve ', teamProjectsArr);
+					// console.log(' teamProjectsArr in resolve ', teamProjectsArr);
 
 					var postedComments = teamProjectsArr[0].comments;
-					console.log('postedComments in app.js /member ', postedComments);
+					// console.log('postedComments in app.js /member ', postedComments);
 
 					deferred.resolve(teamProjectsArr);
 				})
@@ -51,14 +61,14 @@ app.config(function($routeProvider) {
 				var user = authService.isAuthed();
 				var deferred = $q.defer();
 				memberService.getTeamLeadProjects(user._id).then(function(response) {
-					console.log('response in member resolve - teamLead ', response);
+					// console.log('response in member resolve - teamLead ', response);
 					if(response.data.length) {
 						response.data.visible = true;
 					} else {
 						response.data.visible = false;
 					}
 					var leadProjectsArr = response.data;
-					console.log(' leadProjectsArr in resolve ', leadProjectsArr);
+					// console.log(' leadProjectsArr in resolve ', leadProjectsArr);
 				
 					deferred.resolve(leadProjectsArr);
 				})
@@ -66,9 +76,7 @@ app.config(function($routeProvider) {
 			},
 		}
 	})
-	.when('/dashboard', {
-		templateUrl: 'views/dashboard.html',
-	})
+
 	.when('/admin', {
 		templateUrl: 'views/admin.html',
 		controller: 'adminCtrl',
@@ -88,10 +96,10 @@ app.config(function($routeProvider) {
 
 				var deferred = $q.defer();
 				adminService.getProjects().then(function(response) {
-					console.log('from the config projectsList', response);
+					// console.log('from the config projectsList', response);
 					var projects = response.data;
 					response.data.currentUser = user;
-					console.log('projects in app.js /admin ', projects)
+					// console.log('projects in app.js /admin ', projects)
 					
 
 					deferred.resolve(projects);
@@ -124,17 +132,6 @@ app.config(function($routeProvider) {
 				})
 				return deferred.promise;
 			}
-
-			// attachmentList: function($q, $http, adminService) {
-			// 	var deferred = $q.defer();
-			// 	adminService.getAttachments().then(function(response) {
-			// 		var attachments = response.data;
-			// 		deferred.resolve(attachments);
-			// 	}, function(err) {
-			// 		console.log('Houston... ', err);
-			// 	})
-			// 	return deferred.promise;
-			// }
 		}
 	})
 	.otherwise({

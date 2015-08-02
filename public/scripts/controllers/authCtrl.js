@@ -11,10 +11,14 @@ app.controller('authCtrl', function($scope, $location, authService) {
 	$scope.login = function(email, password) {
 		$scope.email = email;
 		$scope.password = password
-		console.log('clicked login', email, password);
+		// console.log('clicked login', email, password);
 		authService.login($scope.email, $scope.password).then(function(response) {
-			console.log('success', response);
-			$location.path('/member');
+			// console.log('success', response);
+			if(response.admin) {
+				$location.path('/admin')
+			} else {
+				$location.path('/member');
+			}
 		}, function(err) {
 			console.log('err');
 		})

@@ -28,11 +28,6 @@
 						<h5>Due: {{ project.dueDate | date: "fullDate" }}</h5>
 					</div> <!-- End of 'current-projects' -->
 				</div> <!-- End of 'current-projects-container' -->
-<!-- 
-				<div class="member-project-btn-container">
-					<button class="member-project-btn" type="submit">Update</button>
-					<button class="member-project-btn" type="submit">Track</button>
-				</div> -->
 
 			</div> <!-- End of 'manage-container' -->
 		</div> <!-- End of 'projects-container' -->
@@ -80,7 +75,8 @@
 <member-profile
 	ng-show="memberProfileVisible"
 	member-profile-visible="memberProfileVisible"
-	view-profile-modal="viewProfileModal()">
+	user-object="userObject"
+	view-profile-modal="viewMemberProfileModal()">
 </member-profile>
 
 

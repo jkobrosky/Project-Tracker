@@ -17,7 +17,7 @@ app.directive('teamLeadPickerModal', function() {
 			// scope.ddSelectOptions = teamMembers;
 		},
 		controller: function($scope) {
-			console.log('teamMembers ctrl in teamLead directive', $scope.teamMembers);
+			// console.log('teamMembers ctrl in teamLead directive', $scope.teamMembers);
 			// $scope.selectedMember = {};
 			$scope.memberSelection = [];
 
@@ -34,7 +34,7 @@ app.directive('teamLeadPickerModal', function() {
 			//console.log('memberSelection ', $scope.memberSelection);
 
 			$scope.setLead = function(selectedMember) {
-				console.log('selectedMember ', selectedMember.name);
+				// console.log('selectedMember ', selectedMember.name);
 				$scope.setTeamLead(selectedMember);
 			};
 		}

@@ -3,27 +3,14 @@ app.directive('memberProfile', function() {
 		restrict: 'EA',
 		templateUrl: '../views/modals/memberProfile.html',
 		scope: {
-			allowPassage: '&',
 			logout: '&',
 			addMenuView: '&',
 			viewProfileModal: '&',
-			toggleProjectPanel: '&',
-			toggleNewUserPanel: '&',
-			toggleNewTeamPanel: '&',
-			toggleCalendarPanel: '&',
-			toggleTimePicker: '&',
-			toggleTeamLeadPicker: '&',
-			toggleTeamMemberPicker: '&',
-			toggleAttachmentPicker: '&',
-			getEvents: '&',
-			memberProfileVisible: '=',
-			teamMembers: '=',
-			Projects: '='
+			userObject: '='
 		},
 		controller: 'memberProfileCtrl',
 		
 		link: function (scope, elem, attrs) {
-			//console.log('teamMembers in parent directive:', scope.teamMembers);
 
 			///////////////////////////////////////////////////////
 			//																									 //

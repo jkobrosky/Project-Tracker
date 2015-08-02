@@ -42,7 +42,7 @@ app.directive('createProjectPanel', function() {
 			});
 		},
 		controller: function($scope, adminService) {
-			console.log('$scope.attachmentsArr in createProjectPanel.js ctrl ', $scope.attachmentsArr);
+			// console.log('$scope.attachmentsArr in createProjectPanel.js ctrl ', $scope.attachmentsArr);
 
 		///////////////////////////////////////////////////////
 		//																									 //
@@ -58,7 +58,7 @@ app.directive('createProjectPanel', function() {
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
 			$scope.addNewTask = function(task) {
-				console.log($scope.tasksArr);
+				// console.log($scope.tasksArr);
 				// console.log('num ', $scope.num);
 				// console.log('clicked addNewTask', task, $scope.newProject, $scope.tasksArr);
 				$scope.tasksArr[$scope.num] = {
@@ -90,9 +90,9 @@ app.directive('createProjectPanel', function() {
 			};
 
 			$scope.setTeamLead = function(selectedMember) {
-				console.log('setTeamLead in createProjectPanel.js ', selectedMember);
+				// console.log('setTeamLead in createProjectPanel.js ', selectedMember);
 				$scope.newTeamLead = selectedMember[0];
-			console.log('$scope.attachmentsArr in createProjectPanel.js ctrl ', $scope.attachmentsArr);
+				// console.log('$scope.attachmentsArr in createProjectPanel.js ctrl ', $scope.attachmentsArr);
 
 				//console.log('createProjectPanel.js setTeamLead ', $scope.newTeamLead, typeof $scope.newTeamLead);
 			}
@@ -100,12 +100,12 @@ app.directive('createProjectPanel', function() {
 			$scope.setTeamMembers = function(selectedTeamMembers) {
 				//console.log('setTeamMembers in adminCtrl ', selectedTeamMembers);
 				$scope.newTeamMembers = selectedTeamMembers;
-				console.log('createProjectPanel.js newTeamMembers adminCtrl ', $scope.newTeamMembers);
+				// console.log('createProjectPanel.js newTeamMembers adminCtrl ', $scope.newTeamMembers);
 			}
 
 			$scope.setAttachments = function(attachmentArr) {
 				$scope.newAttachments = attachmentArr;
-				console.log('createProjectPanel.js newAttachments ', $scope.newAttachments);
+				// console.log('createProjectPanel.js newAttachments ', $scope.newAttachments);
 			}
 
 			// Allows user to add a new task. Adds it to the tasksArr to later be sent to mongoDB colleciton
@@ -160,7 +160,7 @@ app.directive('createProjectPanel', function() {
 			};
 
 			$scope.sendEmail = function() {
-				console.log('newProject inside of sendEmail ', $scope.newProject);
+				// console.log('newProject inside of sendEmail ', $scope.newProject);
 				return adminService.sendEmail($scope.newProject).then(function(response) {
 					console.log('email sent ', response);
 				});

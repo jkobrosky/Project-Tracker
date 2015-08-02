@@ -34,7 +34,7 @@ module.exports = {
 
 	userProjects: function(req, res) {
 		// console.log('userProjects req.params ', req.params)
-		console.log('userProjects req.params.id ', req.params.id)
+		// console.log('userProjects req.params.id ', req.params.id)
 		ProjectModel.find({ teamMembers : req.params.id })
 		.populate('teamMembers')
 		.populate('teamLead')
@@ -48,7 +48,7 @@ module.exports = {
 	},
 
 	userTeamLead: function(req, res) {
-		console.log('userTeamLead req.params._id ', req.params.id)
+		// console.log('userTeamLead req.params._id ', req.params.id)
 		ProjectModel.find({ teamLead : req.params.id })
 		// .populate('teamMembers')
 		.populate('teamLead')
@@ -62,7 +62,7 @@ module.exports = {
 	},
 
 	updateProject: function(req, res) {
-		console.log('req.params updateProject ', req.params, req.body);
+		// console.log('req.params updateProject ', req.params, req.body);
 		ProjectModel.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
@@ -73,8 +73,8 @@ module.exports = {
 	},
 
 	addComments: function(req, res) {
-		console.log('req.params addcomments ', req.params._id);
-		console.log('req.body addcomments ', req.body);
+		// console.log('req.params addcomments ', req.params._id);
+		// console.log('req.body addcomments ', req.body);
 		ProjectModel.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
 			if(err) {
 				return res.status(500).json(err);
@@ -85,7 +85,7 @@ module.exports = {
 	},
 
 	removeProject: function(req, res) {
-		console.log('req.params.id ', req.params._id);
+		// console.log('req.params.id ', req.params._id);
 		ProjectModel.findByIdAndRemove(req.params._id, function(err, result) {
 			if(err) {
 				res.status(500).json(err);
@@ -101,11 +101,11 @@ module.exports = {
 			req.body._id, 
 			function(err, projectFromMongo) {
 				if (err) return res.sendStatus(500);
-				console.log(projectFromMongo);
+				// console.log(projectFromMongo);
 				projectObj = projectFromMongo.toObject();
 				delete projectObj._id
 				projectObj.comments.push(req.body.comments);
-				console.log('987987908709870987098709870987', projectObj);
+				// console.log('987987908709870987098709870987', projectObj);
 				ProjectModel.update(
 					{ _id: req.body._id },
 					projectObj,
@@ -125,7 +125,7 @@ module.exports = {
 	},
 
 	readComments: function(req, res) {
-		console.log('232341234123412341234123423434 ', req.params);
+		// console.log('232341234123412341234123423434 ', req.params);
 		ProjectModel.findById(req.params.id)
 		//.select('comments')
 		//.populate('comments')
