@@ -24,4 +24,8 @@ app.controller('authCtrl', function($scope, $location, authService) {
 		})
 	}
 
+	$scope.register = function(newUser) {
+		$scope.newUser = newUser;
+	}
+
 });

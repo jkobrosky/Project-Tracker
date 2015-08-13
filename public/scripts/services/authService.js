@@ -26,6 +26,26 @@ app.service('authService', function($q, $http) {
 		return deferred.promise;
 	};
 
+	this.register = function(newUser) {
+		var deferred = $q.defer();
+		$http({
+			method: 'POST',
+			url: 'http://localhost:8887/api/register',
+			data: {
+				name: newUser.name,
+				email: newUser.email,
+				password: newUser.password,
+			}
+		})
+		.then(function(response) {
+			currentUser = response.data;
+			dferred.resolve(currentUser);
+		}, function(err) {
+			console.log('Houston... ', err);
+		})
+		return deferred.promise;
+	}
+
 	this.isAuthed = function() {
 		if(!currentUser) {
 			return 'Login failed'
