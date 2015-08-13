@@ -10,17 +10,20 @@
 			<button ng-click="login(email, password)" class="login-btn" type="submit">Login</button>
 		</form>
 	</div>
+	<p>For demo purposes please use:</p>
+	<p>username: j@j.com</p>
+	<p>password: abc</p>
 
 	<div class="login-box" ng-show="loginVisible">
 		<h4 class="title">Register</h4>
 		<form>
-			<input class="modal-input" type="text" placeholder="Fullname ..." />
+			<input ng-model="newUser.name" class="modal-input" type="text" placeholder="Fullname ..." />
 			<br />
-			<input class="modal-input" type="email" placeholder="Email ..." />
+			<input ng-model="newUser.email" class="modal-input" type="email" placeholder="Email ..." />
 			<br />
-			<input class="modal-input" type="password" placeholder="Password ..." />
+			<input ng-model="newUser.password" class="modal-input" type="password" placeholder="Password ..." />
 			<br />
-			<button class="login-btn" type="submit">Register</button>
+			<button ng-click="register(newUser)" class="login-btn" type="submit">Register</button>
 		</form>
 	</div>
 </div><!-- End of 'container' -->
