@@ -1,0 +1,27 @@
+{
+  "name": "Project-Tracker",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jkobrosky/Project-Tracker",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "Joseph Kobrosky"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angularjs-datepicker": "~0.2.6",
+    "angular-dropdowns": "~1.1.0",
+    "angularjs-dropdown-multiselect": "~1.5.2",
+    "lodash": "~3.10.1"
+  }
+}
